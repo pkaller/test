@@ -3,49 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mosaic Capital | msc.xyz — Asset Management for Crypto Foundations</title>
-  <meta name="description" content="Mosaic Capital (msc.xyz) provides crypto foundations and founders with fully regulated, bankruptcy-remote investment solutions. Specialists in listed options, RFQ-driven call option strategies, and institutional asset management." />
+  <title>Mosaic Capital — msc.xyz</title>
+  <meta name="description" content="Mosaic Capital provides crypto foundations and founders with regulated, bankruptcy-remote investment solutions. Specialists in asset management and options strategies." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="navbar">
-    <div class="nav-container">
+    <div class="nav-inner">
       <a href="#" class="logo">
         <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
-          <!-- 4x4 grid, corners removed = 12 tile mosaic mark -->
-          <!--       col1        col2        col3       -->
           <rect x="7"  y="0"  width="5" height="5" fill="white"/>
           <rect x="14" y="0"  width="5" height="5" fill="white"/>
-          <!-- row 2: all 4 -->
           <rect x="0"  y="7"  width="5" height="5" fill="white"/>
           <rect x="7"  y="7"  width="5" height="5" fill="white"/>
           <rect x="14" y="7"  width="5" height="5" fill="white"/>
           <rect x="21" y="7"  width="5" height="5" fill="white"/>
-          <!-- row 3: all 4 -->
           <rect x="0"  y="14" width="5" height="5" fill="white"/>
           <rect x="7"  y="14" width="5" height="5" fill="white"/>
           <rect x="14" y="14" width="5" height="5" fill="white"/>
           <rect x="21" y="14" width="5" height="5" fill="white"/>
-          <!--       col1        col2       -->
           <rect x="7"  y="21" width="5" height="5" fill="white"/>
           <rect x="14" y="21" width="5" height="5" fill="white"/>
-          <!-- MOSAIC wordmark -->
-          <text x="36" y="20" font-family="'Inter',-apple-system,BlinkMacSystemFont,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+          <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
           <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
         </svg>
-        </a>
+      </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Asset Management</a></li>
-        <li><a href="#options">Options Strategy</a></li>
-        <li><a href="#rfq">Why Mosaic</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#rfq">RFQ</a></li>
         <li><a href="#team">Team</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -55,96 +48,74 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">Asset Management · Crypto Foundations · Options Strategies</div>
-      <h1>Precision Capital.<br/>Built for Foundations.</h1>
-      <p class="hero-sub">
-        Mosaic Capital (msc.xyz) provides crypto foundations and founders with fully
-        regulated, bankruptcy-remote investment solutions — combining institutional
-        asset management with a dedicated options trading desk.
-      </p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">Explore Our Approach</a>
-        <a href="#rfq" class="btn-ghost">Learn About RFQ Trading</a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Asset Management · Options · Foundations</span>
+        <h1>Capital Built for<br/>Crypto Foundations.</h1>
+        <p>Regulated, bankruptcy-remote investment solutions for crypto foundations and founders — managed by institutional veterans.</p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-fill">Explore Services</a>
+          <a href="#options" class="btn-line">Options Strategy</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">$2B+</span>
-        <span class="stat-label">Assets Under Management</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">15+</span>
-        <span class="stat-label">Foundation Clients</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">8.4%</span>
-        <span class="stat-label">Avg. Net Annual Return</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">22+</span>
-        <span class="stat-label">Years Combined Experience</span>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-n">$2B+</span>
+          <span class="stat-l">Assets Managed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-n">15+</span>
+          <span class="stat-l">Foundation Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-n">8.4%</span>
+          <span class="stat-l">Avg. Net Return</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-n">CIMA</span>
+          <span class="stat-l">Regulated · Cayman</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about" class="section s-white">
     <div class="container">
-      <div class="section-label">Who We Are</div>
-      <div class="two-col">
-        <div class="col-text">
-          <h2>Regulated Investment Solutions for Crypto Foundations &amp; Founders</h2>
-          <p>
-            Mosaic Capital (msc.xyz) was built on a singular conviction: crypto foundations
-            and founders deserve access to the same institutional-grade investment infrastructure
-            available to the world's largest sovereign wealth funds — without the opacity,
-            misaligned incentives, or counterparty risk.
-          </p>
-          <p>
-            We are an exempted company incorporated in the Cayman Islands, registered with CIMA,
-            providing fully regulated, bankruptcy-remote investment solutions across US Treasury
-            assets, high-yield private credit, DeFi yield, and structured options strategies.
-            Our options trading desk generates consistent, risk-calibrated income through
-            RFQ-executed call option programs designed specifically for foundation mandates.
-          </p>
-          <p>
-            Our name reflects our philosophy: each client portfolio is a carefully assembled mosaic
-            — individual positions with distinct risk/return characteristics that together form a
-            coherent, durable, perpetual whole.
-          </p>
-          <a href="#team" class="link-arrow">Meet the team &rarr;</a>
+      <div class="about-layout">
+        <div class="about-left">
+          <span class="label">About</span>
+          <h2>Institutional grade.<br/>Foundation focused.</h2>
+          <p>Mosaic Capital gives crypto foundations access to the same investment infrastructure as the world's largest sovereign funds — with full transparency, zero hidden fees, and options strategies that generate real yield.</p>
+          <a href="#team" class="text-link">Meet the team →</a>
         </div>
-        <div class="col-visual">
-          <div class="about-card">
-            <div class="about-card-item">
-              <div class="card-icon">&#9670;</div>
-              <div>
-                <strong>Foundation-First Mandate</strong>
-                <p>Investment policy design aligned with 5% distribution requirements and perpetual time horizons.</p>
-              </div>
+        <div class="about-right">
+          <div class="pillar">
+            <span class="pillar-n">01</span>
+            <div>
+              <strong>Bankruptcy-Remote</strong>
+              <p>Assets held in fully segregated, CIMA-regulated structures.</p>
             </div>
-            <div class="about-card-item">
-              <div class="card-icon">&#9670;</div>
-              <div>
-                <strong>Institutional Options Desk</strong>
-                <p>RFQ-driven call option strategies generating premium income across equity and index underlyings.</p>
-              </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-n">02</span>
+            <div>
+              <strong>Options Income Desk</strong>
+              <p>RFQ-executed call programs generating 3–6% annualised premium.</p>
             </div>
-            <div class="about-card-item">
-              <div class="card-icon">&#9670;</div>
-              <div>
-                <strong>Full Transparency</strong>
-                <p>Real-time reporting, daily position-level disclosure, and independent custody.</p>
-              </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-n">03</span>
+            <div>
+              <strong>Full Transparency</strong>
+              <p>Daily position-level reporting. Independent custody. No surprises.</p>
             </div>
-            <div class="about-card-item">
-              <div class="card-icon">&#9670;</div>
-              <div>
-                <strong>Mission Alignment</strong>
-                <p>ESG screens, impact overlays, and exclusionary screens at no additional cost.</p>
-              </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-n">04</span>
+            <div>
+              <strong>Mission Alignment</strong>
+              <p>ESG screens and impact overlays included as standard.</p>
             </div>
           </div>
         </div>
@@ -153,390 +124,220 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section bg-light">
+  <section id="services" class="section s-cream">
     <div class="container">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Services Designed Around Your Mission</h2>
-      <p class="section-sub">Four core capabilities — each calibrated to the unique regulatory, tax, and distribution constraints of foundation and endowment capital.</p>
+      <span class="label">Services</span>
+      <h2>Four capabilities.<br/>One mandate.</h2>
       <div class="services-grid">
-
-        <div class="service-card featured">
-          <div class="service-tag">Core Offering</div>
-          <div class="service-icon">&#9632;</div>
+        <div class="svc-card svc-featured">
+          <span class="svc-num">01</span>
           <h3>Foundation Asset Management</h3>
-          <p>
-            Comprehensive portfolio construction and ongoing management for private and community
-            foundations. We design investment policy statements, build diversified multi-asset
-            portfolios, manage liquidity for grant-making, and report against UPMIFA and IRS
-            distribution requirements.
-          </p>
-          <ul class="service-features">
-            <li>IPS design and governance support</li>
-            <li>Multi-asset allocation (equity, fixed income, alternatives)</li>
-            <li>Annual 5% distribution planning and liquidity management</li>
-            <li>Tax-exempt portfolio optimization</li>
+          <p>End-to-end portfolio management for crypto and private foundations. IPS design, multi-asset allocation, liquidity planning, and quarterly board reporting — all in one mandate.</p>
+          <ul>
+            <li>Investment Policy Statement design</li>
+            <li>Multi-asset allocation across TradFi + DeFi</li>
+            <li>Distribution planning and liquidity management</li>
             <li>Quarterly investment committee reporting</li>
           </ul>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">&#9632;</div>
+        <div class="svc-card">
+          <span class="svc-num">02</span>
           <h3>Listed Options &amp; Derivatives</h3>
-          <p>
-            Our dedicated options desk runs systematic call writing and protective put programs
-            across equity, ETF, and index underlyings. Strategies are executed via RFQ on major
-            electronic venues to ensure best execution and full audit trails.
-          </p>
-          <ul class="service-features">
-            <li>Covered call income programs</li>
-            <li>Cash-secured put strategies</li>
-            <li>Protective put / collar overlays</li>
-            <li>RFQ execution via electronic venues</li>
-            <li>Options-specific risk reporting</li>
-          </ul>
+          <p>Systematic covered call and protective put programs executed via RFQ for best-in-class execution on every trade.</p>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">&#9632;</div>
-          <h3>Endowment Model Investing</h3>
-          <p>
-            Yale/Harvard-model portfolio construction adapted for mid-size foundations ($10M–$500M).
-            Access to private equity, real assets, hedge funds, and credit via curated co-investment
-            and fund-of-fund structures.
-          </p>
-          <ul class="service-features">
-            <li>Illiquidity premium harvesting</li>
-            <li>Private equity &amp; venture allocations</li>
-            <li>Real asset &amp; infrastructure access</li>
-            <li>Hedge fund manager selection</li>
-            <li>Liquidity waterfall modeling</li>
-          </ul>
+        <div class="svc-card">
+          <span class="svc-num">03</span>
+          <h3>Digital Asset Management</h3>
+          <p>US Treasury assets, high-yield private credit, and DeFi yield — all within regulated, bankruptcy-remote structures.</p>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">&#9632;</div>
-          <h3>Investment Policy &amp; Governance Advisory</h3>
-          <p>
-            Board education, IPS review, committee charter drafting, and fiduciary training for
-            foundation trustees and investment committee members. We help governing boards govern well.
-          </p>
-          <ul class="service-features">
-            <li>Investment policy statement review</li>
-            <li>Committee charter &amp; governance design</li>
-            <li>Trustee fiduciary training</li>
-            <li>Manager selection frameworks</li>
-            <li>Annual policy review facilitation</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- OPTIONS STRATEGY -->
-  <section id="options" class="section bg-dark">
-    <div class="container">
-      <div class="section-label light">Options Trading</div>
-      <h2 class="section-title light">A Systematic Options Program Built for Foundations</h2>
-      <p class="section-sub light">
-        Options are not speculation. In our hands, they are precision instruments for income
-        generation and risk reduction — entirely consistent with foundation fiduciary duty.
-      </p>
-
-      <div class="options-grid">
-        <div class="options-explainer">
-          <h3>Why Foundations Benefit from Options</h3>
-          <p>
-            Foundations face a structural challenge: generate at least 5% annually for distribution
-            while preserving real purchasing power over a perpetual horizon. In a world of compressed
-            equity returns and low bond yields, systematic options writing offers a proven, repeatable
-            mechanism to enhance portfolio income without taking on undue directional risk.
-          </p>
-          <p>
-            Our call option writing program generates premium income — typically 3–6% annualized on
-            notional value — by selling covered calls against existing equity positions. This income
-            supplements dividends and interest, directly supporting distribution requirements without
-            requiring asset liquidation.
-          </p>
-          <p>
-            Simultaneously, our protective put and collar programs provide catastrophic loss
-            protection — crucial for foundations with perpetual mandates that cannot afford
-            sequence-of-returns risk.
-          </p>
-
-          <div class="options-metrics">
-            <div class="metric">
-              <span class="metric-val">3–6%</span>
-              <span class="metric-label">Annualized premium income target</span>
-            </div>
-            <div class="metric">
-              <span class="metric-val">Delta-Neutral</span>
-              <span class="metric-label">Risk-managed positioning</span>
-            </div>
-            <div class="metric">
-              <span class="metric-val">30–45 Day</span>
-              <span class="metric-label">Target option duration (DTE)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="options-strategies">
-          <div class="strategy-card">
-            <div class="strategy-header">
-              <span class="strategy-num">01</span>
-              <h4>Covered Call Writing</h4>
-            </div>
-            <p>We systematically sell call options against long equity positions held in the foundation portfolio. Each call is sold OTM (typically 5–10% above current price) with 30–45 days to expiration, generating consistent premium income while allowing meaningful equity participation.</p>
-            <div class="strategy-tags">
-              <span>Income</span><span>Equity Enhancement</span><span>Low Risk</span>
-            </div>
-          </div>
-
-          <div class="strategy-card">
-            <div class="strategy-header">
-              <span class="strategy-num">02</span>
-              <h4>Cash-Secured Puts</h4>
-            </div>
-            <p>We sell put options on equities the foundation wishes to own at lower prices, collecting premium while waiting for attractive entry points. If assigned, we acquire quality assets at a discount. If not, premium income is retained.</p>
-            <div class="strategy-tags">
-              <span>Income</span><span>Disciplined Entry</span><span>Quality Bias</span>
-            </div>
-          </div>
-
-          <div class="strategy-card">
-            <div class="strategy-header">
-              <span class="strategy-num">03</span>
-              <h4>Protective Collars</h4>
-            </div>
-            <p>For concentrated positions or in elevated volatility environments, we layer protective puts onto existing holdings funded by the proceeds of call sales. This creates defined risk/reward profiles without triggering taxable disposition of appreciated assets.</p>
-            <div class="strategy-tags">
-              <span>Protection</span><span>Tax-Efficient</span><span>Concentration Risk</span>
-            </div>
-          </div>
-
-          <div class="strategy-card">
-            <div class="strategy-header">
-              <span class="strategy-num">04</span>
-              <h4>Index Volatility Overlays</h4>
-            </div>
-            <p>Portfolio-level risk management through the sale of index options (SPX, NDX, RUT) scaled to overall portfolio exposure. These positions are sized to reduce portfolio beta during elevated VIX environments while generating premium above historical averages.</p>
-            <div class="strategy-tags">
-              <span>Portfolio Hedge</span><span>VIX-Linked</span><span>Index-Level</span>
-            </div>
-          </div>
+        <div class="svc-card">
+          <span class="svc-num">04</span>
+          <h3>Governance Advisory</h3>
+          <p>Board education, IPS review, and fiduciary training for foundation trustees and investment committees.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RFQ PROCESS -->
-  <section id="rfq" class="section">
+  <!-- OPTIONS -->
+  <section id="options" class="section s-blue">
     <div class="container">
-      <div class="section-label">How We Trade</div>
-      <h2 class="section-title">The RFQ Process: Institutional Best Execution</h2>
-      <p class="section-sub">
-        We execute all listed options trades via the Request for Quote (RFQ) mechanism — the
-        institutional gold standard for complex options orders. This ensures competitive pricing,
-        full documentation, and fiduciary-grade execution quality for every client trade.
-      </p>
+      <span class="label light">Options Strategy</span>
+      <div class="options-header">
+        <h2 class="light">Yield through options.<br/>Not risk.</h2>
+        <p class="light">Our call option writing program generates 3–6% annualised premium income — directly supporting distribution requirements without liquidating assets.</p>
+      </div>
+      <div class="strat-grid">
+        <div class="strat-card">
+          <span class="strat-n">01</span>
+          <h4>Covered Calls</h4>
+          <p>Sell OTM calls against long equity positions. 30–45 DTE, 5–10% above spot. Consistent premium, full upside participation.</p>
+          <div class="tags"><span>Income</span><span>Low Risk</span></div>
+        </div>
+        <div class="strat-card">
+          <span class="strat-n">02</span>
+          <h4>Cash-Secured Puts</h4>
+          <p>Collect premium while waiting for quality entries. If assigned, acquire assets at a discount. If not, keep the premium.</p>
+          <div class="tags"><span>Income</span><span>Quality Bias</span></div>
+        </div>
+        <div class="strat-card">
+          <span class="strat-n">03</span>
+          <h4>Protective Collars</h4>
+          <p>Fund downside protection through call sales. Define risk without triggering taxable disposition of appreciated assets.</p>
+          <div class="tags"><span>Protection</span><span>Tax-Efficient</span></div>
+        </div>
+        <div class="strat-card">
+          <span class="strat-n">04</span>
+          <h4>Index Overlays</h4>
+          <p>Portfolio-level beta management via SPX/NDX options, scaled to overall exposure and calibrated to VIX.</p>
+          <div class="tags"><span>Hedge</span><span>Index-Level</span></div>
+        </div>
+      </div>
+      <div class="options-metrics">
+        <div class="om">
+          <span class="om-v">3–6%</span>
+          <span class="om-l">Annual premium target</span>
+        </div>
+        <div class="om">
+          <span class="om-v">30–45 DTE</span>
+          <span class="om-l">Target option duration</span>
+        </div>
+        <div class="om">
+          <span class="om-v">Delta-Neutral</span>
+          <span class="om-l">Risk-managed positioning</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="rfq-flow">
+  <!-- RFQ -->
+  <section id="rfq" class="section s-white">
+    <div class="container">
+      <span class="label">Execution</span>
+      <h2>How we trade:<br/>The RFQ process.</h2>
+      <p class="section-intro">Every options trade is executed via Request for Quote — the institutional standard that ensures best pricing, documented audit trails, and full transparency on every fill.</p>
+      <div class="rfq-steps">
         <div class="rfq-step">
-          <div class="rfq-step-num">1</div>
-          <h4>Strategy Determination</h4>
-          <p>Our options desk identifies the optimal strategy, strike, and expiration based on the client's current holdings, income objectives, and risk parameters defined in their Investment Policy Statement.</p>
+          <span class="step-n">01</span>
+          <h4>Strategy Selection</h4>
+          <p>Strike, expiry, and size determined by client IPS and income objectives.</p>
         </div>
-        <div class="rfq-arrow">&rarr;</div>
         <div class="rfq-step">
-          <div class="rfq-step-num">2</div>
-          <h4>RFQ Submission</h4>
-          <p>We submit a structured Request for Quote to multiple market makers simultaneously via electronic trading venues (CBOE, ISE, BOX, Nasdaq PHLX). The RFQ specifies the exact contract, size, and requested response time.</p>
+          <span class="step-n">02</span>
+          <h4>RFQ Broadcast</h4>
+          <p>Request sent simultaneously to multiple market makers via CBOE, ISE, and Nasdaq PHLX.</p>
         </div>
-        <div class="rfq-arrow">&rarr;</div>
         <div class="rfq-step">
-          <div class="rfq-step-num">3</div>
+          <span class="step-n">03</span>
           <h4>Quote Competition</h4>
-          <p>Registered market makers compete to provide the best bid/ask. Competition among multiple dealers — typically 3–8 respondents — drives tighter spreads and better execution than hitting the open market. Quotes are time-stamped and logged.</p>
+          <p>3–8 dealers compete, driving tighter spreads than open-market execution. All quotes time-stamped.</p>
         </div>
-        <div class="rfq-arrow">&rarr;</div>
         <div class="rfq-step">
-          <div class="rfq-step-num">4</div>
-          <h4>Best Execution &amp; Fill</h4>
-          <p>We select the best quote (or negotiate further on large blocks), execute the trade, and generate a complete execution record — including all competing quotes — for client reporting and regulatory audit trail purposes.</p>
+          <span class="step-n">04</span>
+          <h4>Best Execution Fill</h4>
+          <p>Best quote selected and executed. Full record of competing quotes retained for audit.</p>
         </div>
-        <div class="rfq-arrow">&rarr;</div>
         <div class="rfq-step">
-          <div class="rfq-step-num">5</div>
-          <h4>Post-Trade Reporting</h4>
-          <p>Every executed options trade is reflected in client-facing daily reports with full position details: underlying, strike, expiration, premium received/paid, delta, and P&amp;L impact. Clients have 24/7 access to their options book via our portal.</p>
-        </div>
-      </div>
-
-      <div class="rfq-benefits">
-        <h3>Why RFQ Matters to Your Foundation</h3>
-        <div class="benefits-grid">
-          <div class="benefit">
-            <div class="benefit-icon">&#9671;</div>
-            <h4>Fiduciary Best Execution</h4>
-            <p>Competing quotes create a documented best-execution record — essential for foundation trustees fulfilling their fiduciary duty under ERISA and state law.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">&#9671;</div>
-            <h4>Tighter Spreads on Large Blocks</h4>
-            <p>RFQ dramatically reduces the bid-ask spread on block options trades (100+ contracts), saving 5–15 basis points per round-trip versus retail execution.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">&#9671;</div>
-            <h4>Full Audit Trail</h4>
-            <p>Every quote, every respondent, every time-stamp is captured. This documentation is available to boards, auditors, and regulators on demand.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">&#9671;</div>
-            <h4>Price Transparency</h4>
-            <p>Clients can independently verify that the fill received was the best available in the market at the time of execution — eliminating hidden execution costs.</p>
-          </div>
+          <span class="step-n">05</span>
+          <h4>Post-Trade Report</h4>
+          <p>Same-day client report: strike, expiry, premium, delta, and P&amp;L impact. 24/7 portal access.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TEAM -->
-  <section id="team" class="section bg-light">
+  <section id="team" class="section s-cream">
     <div class="container">
-      <div class="section-label">Our People</div>
-      <h2 class="section-title">The Mosaic Team</h2>
-      <p class="section-sub">Founded by veterans of institutional asset management, fintech, and blockchain investing — united by a shared conviction that crypto foundations deserve institutional-grade capital stewardship.</p>
-
+      <span class="label">Team</span>
+      <h2>Built by veterans.</h2>
       <div class="team-grid">
-
         <div class="team-card">
-          <div class="team-avatar">
-            <div class="avatar-placeholder">PK</div>
-          </div>
-          <div class="team-info">
+          <div class="team-avatar">PK</div>
+          <div class="team-body">
             <h4>Philipp Kallerhoff</h4>
-            <span class="team-title">Co-Founder &amp; Managing Director</span>
-            <p>Philipp brings 20+ years of institutional asset management experience. He holds a PhD in Computational Neuroscience from MIT and previously served as Director at Harcourt/Vontobel Asset Management AG in Zurich, where he applied machine learning to multi-factor market dynamics and CTA analysis. He co-founded Protos Asset Management, which he led as Managing Director, and earlier founded Alligator Trading GmbH and co-founded Jumiya Inc., applying big data analytics to financial markets.</p>
-            <div class="team-tags">
-              <span>Asset Management</span><span>Machine Learning</span><span>Quantitative</span><span>PhD MIT</span>
+            <span class="team-role">Co-Founder &amp; Managing Director</span>
+            <p>PhD Computational Neuroscience (MIT). 20+ years in asset management. Former Director at Vontobel AM, co-founder and MD of Protos Asset Management.</p>
+            <div class="tags">
+              <span>Quantitative</span><span>Machine Learning</span><span>AM</span>
             </div>
           </div>
         </div>
-
         <div class="team-card">
-          <div class="team-avatar">
-            <div class="avatar-placeholder">PB</div>
-          </div>
-          <div class="team-info">
+          <div class="team-avatar">PB</div>
+          <div class="team-body">
             <h4>Phil Blows</h4>
-            <span class="team-title">Co-Founder &amp; CIO</span>
-            <p>Phil has 19 years of experience spanning asset management and fintech. He began his career in long/short equity trading and FX derivatives before becoming Head of Trading at Moneycorp and moving into institutional derivatives broking at Continental Capital Markets. As CEO and co-founder of AQRU plc, he built a leading DeFi yield platform and developed an on-chain tax receivables financing program managing $50M+ in loan origination. He is also the author of <em>The Money Triangle</em>.</p>
-            <div class="team-tags">
-              <span>Options &amp; Derivatives</span><span>DeFi</span><span>Fintech</span><span>FX Trading</span>
+            <span class="team-role">Co-Founder &amp; CIO</span>
+            <p>19 years across derivatives, fintech, and DeFi. Head of Trading at Moneycorp, institutional derivatives at Continental Capital, CEO of AQRU plc. Author of <em>The Money Triangle</em>.</p>
+            <div class="tags">
+              <span>Options</span><span>DeFi</span><span>FX</span>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
 
   <!-- RESEARCH -->
-  <section id="research" class="section bg-dark">
+  <section id="research" class="section s-blue">
     <div class="container">
-      <div class="section-label light">Insights</div>
-      <h2 class="section-title light">Research &amp; Thought Leadership</h2>
-      <p class="section-sub light">Mosaic Capital publishes original research on options strategies for foundations, endowment model investing, and derivative best practices for institutional investors.</p>
-
+      <span class="label light">Research</span>
+      <h2 class="light">Thought leadership.</h2>
       <div class="research-grid">
-        <div class="research-card featured-research">
-          <div class="research-tag">White Paper</div>
-          <h3>Call Options as a Yield Solution for Tax-Exempt Foundations: An RFQ-Executed Framework</h3>
-          <p>An institutional primer on systematic covered call writing for foundations — covering strategy design, fiduciary considerations, RFQ best execution, and performance attribution. Available for download below.</p>
-          <div class="research-meta">
-            <span>Mosaic Capital Research</span>
-            <span>2025</span>
-          </div>
-          <a href="paper.html" class="btn-primary-sm">Read Full Paper &rarr;</a>
+        <div class="res-card res-featured">
+          <span class="res-tag">White Paper</span>
+          <h3>Call Options as Yield for Crypto Foundations: An RFQ Framework</h3>
+          <p>How systematic covered call writing — executed via RFQ — can generate consistent income for foundation mandates without taking on directional risk.</p>
+          <a href="paper.html" class="btn-fill-sm">Read Paper →</a>
         </div>
-
-        <div class="research-card">
-          <div class="research-tag">Brief</div>
-          <h3>Understanding the RFQ Process for Listed Options</h3>
-          <p>A concise explainer on how the Request for Quote mechanism works, why it delivers superior execution for institutional options blocks, and how to evaluate execution quality reports.</p>
-          <div class="research-meta">
-            <span>Mosaic Capital Research</span>
-            <span>2025</span>
-          </div>
+        <div class="res-card">
+          <span class="res-tag">Brief</span>
+          <h3>Understanding the RFQ Process</h3>
+          <p>How RFQ execution delivers superior pricing and fiduciary documentation for institutional options blocks.</p>
         </div>
-
-        <div class="research-card">
-          <div class="research-tag">Brief</div>
-          <h3>Foundation Distribution Policy &amp; the 5% Rule: Strategies for the Modern Environment</h3>
-          <p>How foundations can meet IRS distribution requirements while preserving purchasing power through diversified income sources including options premium, dividend growth, and alternative credit.</p>
-          <div class="research-meta">
-            <span>Mosaic Capital Research</span>
-            <span>2025</span>
-          </div>
+        <div class="res-card">
+          <span class="res-tag">Brief</span>
+          <h3>The 5% Distribution Rule: Modern Solutions</h3>
+          <p>How foundations meet IRS distribution requirements while preserving purchasing power through diversified income sources.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section">
+  <section id="contact" class="section s-cream">
     <div class="container">
-      <div class="contact-wrap">
-        <div class="contact-text">
-          <div class="section-label">Get In Touch</div>
-          <h2>Start the Conversation</h2>
-          <p>
-            Whether you are a foundation trustee evaluating managers, an investment committee
-            exploring options overlays, or a family office seeking institutional-grade asset
-            management — we welcome the conversation.
-          </p>
-          <p>
-            Initial consultations are complimentary and include a review of your current
-            portfolio, IPS, and distribution history.
-          </p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <strong>General Inquiries</strong>
-              <span>info@mosaiccapital.xyz</span>
-            </div>
-            <div class="contact-item">
-              <strong>Institutional Relations</strong>
-              <span>foundations@mosaiccapital.xyz</span>
-            </div>
-            <div class="contact-item">
-              <strong>Options Desk</strong>
-              <span>options@mosaiccapital.xyz</span>
-            </div>
+      <div class="contact-layout">
+        <div class="contact-left">
+          <span class="label">Contact</span>
+          <h2>Start the conversation.</h2>
+          <p>Initial consultations are complimentary. We'll review your current portfolio, IPS, and distribution objectives.</p>
+          <div class="contact-links">
+            <div><strong>General</strong><span>info@msc.xyz</span></div>
+            <div><strong>Foundations</strong><span>foundations@msc.xyz</span></div>
+            <div><strong>Options Desk</strong><span>options@msc.xyz</span></div>
           </div>
         </div>
-        <div class="contact-form-wrap">
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="form-group">
-              <label for="org">Organization</label>
-              <input type="text" id="org" name="org" />
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn-get-in-touch">Get in touch</button>
-            <p class="form-disclaimer">By submitting the form you agree to <a href="#">terms and conditions</a> of Mosaic.</p>
-          </form>
-        </div>
+        <form id="contactForm" class="contact-form">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="field">
+            <label>Organization</label>
+            <input type="text" name="org" />
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Get in touch</button>
+          <p class="fine-print">By submitting you agree to the <a href="#">terms and conditions</a> of Mosaic.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -546,44 +347,39 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="logo">
-            <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
-              <!-- 4x4 grid, corners removed = 12 tile mosaic mark -->
-              <rect x="7"  y="0"  width="5" height="5" fill="white"/>
-              <rect x="14" y="0"  width="5" height="5" fill="white"/>
-              <rect x="0"  y="7"  width="5" height="5" fill="white"/>
-              <rect x="7"  y="7"  width="5" height="5" fill="white"/>
-              <rect x="14" y="7"  width="5" height="5" fill="white"/>
-              <rect x="21" y="7"  width="5" height="5" fill="white"/>
-              <rect x="0"  y="14" width="5" height="5" fill="white"/>
-              <rect x="7"  y="14" width="5" height="5" fill="white"/>
-              <rect x="14" y="14" width="5" height="5" fill="white"/>
-              <rect x="21" y="14" width="5" height="5" fill="white"/>
-              <rect x="7"  y="21" width="5" height="5" fill="white"/>
-              <rect x="14" y="21" width="5" height="5" fill="white"/>
-              <text x="36" y="20" font-family="'Inter',-apple-system,BlinkMacSystemFont,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
-              <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
-            </svg>
-          </div>
-          <p>Fully regulated, bankruptcy-remote investment solutions for crypto foundations and founders. CIMA registered, Cayman Islands.</p>
+          <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
+            <rect x="7"  y="0"  width="5" height="5" fill="white"/>
+            <rect x="14" y="0"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="7"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="14" y="7"  width="5" height="5" fill="white"/>
+            <rect x="21" y="7"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="14" width="5" height="5" fill="white"/>
+            <rect x="14" y="14" width="5" height="5" fill="white"/>
+            <rect x="21" y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="21" width="5" height="5" fill="white"/>
+            <rect x="14" y="21" width="5" height="5" fill="white"/>
+            <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+            <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
+          </svg>
+          <p>Regulated investment solutions for crypto foundations. CIMA registered, Cayman Islands.</p>
         </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <a href="#about">About</a>
-            <a href="#services">Asset Management</a>
-            <a href="#services">Digital Asset Management</a>
-            <a href="#rfq">Why Mosaic</a>
-            <a href="#contact">Contact us</a>
-            <a href="#">GDPR</a>
-            <a href="#">Terms and Conditions</a>
-            <a href="#">Privacy Policy</a>
-          </div>
-        </div>
+        <nav class="footer-nav">
+          <a href="#about">About</a>
+          <a href="#services">Asset Management</a>
+          <a href="#services">Digital Asset Management</a>
+          <a href="#rfq">Why Mosaic</a>
+          <a href="#contact">Contact us</a>
+          <a href="#">GDPR</a>
+          <a href="#">Terms and Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </nav>
       </div>
       <div class="footer-bottom">
-        <p>Mosaic 2025 | All Rights Reserved</p>
+        <p>Mosaic 2025 · All Rights Reserved</p>
+        <p class="disc">Mosaic Capital Inc. is incorporated in the Cayman Islands and registered with CIMA. This website is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
       </div>
-      <span class="disclaimer">Mosaic Capital Inc. is an exempted company incorporated in the Cayman Islands and is registered with CIMA. This website is for informational purposes only and does not constitute investment advice or an offer to buy or sell any security. Past performance is not indicative of future results. Options trading involves significant risk and is not suitable for all investors.</span>
     </div>
   </footer>
 
