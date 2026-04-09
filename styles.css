@@ -5,28 +5,28 @@
    =========================== */
 
 :root {
-  /* ── Core Palette ───────────── */
-  --navy:        #0d2140;
-  --navy-mid:    #163462;
-  --navy-light:  #1e4080;
-  --cream:       #f5f0e6;
-  --cream-mid:   #ede8dc;
+  /* ── Core Palette — Lighter Institutional Blue ── */
+  --navy:        #1e4fa3;   /* medium blue — main dark color, no black */
+  --navy-mid:    #2560b8;   /* slightly lighter blue for mid sections  */
+  --navy-light:  #3574cc;   /* light blue for hover/accents            */
+  --cream:       #f4f0e8;   /* warm cream for light sections           */
+  --cream-mid:   #ebe6d8;
   --white:       #ffffff;
   --warm-white:  #faf8f4;
   --gold:        #c9a84c;
   --gold-light:  #e0c068;
   --gold-pale:   #f5ecd0;
 
-  /* ── Text ───────────────────── */
-  --text-dark:   #0d1f3c;
-  --text-mid:    #3d4f6b;
-  --text-muted:  #7a8698;
-  --text-light:  rgba(255,255,255,0.82);
-  --text-ghost:  rgba(255,255,255,0.45);
+  /* ── Text — blue-based, no black ─────────── */
+  --text-dark:   #0e2d5e;   /* deep blue, readable on light bg         */
+  --text-mid:    #2e4a7a;   /* medium blue-gray                        */
+  --text-muted:  #6278a0;   /* muted blue for secondary text           */
+  --text-light:  rgba(255,255,255,0.85);
+  --text-ghost:  rgba(255,255,255,0.48);
 
   /* ── Borders ────────────────── */
-  --border-dark:  rgba(255,255,255,0.1);
-  --border-light: rgba(13,33,64,0.1);
+  --border-dark:  rgba(255,255,255,0.12);
+  --border-light: rgba(30,79,163,0.12);
   --border-gold:  rgba(201,168,76,0.35);
 
   /* ── Typography ─────────────── */
@@ -36,9 +36,9 @@
   /* ── Misc ───────────────────── */
   --radius:      4px;
   --radius-pill: 50px;
-  --shadow-sm:   0 2px 12px rgba(13,33,64,0.08);
-  --shadow:      0 4px 24px rgba(13,33,64,0.12);
-  --shadow-lg:   0 12px 40px rgba(13,33,64,0.18);
+  --shadow-sm:   0 2px 12px rgba(26,64,128,0.06);
+  --shadow:      0 4px 24px rgba(26,64,128,0.09);
+  --shadow-lg:   0 12px 40px rgba(26,64,128,0.14);
   --transition:  0.22s ease;
   --max-w:       1200px;
 }
@@ -122,7 +122,7 @@ footer {
   transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
 }
 #navbar.scrolled {
-  background: rgba(13,33,64,0.97);
+  background: rgba(30,79,163,0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 14px 0;
