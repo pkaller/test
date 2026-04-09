@@ -1,4 +1,4 @@
-// Mosaic Capital — MS C.XYZ
+// Mosaic Capital — msc.xyz
 // Main JS
 
 document.addEventListener('DOMContentLoaded', () => {

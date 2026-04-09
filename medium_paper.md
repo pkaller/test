@@ -1,6 +1,6 @@
 # Call Options as a Yield Solution for Tax-Exempt Foundations: An RFQ-Executed Framework
 
-*By Mosaic Capital (MS C.XYZ) — 2025*
+*By Mosaic Capital (msc.xyz) — 2025*
 
 ---
 
@@ -189,7 +189,7 @@ When implemented within a carefully designed IPS framework, executed via the ins
 
 ---
 
-*This white paper was produced by Mosaic Capital (MS C.XYZ), an institutional asset manager specializing in foundation and endowment management with a dedicated options trading desk executing all derivative trades via the RFQ mechanism.*
+*This white paper was produced by Mosaic Capital (msc.xyz), an institutional asset manager specializing in foundation and endowment management with a dedicated options trading desk executing all derivative trades via the RFQ mechanism.*
 
 *Contact: research@mosaiccapital.xyz*
 
