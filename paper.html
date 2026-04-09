@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Paper: Call Options as a Yield Solution for Tax-Exempt Foundations | Mosaic Capital</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .paper-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a2f5a 100%);
+      padding: 160px 24px 80px;
+      text-align: center;
+    }
+    .paper-hero .section-label { margin-bottom: 20px; }
+    .paper-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      color: var(--white);
+      max-width: 820px;
+      margin: 0 auto 28px;
+      line-height: 1.2;
+    }
+    .paper-meta {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .paper-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .paper-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin: 52px 0 18px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .paper-body h2:first-of-type { border-top: none; margin-top: 0; }
+    .paper-body h3 {
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin: 32px 0 12px;
+      font-weight: 700;
+    }
+    .paper-body p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .paper-body ul, .paper-body ol {
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+    .paper-body li {
+      font-size: 0.97rem;
+      color: #333;
+      line-height: 1.75;
+      margin-bottom: 8px;
+      list-style: disc;
+    }
+    .paper-body ol li { list-style: decimal; }
+    .callout {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 20px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; font-style: italic; font-size: 0.95rem; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.88rem;
+    }
+    .data-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-700);
+    }
+    .data-table tr:nth-child(even) td { background: var(--cream); }
+    .paper-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 60px;
+    }
+    .paper-nav a { font-size: 0.88rem; font-weight: 600; color: var(--gold); }
+    .medium-cta {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .medium-cta h3 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 16px; }
+    .medium-cta p { color: rgba(255,255,255,0.65); margin-bottom: 32px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-mosaic">MOSAIC</span>
+        <span class="logo-capital">CAPITAL</span>
+        <span class="logo-ticker">MS C.XYZ</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#options">Options Strategy</a></li>
+        <li><a href="index.html#rfq">RFQ Process</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="paper-hero">
+    <div class="section-label">White Paper · Mosaic Capital Research</div>
+    <h1>Call Options as a Yield Solution for Tax-Exempt Foundations: An RFQ-Executed Framework</h1>
+    <div class="paper-meta">
+      <span>Mosaic Capital (MS C.XYZ)</span>
+      <span>2025</span>
+      <span>Institutional Options Strategy</span>
+    </div>
+  </div>
+
+  <div class="paper-body">
+
+    <h2>Executive Summary</h2>
+    <p>
+      Private foundations and endowments face a structural yield challenge that traditional long-only asset management cannot fully solve: generate enough income to meet the IRS-mandated 5% annual distribution requirement while preserving the real purchasing power of capital over a perpetual time horizon. In a world where equity earnings yields are compressed and investment-grade bond yields provide insufficient income relative to distribution needs, foundations must seek supplemental income sources that are repeatable, scalable, and consistent with their fiduciary duty.
+    </p>
+    <p>
+      This paper argues that a systematic, RFQ-executed covered call writing program — layered atop a diversified foundation portfolio — represents an optimal solution to this challenge. We demonstrate that:
+    </p>
+    <ul>
+      <li>Covered call writing generates 3–6% annualized premium income on notional equity value, directly supplementing dividend and interest income to support distribution requirements.</li>
+      <li>The Request for Quote (RFQ) execution mechanism delivers institutional best execution for options block trades, satisfying foundation fiduciary duties and generating complete audit documentation.</li>
+      <li>Systematic options programs are consistent with foundation investment policy statements and UPMIFA's prudent investor standard when properly structured.</li>
+      <li>Risk-managed options overlays (collars, protective puts) complement income-generating strategies to limit downside exposure — critical for perpetual-horizon institutions.</li>
+    </ul>
+
+    <div class="callout">
+      <p>"A foundation that systematically harvests options premium is not speculating. It is monetizing the statistical overpricing of implied volatility — one of the most consistent, well-documented risk premia in financial markets — to fund its charitable mission."</p>
+    </div>
+
+    <h2>I. The Foundation Yield Problem</h2>
+
+    <h3>The 5% Distribution Requirement</h3>
+    <p>
+      Under IRC Section 4942, private foundations must distribute at least 5% of the average fair market value of their non-charitable-use assets annually or face an excise tax. For a $100 million foundation, this equates to a minimum $5 million annual distribution — every year, in perpetuity.
+    </p>
+    <p>
+      Most foundations target distributions of 5.0–5.5% while pursuing a total return objective of 7.0–8.0% annually to preserve purchasing power after inflation (typically assumed at 2.5–3.0%). This "spending gap" — the difference between the distribution rate and the portfolio yield generated by dividends and interest — must be closed through realized capital gains, alternative income sources, or return of capital.
+    </p>
+
+    <h3>The Compressed Yield Environment</h3>
+    <p>
+      As of 2025, a diversified foundation portfolio structured along traditional endowment-model lines generates approximately:
+    </p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Asset Class</th><th>Typical Weight</th><th>Current Yield</th><th>Yield Contribution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Global Equities</td><td>45%</td><td>1.8%</td><td>0.81%</td></tr>
+        <tr><td>Investment-Grade Bonds</td><td>15%</td><td>4.5%</td><td>0.68%</td></tr>
+        <tr><td>Private Credit</td><td>10%</td><td>9.0%</td><td>0.90%</td></tr>
+        <tr><td>Real Assets / REITs</td><td>10%</td><td>4.0%</td><td>0.40%</td></tr>
+        <tr><td>Hedge Funds</td><td>10%</td><td>0.5%</td><td>0.05%</td></tr>
+        <tr><td>Private Equity</td><td>10%</td><td>0.2%</td><td>0.02%</td></tr>
+        <tr><td><strong>Total Portfolio Yield</strong></td><td><strong>100%</strong></td><td>—</td><td><strong>~2.86%</strong></td></tr>
+      </tbody>
+    </table>
+    <p>
+      With a portfolio yield of approximately 2.86% and a required distribution of 5.0%, a foundation faces a structural yield shortfall of roughly 2.14% annually. Without capital appreciation, distributions reduce principal — undermining the foundation's perpetual mission. Systematic options income directly addresses this gap.
+    </p>
+
+    <h2>II. Covered Call Writing: Mechanics and Risk/Return Profile</h2>
+
+    <h3>Basic Structure</h3>
+    <p>
+      A covered call is the simultaneous ownership of a long stock (or ETF) position and the sale of a call option on the same underlying security. The seller of the call receives premium upfront in exchange for capping upside participation above the strike price through expiration.
+    </p>
+    <p>
+      For a foundation holding 10,000 shares of a large-cap equity fund trading at $100/share ($1 million notional), selling 100 call contracts struck at $105 (5% OTM) with 30 days to expiration might generate $1.50/share in premium — or $15,000 (1.5% of notional in one month, or approximately 18% annualized before assignment probability discounting).
+    </p>
+
+    <h3>Key Parameters in a Foundation Context</h3>
+    <ul>
+      <li><strong>Strike Selection:</strong> We target strikes 5–10% OTM to allow meaningful equity participation while generating sufficient premium. Deeper OTM strikes reduce income; at-the-money strikes limit upside excessively.</li>
+      <li><strong>Expiration:</strong> 30–45 days to expiration (DTE) captures the highest theta decay per unit of time while avoiding the binary event risk of very short-dated options.</li>
+      <li><strong>Underlying Selection:</strong> High-quality, liquid large-cap equities and broad ETFs (SPY, QQQ, sector ETFs) with active options markets. Illiquid underlyings dramatically increase bid-ask spread costs.</li>
+      <li><strong>Roll Management:</strong> Positions are actively managed and rolled prior to expiration to avoid assignment and maintain continuous premium generation. We target delta below 0.30 on all short call positions.</li>
+    </ul>
+
+    <h3>Historical Performance of Covered Call Strategies</h3>
+    <p>
+      The CBOE S&P 500 BuyWrite Index (BXM) — which tracks a passive at-the-money covered call strategy on the S&P 500 — has delivered:
+    </p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Period</th><th>BXM Return</th><th>S&P 500 Return</th><th>BXM Volatility</th><th>SPX Volatility</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1-Year (2024)</td><td>14.2%</td><td>23.3%</td><td>9.8%</td><td>14.7%</td></tr>
+        <tr><td>5-Year Annualized</td><td>10.1%</td><td>13.9%</td><td>13.2%</td><td>17.5%</td></tr>
+        <tr><td>10-Year Annualized</td><td>9.4%</td><td>12.8%</td><td>12.9%</td><td>15.1%</td></tr>
+        <tr><td>Since Inception (1986)</td><td>8.9%</td><td>10.3%</td><td>13.5%</td><td>16.8%</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Active OTM covered call programs (our approach) outperform passive ATM strategies in trending bull markets while delivering superior risk-adjusted returns (Sharpe ratio) across full market cycles. The key insight: for a foundation targeting income and capital preservation rather than maximum appreciation, the modest sacrifice of upside tail returns is a rational trade for premium income and lower volatility.
+    </p>
+
+    <h2>III. The RFQ Mechanism: Best Execution for Institutional Options</h2>
+
+    <h3>What is RFQ?</h3>
+    <p>
+      A Request for Quote (RFQ) is an electronic trading mechanism through which an institutional buyer or seller solicits competing quotes from multiple registered market makers simultaneously. RFQ is the dominant execution method for institutional block options trades on venues including the CBOE, ISE, Nasdaq PHLX, BOX, and Cboe EDGX Options.
+    </p>
+    <p>
+      When Mosaic Capital executes an options order via RFQ, we submit a structured electronic request specifying: the underlying security, option type (call/put), strike price, expiration date, number of contracts, and side (buy/sell). Market makers who are registered on the venue then have a defined time window — typically 1–3 seconds — to respond with their best bid and offer.
+    </p>
+
+    <h3>Why RFQ Outperforms Open-Market Execution for Block Trades</h3>
+    <p>
+      For small retail options orders (1–10 contracts), open-market limit orders typically execute efficiently against displayed liquidity. For institutional block orders (50–500+ contracts), the dynamics change fundamentally:
+    </p>
+    <ul>
+      <li><strong>Market Impact:</strong> Large orders displayed in the open market signal directional intent, causing other market participants to adjust quotes adversely before the order is filled.</li>
+      <li><strong>Spread Compression:</strong> Competing RFQ responses narrow the effective bid-ask spread. For a 200-contract block, this spread compression can be worth $0.10–$0.30/contract — or $2,000–$6,000 on the trade.</li>
+      <li><strong>Price Discovery:</strong> Market makers compete aggressively for block flow, driving quotes toward theoretical fair value. RFQ removes information asymmetry that typically benefits the market maker in retail flow.</li>
+    </ul>
+
+    <h3>The RFQ Execution Workflow at Mosaic Capital</h3>
+    <ol>
+      <li><strong>Strategy Identification:</strong> Options desk determines optimal strike, expiry, and size based on portfolio holdings and IPS parameters.</li>
+      <li><strong>Pre-Trade Analysis:</strong> We evaluate theoretical value using Black-Scholes model, IV rank relative to 1-year history, and expected premium relative to our income targets.</li>
+      <li><strong>RFQ Submission:</strong> Electronic submission to 3–5 competing market makers on the primary venue. Request specifies all contract details and a response window of 1–3 seconds.</li>
+      <li><strong>Quote Evaluation:</strong> All competing quotes received, time-stamped, and logged. We evaluate against theoretical value and historical spreads.</li>
+      <li><strong>Execution and Documentation:</strong> Best quote accepted (or negotiated via counter-quote for large blocks). Full execution record generated, including all competing quotes — available for client review and regulatory audit.</li>
+      <li><strong>Post-Trade Reporting:</strong> Position reflected in daily client report within minutes of execution. Greeks, premium received, and income attribution updated in real time.</li>
+    </ol>
+
+    <div class="callout">
+      <p>"Every RFQ execution generates a complete competitive auction record — the institutional equivalent of a fiduciary receipt. Foundation trustees can verify, with precision, that every options trade was executed at the best available market price."</p>
+    </div>
+
+    <h3>Fiduciary Implications of RFQ</h3>
+    <p>
+      Foundation investment committees and trustees have a fiduciary duty under UPMIFA and state trust law to act in the best interest of the foundation's beneficiaries. This duty extends explicitly to best execution — the obligation to obtain the most favorable terms reasonably available for each transaction.
+    </p>
+    <p>
+      RFQ satisfies this duty in a documentable, auditable way. The competing quote log constitutes contemporaneous evidence of market conditions, the universe of available counterparties, and the specific price obtained relative to all competing alternatives. This documentation is precisely what external auditors, state attorneys general, and investment committees require to validate execution quality.
+    </p>
+
+    <h2>IV. Portfolio Integration: Building the Options Overlay</h2>
+
+    <h3>Program Design Principles</h3>
+    <p>
+      An options overlay must be designed in harmony with the foundation's Investment Policy Statement. Before implementing any options program, Mosaic Capital works with the investment committee to establish:
+    </p>
+    <ul>
+      <li><strong>Authorized Strategies:</strong> A specific enumeration of permitted options strategies (covered calls, secured puts, collars) with explicit prohibition of uncovered/naked positions.</li>
+      <li><strong>Coverage Limits:</strong> Maximum percentage of equity portfolio that may be covered by short calls at any time (typically 50–75%).</li>
+      <li><strong>Delta Budget:</strong> Maximum aggregate portfolio delta from options positions, ensuring the program does not materially alter overall portfolio risk character.</li>
+      <li><strong>Income Targets:</strong> Stated premium income targets and acceptable ranges, aligned with distribution planning.</li>
+      <li><strong>Reporting Frequency:</strong> Options-specific reporting to the investment committee (we recommend monthly position reports and quarterly performance attribution).</li>
+    </ul>
+
+    <h3>Sample Portfolio Overlay — $50M Foundation</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Strategy</th><th>Notional Coverage</th><th>Target Premium/Yr</th><th>Annual Income</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Covered calls on equity ETFs</td><td>$18M (60% of equities)</td><td>4.5%</td><td>$810,000</td></tr>
+        <tr><td>Cash-secured puts (equity reentry)</td><td>$5M (cash sleeve)</td><td>3.8%</td><td>$190,000</td></tr>
+        <tr><td>Index collars (SPX protection)</td><td>$12M (tail hedge)</td><td>Net 1.2% credit</td><td>$144,000</td></tr>
+        <tr><td><strong>Total Options Income</strong></td><td>—</td><td>—</td><td><strong>$1,144,000</strong></td></tr>
+        <tr><td><em>As % of total portfolio</em></td><td>—</td><td>—</td><td><em>2.29%</em></td></tr>
+      </tbody>
+    </table>
+    <p>
+      Added to the baseline portfolio yield of 2.86%, this options overlay brings total income yield to approximately 5.15% — meeting the 5% distribution requirement from income alone, without requiring capital gains realization or principal invasion.
+    </p>
+
+    <h2>V. Risk Management Framework</h2>
+
+    <h3>Greeks Monitoring</h3>
+    <p>
+      All options positions are monitored in real time against risk parameters defined in the IPS. Key metrics include:
+    </p>
+    <ul>
+      <li><strong>Delta:</strong> The change in options position value per $1 move in the underlying. We target net-short delta below 0.25 per position to avoid excessive directional exposure.</li>
+      <li><strong>Theta:</strong> Daily premium decay. Positive theta positions (short options) benefit from time passage — our primary source of systematic income.</li>
+      <li><strong>Vega:</strong> Sensitivity to implied volatility changes. We manage aggregate portfolio vega to limit exposure to sudden volatility spikes (VIX events).</li>
+      <li><strong>Gamma:</strong> Rate of delta change. Elevated gamma near expiration is monitored and managed via early rolls or position reduction.</li>
+    </ul>
+
+    <h3>Scenario Analysis and Stress Testing</h3>
+    <p>
+      We run monthly stress scenarios including: 20% equity market decline, VIX spike to 40+, and individual position earnings surprises. Results are reported to the investment committee to demonstrate that options positions do not create losses exceeding those that would occur in the underlying portfolio without the options overlay.
+    </p>
+
+    <h2>VI. Conclusion</h2>
+    <p>
+      Foundations facing persistent yield shortfalls relative to their distribution requirements need not accept lower distributions, greater principal risk, or excessive illiquidity. A systematic, RFQ-executed covered call writing program offers a proven, repeatable mechanism to generate 2–3% in additional portfolio income annually — funded not by taking on more risk, but by monetizing the consistent overpricing of implied volatility.
+    </p>
+    <p>
+      When implemented within a carefully designed IPS framework, executed via the institutional RFQ mechanism for best execution and full documentation, and monitored with rigorous Greeks-based risk management, options strategies are entirely consistent with the prudent investor standard and fiduciary obligations of foundation trustees.
+    </p>
+    <p>
+      Mosaic Capital invites foundations and their investment committees to engage with us on portfolio-specific modeling of how an options overlay might enhance their income, reduce their distribution risk, and strengthen their governance infrastructure around derivative usage.
+    </p>
+
+    <div class="callout">
+      <p><strong>Disclosures:</strong> This white paper is for informational and educational purposes only. It does not constitute investment advice or a solicitation to buy or sell any security. Past performance of strategies described is not indicative of future results. All options strategies involve risk, including potential loss of principal. Foundation trustees should consult with qualified legal, tax, and investment counsel before implementing any options program. Mosaic Capital is a registered investment adviser.</p>
+    </div>
+
+    <div class="paper-nav">
+      <a href="index.html">&larr; Back to Mosaic Capital</a>
+      <a href="medium_paper.md" download>Download as Markdown (Medium-ready) &rarr;</a>
+    </div>
+  </div>
+
+  <div class="medium-cta">
+    <h3>This Paper is Ready for Medium</h3>
+    <p>The full text of this white paper has been formatted for publication on Medium.com. Download the Markdown file and paste it directly into Medium's editor.</p>
+    <a href="medium_paper.md" download class="btn-primary">Download Medium-Ready Paper</a>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Mosaic Capital (MS C.XYZ). All rights reserved.</p>
+        <p class="disclaimer">This website and all materials are for informational purposes only and do not constitute investment advice. Options trading involves significant risk. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
