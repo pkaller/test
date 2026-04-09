@@ -15,25 +15,44 @@
   <nav id="navbar">
     <div class="nav-container">
       <a href="#" class="logo">
-        <svg class="logo-svg" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
-          <!-- Mosaic tile mark -->
-          <rect x="0"  y="0"  width="8" height="8" fill="#c9a84c"/>
-          <rect x="9"  y="0"  width="8" height="8" fill="#c9a84c" opacity="0.6"/>
-          <rect x="0"  y="9"  width="8" height="8" fill="#c9a84c" opacity="0.4"/>
-          <rect x="9"  y="9"  width="8" height="8" fill="#c9a84c"/>
-          <rect x="18" y="0"  width="8" height="8" fill="#c9a84c" opacity="0.25"/>
-          <rect x="18" y="9"  width="8" height="8" fill="#c9a84c" opacity="0.6"/>
-          <!-- Wordmark -->
-          <text x="30" y="12" font-family="'Playfair Display', Georgia, serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="2">MOSAIC</text>
-          <text x="30" y="25" font-family="'Inter', sans-serif" font-size="8"  font-weight="500" fill="#c9a84c"  letter-spacing="3">CAPITAL</text>
-          <text x="30" y="34" font-family="'Inter', sans-serif" font-size="6"  font-weight="400" fill="rgba(255,255,255,0.4)" letter-spacing="1">msc.xyz</text>
+        <!-- Logo: pixel dot-grid mark + MOSAIC™ wordmark matching msc.xyz -->
+        <svg class="logo-svg" viewBox="0 0 200 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
+          <!-- 5×5 pixel grid mark (white squares, some omitted for mosaic feel) -->
+          <rect x="0"  y="0"  width="6" height="6" fill="white"/>
+          <rect x="8"  y="0"  width="6" height="6" fill="white"/>
+          <rect x="16" y="0"  width="6" height="6" fill="white"/>
+          <rect x="24" y="0"  width="6" height="6" fill="white"/>
+          <rect x="32" y="0"  width="6" height="6" fill="white"/>
+          <rect x="0"  y="8"  width="6" height="6" fill="white"/>
+                                                                       <!-- skip [1,1] -->
+          <rect x="16" y="8"  width="6" height="6" fill="white"/>
+                                                                       <!-- skip [3,1] -->
+          <rect x="32" y="8"  width="6" height="6" fill="white"/>
+          <rect x="0"  y="16" width="6" height="6" fill="white"/>
+          <rect x="8"  y="16" width="6" height="6" fill="white"/>
+          <rect x="16" y="16" width="6" height="6" fill="white"/>
+          <rect x="24" y="16" width="6" height="6" fill="white"/>
+          <rect x="32" y="16" width="6" height="6" fill="white"/>
+          <rect x="0"  y="24" width="6" height="6" fill="white"/>
+                                                                       <!-- skip [1,3] -->
+          <rect x="16" y="24" width="6" height="6" fill="white"/>
+                                                                       <!-- skip [3,3] -->
+          <rect x="32" y="24" width="6" height="6" fill="white"/>
+          <rect x="0"  y="32" width="6" height="6" fill="white"/>
+          <rect x="8"  y="32" width="6" height="6" fill="white"/>
+          <rect x="16" y="32" width="6" height="6" fill="white"/>
+          <rect x="24" y="32" width="6" height="6" fill="white"/>
+          <rect x="32" y="32" width="6" height="6" fill="white"/>
+          <!-- MOSAIC™ wordmark — bold sans-serif, all caps -->
+          <text x="50" y="27" font-family="'Inter', -apple-system, sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="1">MOSAIC</text>
+          <text x="185" y="14" font-family="'Inter', sans-serif" font-size="8" font-weight="400" fill="white">™</text>
         </svg>
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#services">Asset Management</a></li>
         <li><a href="#options">Options Strategy</a></li>
-        <li><a href="#rfq">RFQ Process</a></li>
+        <li><a href="#rfq">Why Mosaic</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#contact" class="nav-cta">Contact Us</a></li>
@@ -508,47 +527,24 @@
         </div>
         <div class="contact-form-wrap">
           <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-              </div>
-              <div class="form-group">
-                <label for="org">Organization</label>
-                <input type="text" id="org" name="org" placeholder="Smith Family Foundation" />
-              </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@foundation.org" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
             </div>
             <div class="form-group">
-              <label for="aum">Approximate AUM</label>
-              <select id="aum" name="aum">
-                <option value="">Select range</option>
-                <option>Under $10M</option>
-                <option>$10M – $50M</option>
-                <option>$50M – $250M</option>
-                <option>$250M – $1B</option>
-                <option>Over $1B</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="interest">Area of Interest</label>
-              <select id="interest" name="interest">
-                <option value="">Select one</option>
-                <option>Foundation Asset Management</option>
-                <option>Options Overlay Strategy</option>
-                <option>RFQ Execution Services</option>
-                <option>Investment Policy Review</option>
-                <option>General Inquiry</option>
-              </select>
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="org" />
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Tell us about your foundation and current priorities..."></textarea>
+              <textarea id="message" name="message" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn-primary full-width">Send Message</button>
+            <button type="submit" class="btn-get-in-touch">Get in touch</button>
+            <p class="form-disclaimer">By submitting the form you agree to <a href="#">terms and conditions</a> of Mosaic.</p>
           </form>
         </div>
       </div>
@@ -557,54 +553,55 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container">
+    <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
           <div class="logo">
-            <svg class="logo-svg" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
-              <rect x="0"  y="0"  width="8" height="8" fill="#c9a84c"/>
-              <rect x="9"  y="0"  width="8" height="8" fill="#c9a84c" opacity="0.6"/>
-              <rect x="0"  y="9"  width="8" height="8" fill="#c9a84c" opacity="0.4"/>
-              <rect x="9"  y="9"  width="8" height="8" fill="#c9a84c"/>
-              <rect x="18" y="0"  width="8" height="8" fill="#c9a84c" opacity="0.25"/>
-              <rect x="18" y="9"  width="8" height="8" fill="#c9a84c" opacity="0.6"/>
-              <text x="30" y="12" font-family="'Playfair Display', Georgia, serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="2">MOSAIC</text>
-              <text x="30" y="25" font-family="'Inter', sans-serif" font-size="8"  font-weight="500" fill="#c9a84c"  letter-spacing="3">CAPITAL</text>
-              <text x="30" y="34" font-family="'Inter', sans-serif" font-size="6"  font-weight="400" fill="rgba(255,255,255,0.4)" letter-spacing="1">msc.xyz</text>
+            <svg class="logo-svg" viewBox="0 0 200 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
+              <rect x="0"  y="0"  width="6" height="6" fill="white"/>
+              <rect x="8"  y="0"  width="6" height="6" fill="white"/>
+              <rect x="16" y="0"  width="6" height="6" fill="white"/>
+              <rect x="24" y="0"  width="6" height="6" fill="white"/>
+              <rect x="32" y="0"  width="6" height="6" fill="white"/>
+              <rect x="0"  y="8"  width="6" height="6" fill="white"/>
+              <rect x="16" y="8"  width="6" height="6" fill="white"/>
+              <rect x="32" y="8"  width="6" height="6" fill="white"/>
+              <rect x="0"  y="16" width="6" height="6" fill="white"/>
+              <rect x="8"  y="16" width="6" height="6" fill="white"/>
+              <rect x="16" y="16" width="6" height="6" fill="white"/>
+              <rect x="24" y="16" width="6" height="6" fill="white"/>
+              <rect x="32" y="16" width="6" height="6" fill="white"/>
+              <rect x="0"  y="24" width="6" height="6" fill="white"/>
+              <rect x="16" y="24" width="6" height="6" fill="white"/>
+              <rect x="32" y="24" width="6" height="6" fill="white"/>
+              <rect x="0"  y="32" width="6" height="6" fill="white"/>
+              <rect x="8"  y="32" width="6" height="6" fill="white"/>
+              <rect x="16" y="32" width="6" height="6" fill="white"/>
+              <rect x="24" y="32" width="6" height="6" fill="white"/>
+              <rect x="32" y="32" width="6" height="6" fill="white"/>
+              <text x="50" y="27" font-family="'Inter', -apple-system, sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="1">MOSAIC</text>
+              <text x="185" y="14" font-family="'Inter', sans-serif" font-size="8" font-weight="400" fill="white">™</text>
             </svg>
           </div>
           <p>Fully regulated, bankruptcy-remote investment solutions for crypto foundations and founders. CIMA registered, Cayman Islands.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <strong>Services</strong>
-            <a href="#services">Foundation Management</a>
-            <a href="#options">Options Strategies</a>
-            <a href="#rfq">RFQ Trading</a>
-            <a href="#services">Endowment Model</a>
-            <a href="#services">Governance Advisory</a>
-          </div>
-          <div class="footer-col">
-            <strong>Company</strong>
-            <a href="#about">About Us</a>
-            <a href="#team">Team</a>
-            <a href="#research">Research</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="footer-col">
-            <strong>Research</strong>
-            <a href="paper.html">Options White Paper</a>
-            <a href="#research">RFQ Explainer</a>
-            <a href="#research">Foundation Insights</a>
+            <a href="#about">About</a>
+            <a href="#services">Asset Management</a>
+            <a href="#services">Digital Asset Management</a>
+            <a href="#rfq">Why Mosaic</a>
+            <a href="#contact">Contact us</a>
+            <a href="#">GDPR</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Privacy Policy</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Mosaic Capital (msc.xyz). All rights reserved.</p>
-        <p class="disclaimer">
-          <strong>Important Disclosure:</strong> This website is for informational purposes only and does not constitute investment advice, an offer to sell, or a solicitation of an offer to buy any security. Past performance is not indicative of future results. Options trading involves significant risk and is not suitable for all investors. Mosaic Capital is a registered investment adviser. All investments involve risk, including the possible loss of principal.
-        </p>
+        <p>Mosaic 2025 | All Rights Reserved</p>
       </div>
+      <span class="disclaimer">Mosaic Capital Inc. is an exempted company incorporated in the Cayman Islands and is registered with CIMA. This website is for informational purposes only and does not constitute investment advice or an offer to buy or sell any security. Past performance is not indicative of future results. Options trading involves significant risk and is not suitable for all investors.</span>
     </div>
   </footer>
 
