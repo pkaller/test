@@ -330,11 +330,17 @@ h2.light{color:var(--white)}
   transition:box-shadow 0.3s var(--ease)
 }
 .team-card:hover{box-shadow:0 8px 32px rgba(30,79,163,0.12)}
-.team-avatar{
-  width:52px;height:52px;flex-shrink:0;
-  background:var(--blue);border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:0.85rem;font-weight:800;color:var(--white);letter-spacing:1px
+.team-photo-wrap{flex-shrink:0;width:72px;height:72px}
+.team-photo{
+  width:72px;height:72px;border-radius:50%;
+  object-fit:cover;object-position:center top;
+  border:2px solid var(--border)
+}
+.team-avatar-fallback{
+  width:72px;height:72px;flex-shrink:0;
+  background:var(--blue);border-radius:50%;
+  align-items:center;justify-content:center;
+  font-size:1rem;font-weight:800;color:var(--white);letter-spacing:1px
 }
 .team-body{flex:1}
 .team-body h4{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:3px}
