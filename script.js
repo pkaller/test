@@ -37,6 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
     io.observe(el);
   });
 
+  // Stat counter animation
+  function animateCounter(el) {
+    const original = el.textContent.trim();
+    const match = original.match(/([\D]*)([\d.]+)(.*)/);
+    if (!match) return;
+    const prefix = match[1], num = parseFloat(match[2]), suffix = match[3];
+    const decimals = match[2].includes('.') ? (match[2].split('.')[1]?.length || 1) : 0;
+    let startTs;
+    const duration = 1600;
+    function step(ts) {
+      if (!startTs) startTs = ts;
+      const p = Math.min((ts - startTs) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 4);
+      el.textContent = prefix + (decimals ? (num * eased).toFixed(decimals) : Math.round(num * eased)) + suffix;
+      if (p < 1) requestAnimationFrame(step); else el.textContent = original;
+    }
+    requestAnimationFrame(step);
+  }
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat-n').forEach(el => counterObs.observe(el));
+
   // Contact form
   document.getElementById('contactForm')?.addEventListener('submit', e => {
     e.preventDefault();
