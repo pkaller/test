@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treasury Strategy: Options Overlay | Mosaic Capital</title>
+  <meta name="description" content="Systematic yield generation for token treasuries via covered call overlays executed through RFQ." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    .paper-hero{
+      background:linear-gradient(145deg,#0a1c41 0%,#122e76 45%,#1a4a9e 75%,#1e4fa3 100%);
+      padding:140px 40px 80px;position:relative;overflow:hidden
+    }
+    .paper-hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:32px 32px
+    }
+    .paper-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+    .paper-back{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);
+      margin-bottom:32px;transition:color 0.2s
+    }
+    .paper-back:hover{color:var(--gold)}
+    .paper-tag{
+      display:inline-block;font-size:0.68rem;font-weight:700;
+      letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
+      margin-bottom:20px
+    }
+    .paper-hero h1{
+      font-size:clamp(1.9rem,4vw,3rem);font-weight:800;
+      color:var(--white);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px
+    }
+    .paper-hero p{
+      font-size:1.05rem;color:rgba(255,255,255,0.65);line-height:1.75;max-width:620px
+    }
+    .paper-body{max-width:780px;margin:0 auto;padding:72px 40px 100px}
+    .paper-body h2{
+      font-size:1.35rem;font-weight:800;color:var(--ink);
+      letter-spacing:-0.5px;margin:52px 0 16px;
+      padding-top:48px;border-top:1px solid var(--border)
+    }
+    .paper-body h2:first-child{border-top:none;padding-top:0;margin-top:0}
+    .paper-body p{font-size:0.97rem;color:var(--ink-2);line-height:1.85;margin-bottom:18px}
+    .paper-body ul{margin:16px 0 24px;padding-left:0;list-style:none}
+    .paper-body ul li{
+      font-size:0.93rem;color:var(--ink-2);line-height:1.7;
+      padding:8px 0 8px 20px;position:relative;
+      border-bottom:1px solid var(--border)
+    }
+    .paper-body ul li:last-child{border-bottom:none}
+    .paper-body ul li::before{
+      content:'→';position:absolute;left:0;
+      color:var(--gold);font-size:0.8rem;top:9px
+    }
+    .callout{
+      background:var(--cream);border-left:3px solid var(--gold);
+      padding:24px 28px;border-radius:0 12px 12px 0;margin:32px 0
+    }
+    .callout p{margin:0;font-size:0.94rem;color:var(--ink);font-style:italic;line-height:1.75}
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:36px 0}
+    .stat-box{
+      background:var(--cream);border-radius:14px;
+      padding:24px 20px;text-align:center;border:1px solid var(--border)
+    }
+    .stat-box strong{
+      display:block;font-size:1.6rem;font-weight:800;
+      color:var(--blue);letter-spacing:-1px;margin-bottom:6px
+    }
+    .stat-box span{font-size:0.75rem;color:var(--muted);line-height:1.4;display:block}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+    .col-box{background:var(--cream);border-radius:14px;padding:24px;border:1px solid var(--border)}
+    .col-box h4{
+      font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      color:var(--gold);margin-bottom:16px
+    }
+    .col-box ul{margin:0}
+    .col-box ul li{font-size:0.88rem}
+    .payoff-chart{
+      background:var(--cream);border-radius:16px;
+      padding:36px 32px;margin:32px 0;border:1px solid var(--border)
+    }
+    .payoff-chart h4{
+      font-size:0.78rem;font-weight:700;letter-spacing:2px;
+      text-transform:uppercase;color:var(--muted);margin-bottom:24px
+    }
+    .paper-footer{
+      max-width:780px;margin:0 auto;padding:36px 40px 60px;
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid var(--border)
+    }
+    .paper-footer a{font-size:0.85rem;font-weight:600;color:var(--blue);transition:color 0.2s}
+    .paper-footer a:hover{color:var(--gold)}
+    @media(max-width:768px){
+      .paper-hero{padding:120px 20px 60px}
+      .paper-body{padding:52px 20px 72px}
+      .paper-footer{padding:36px 20px 48px;flex-direction:column;gap:16px;text-align:center}
+      .stat-row{grid-template-columns:1fr 1fr}
+      .two-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7"  y="0"  width="5" height="5" fill="white"/>
+          <rect x="14" y="0"  width="5" height="5" fill="white"/>
+          <rect x="0"  y="7"  width="5" height="5" fill="white"/>
+          <rect x="7"  y="7"  width="5" height="5" fill="white"/>
+          <rect x="14" y="7"  width="5" height="5" fill="white"/>
+          <rect x="21" y="7"  width="5" height="5" fill="white"/>
+          <rect x="0"  y="14" width="5" height="5" fill="white"/>
+          <rect x="7"  y="14" width="5" height="5" fill="white"/>
+          <rect x="14" y="14" width="5" height="5" fill="white"/>
+          <rect x="21" y="14" width="5" height="5" fill="white"/>
+          <rect x="7"  y="21" width="5" height="5" fill="white"/>
+          <rect x="14" y="21" width="5" height="5" fill="white"/>
+          <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+          <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#options">Options</a></li>
+        <li><a href="index.html#rfq">RFQ</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="paper-hero">
+    <div class="paper-hero-inner">
+      <a href="index.html#research" class="paper-back">← Back to Research</a>
+      <div class="paper-tag">White Paper · Strategy</div>
+      <h1>Treasury Strategy: Options Overlay</h1>
+      <p>Systematic yield generation for token treasuries via covered call overlays — how foundations can generate consistent premium income without taking on directional risk, executed through institutional RFQ.</p>
+    </div>
+  </section>
+
+  <div class="paper-body">
+
+    <h2>Executive Summary</h2>
+    <p>Most token treasuries hold large positions in their native token with no mechanism for generating yield. The assets sit idle, exposed to price volatility, with no income except discretionary sales that dilute the position or depress the market.</p>
+    <p>A systematic covered call overlay changes this. By selling short-dated call options — struck 30–50% above the current spot price — a treasury generates consistent premium income in every market cycle, regardless of whether prices rise, fall, or consolidate. Execution via Request for Quote ensures institutional-grade pricing on every trade, with a full audit record for governance.</p>
+
+    <h2>01 — The Underutilized Treasury Problem</h2>
+    <p>Token foundations and protocol treasuries routinely hold hundreds of millions of dollars in their native token. These holdings exist for a purpose: funding development, grants, ecosystem growth. But between deployment decisions, the capital is idle — earning nothing and subject to full downside exposure.</p>
+    <ul>
+      <li>Idle holdings generate no income while retaining full downside risk</li>
+      <li>Discretionary token sales create selling pressure and market perception problems</li>
+      <li>Stablecoin yields are modest and require converting the core asset</li>
+      <li>Options markets now have sufficient depth at block size to support systematic programs via RFQ</li>
+    </ul>
+    <p>The covered call overlay addresses this directly: it monetizes the token's implied volatility premium without requiring the treasury to sell its underlying position.</p>
+
+    <h2>02 — Strategy Design: Covered Call Overlay</h2>
+    <p>The strategy sells short-dated out-of-the-money call options against a portion of the treasury's token holdings. The key parameters are:</p>
+    <ul>
+      <li>Strike selection: 130–150% of current spot price — meaningfully above the market, limiting assignment risk</li>
+      <li>Tenor: 30–45 day options, capturing the maximum time decay per unit of time</li>
+      <li>Coverage: typically 5–15% of holdings per month, rolling continuously</li>
+      <li>Execution: simultaneous RFQ to all relevant market makers for best price</li>
+    </ul>
+    <div class="callout">
+      <p>"A token trading at $100 with a 130% strike call selling at $4/month generates $48 in annual premium — a 48% yield on the notional covered — without requiring any token sales."</p>
+    </div>
+
+    <h2>03 — Yield Generation Mechanics</h2>
+    <p>Options premiums reflect the market's expectation of future volatility. Crypto assets typically carry significantly higher implied volatility than traditional assets — this translates directly into higher option premiums and therefore higher potential yield from a systematic selling program.</p>
+    <p>Three forces drive premium collection:</p>
+    <ul>
+      <li>Time decay (theta): every day that passes without the option moving into the money, the option loses value — that decay accrues to the seller</li>
+      <li>Volatility premium: implied volatility in crypto options markets consistently exceeds realised volatility, creating a structural edge for systematic sellers</li>
+      <li>Repetition: rolling monthly programs compound the premium collection effect across 12 cycles per year</li>
+    </ul>
+
+    <h2>04 — Execution: RFQ-Based Price Discovery</h2>
+    <p>Execution quality is the single biggest variable in an options income program. The difference between a well-executed and a poorly-executed block trade can represent 10–30% of the total premium collected. Mosaic executes every trade via Request for Quote — broadcasting simultaneously to all relevant market makers and selecting the best response.</p>
+    <ul>
+      <li>No pre-trade signalling: order intent is not visible to the market before execution</li>
+      <li>Forced competition: 3–8 market makers quote simultaneously, driving prices toward fair value</li>
+      <li>Complete audit record: every competing quote is time-stamped and retained</li>
+      <li>Full coverage: even for smaller tokens, all relevant dealers are contacted — not just the most liquid</li>
+    </ul>
+
+    <h2>05 — Market Impact and Flow Dynamics</h2>
+    <p>A concern sometimes raised about covered call programs is that systematic option selling creates one-sided flow that depresses implied volatility and ultimately reduces the yield. In practice, the dynamic is more constructive.</p>
+    <p>When a market maker buys a call option from the treasury, they delta-hedge by buying the underlying token. This creates incremental buying pressure in the spot market — partially offsetting any perception of selling pressure associated with the program. The overall flow effect tends to be two-sided and stabilising rather than directional.</p>
+    <p>For tokens where the foundation is a significant holder, a systematic options program can also signal confidence in the project's long-term trajectory — the act of selling calls at 130–150% of spot is an implicit statement that the team expects the price to remain below those levels over the near term.</p>
+
+    <h2>06 — Implications and Trade-offs</h2>
+    <p>No yield-generating strategy is without trade-offs. A covered call overlay is well-suited to foundations with specific characteristics — and less suited to others.</p>
+
+    <div class="two-col">
+      <div class="col-box">
+        <h4>Benefits</h4>
+        <ul>
+          <li>Consistent premium income in all market conditions</li>
+          <li>No requirement to sell the underlying token</li>
+          <li>Partial downside buffer from accumulated premiums</li>
+          <li>Stabilising market impact from dealer delta-hedging</li>
+          <li>Full audit trail for governance and investment committees</li>
+        </ul>
+      </div>
+      <div class="col-box">
+        <h4>Trade-offs</h4>
+        <ul>
+          <li>Capped upside: if the token rallies above the strike, the covered portion does not participate fully</li>
+          <li>Assignment risk: in a strong rally, called-away tokens must be repurchased to maintain position</li>
+          <li>Programme commitment: consistent execution is required to realise the compounding effect</li>
+          <li>Perception: some stakeholders may view option writing as speculative without understanding the mechanics</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Appendix — Illustrative Payoff: Fig. A1</h2>
+    <p>The following illustrates the covered call payoff at expiry for a single monthly cycle, assuming a token purchased at $100 with a call sold at the $130 strike for a $4 premium.</p>
+
+    <div class="payoff-chart">
+      <h4>Covered call payoff at expiry · Token cost $100 · Strike $130 · Premium $4</h4>
+      <svg viewBox="0 0 680 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:640px;display:block;margin:0 auto">
+        <!-- Grid lines -->
+        <line x1="60" y1="20" x2="60" y2="220" stroke="#ddd" stroke-width="1"/>
+        <line x1="60" y1="220" x2="640" y2="220" stroke="#ddd" stroke-width="1"/>
+        <line x1="60" y1="170" x2="640" y2="170" stroke="#eee" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="120" x2="640" y2="120" stroke="#eee" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="60" y1="70"  x2="640" y2="70"  stroke="#eee" stroke-width="1" stroke-dasharray="4,4"/>
+        <!-- Y axis labels -->
+        <text x="50" y="224" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="end">$0</text>
+        <text x="50" y="174" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="end">+$20</text>
+        <text x="50" y="124" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="end">+$40</text>
+        <text x="50" y="74"  font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="end">+$60</text>
+        <!-- X axis labels -->
+        <text x="130" y="236" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="middle">$52</text>
+        <text x="250" y="236" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="middle">$80</text>
+        <text x="370" y="236" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="middle">$100</text>
+        <text x="490" y="236" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="middle">$130</text>
+        <text x="610" y="236" font-family="Inter,sans-serif" font-size="11" fill="#7088b0" text-anchor="middle">$160</text>
+        <!-- Unhedged position line (dashed, muted) -->
+        <polyline points="60,280 370,220 640,80" stroke="#bbb" stroke-width="1.5" stroke-dasharray="5,4" fill="none"/>
+        <!-- Covered call payoff line (gold) -->
+        <!-- Below breakeven ($52): loss zone, but less than unhedged -->
+        <!-- Breakeven at $52 (x=130), profit rises to $130 (x=490), then flat -->
+        <polyline points="60,260 130,220 490,120 640,120" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
+        <!-- Shaded profit area -->
+        <polygon points="130,220 490,120 640,120 640,220 130,220" fill="rgba(201,168,76,0.08)"/>
+        <!-- Breakeven marker -->
+        <line x1="130" y1="210" x2="130" y2="230" stroke="#c9a84c" stroke-width="1.5"/>
+        <text x="130" y="248" font-family="Inter,sans-serif" font-size="10" fill="#c9a84c" text-anchor="middle" font-weight="600">Breakeven</text>
+        <!-- Strike marker -->
+        <line x1="490" y1="110" x2="490" y2="230" stroke="#1e4fa3" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="490" y="107" font-family="Inter,sans-serif" font-size="10" fill="#1e4fa3" text-anchor="middle" font-weight="600">Strike $130</text>
+        <!-- Max profit label -->
+        <text x="580" y="113" font-family="Inter,sans-serif" font-size="10" fill="#c9a84c" font-weight="600">Max +$34/mo</text>
+        <!-- Legend -->
+        <line x1="65" y1="30" x2="95" y2="30" stroke="#c9a84c" stroke-width="2.5"/>
+        <text x="100" y="34" font-family="Inter,sans-serif" font-size="11" fill="#2e4470">Covered call position</text>
+        <line x1="230" y1="30" x2="260" y2="30" stroke="#bbb" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="265" y="34" font-family="Inter,sans-serif" font-size="11" fill="#7088b0">Unhedged position</text>
+      </svg>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <strong>$48</strong>
+        <span>Annual premium collected per $100 of notional</span>
+      </div>
+      <div class="stat-box">
+        <strong>48%</strong>
+        <span>Annual yield on covered notional at $4/month</span>
+      </div>
+      <div class="stat-box">
+        <strong>$178</strong>
+        <span>Maximum portfolio value at expiry (strike + premium)</span>
+      </div>
+      <div class="stat-box">
+        <strong>$48</strong>
+        <span>Downside buffer — premium collected before net loss begins</span>
+      </div>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>A systematic covered call overlay is one of the few mechanisms available to token foundations that generates consistent yield without requiring the sale of core treasury assets. The strategy exploits the structural volatility premium in crypto options markets, compounds through rolling monthly cycles, and produces a full governance audit trail as a by-product of RFQ execution.</p>
+    <p>For foundations holding significant native token positions, the question is not whether the strategy is appropriate — it is whether the execution infrastructure exists to implement it at institutional quality. That is what Mosaic provides.</p>
+
+  </div>
+
+  <div class="paper-footer">
+    <a href="index.html#research">← All Research</a>
+    <a href="index.html#contact">Speak to our options desk →</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7"  y="0"  width="5" height="5" fill="white"/>
+            <rect x="14" y="0"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="7"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="14" y="7"  width="5" height="5" fill="white"/>
+            <rect x="21" y="7"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="14" width="5" height="5" fill="white"/>
+            <rect x="14" y="14" width="5" height="5" fill="white"/>
+            <rect x="21" y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="21" width="5" height="5" fill="white"/>
+            <rect x="14" y="21" width="5" height="5" fill="white"/>
+            <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+            <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
+          </svg>
+          <p>Regulated investment solutions for crypto foundations. CIMA registered, Cayman Islands.</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html#options">Options Desk</a>
+          <a href="index.html#rfq">RFQ Process</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#team">Team</a>
+          <a href="treasury.html">White Paper</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>Mosaic 2025 · All Rights Reserved</p>
+        <p class="disc">This paper is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
