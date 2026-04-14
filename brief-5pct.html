@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deploy 5% a Month. Earn Yield on 60% a Year. | Mosaic Capital</title>
+  <meta name="description" content="A rolling covered call program that puts 5% of treasury assets to work each month, reaching 60% annual coverage — with full flexibility to pause or halt at any time." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    .brief-hero{
+      background:linear-gradient(145deg,#0a1c41 0%,#122e76 45%,#1a4a9e 75%,#1e4fa3 100%);
+      padding:140px 40px 80px;
+      position:relative;overflow:hidden
+    }
+    .brief-hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:32px 32px
+    }
+    .brief-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+    .brief-back{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);
+      margin-bottom:32px;transition:color 0.2s
+    }
+    .brief-back:hover{color:var(--gold)}
+    .brief-tag{
+      display:inline-block;font-size:0.68rem;font-weight:700;
+      letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
+      margin-bottom:20px
+    }
+    .brief-hero h1{
+      font-size:clamp(1.9rem,4vw,3rem);font-weight:800;
+      color:var(--white);line-height:1.1;
+      letter-spacing:-1.5px;margin-bottom:20px
+    }
+    .brief-hero p{
+      font-size:1.05rem;color:rgba(255,255,255,0.65);
+      line-height:1.75;max-width:620px
+    }
+    .brief-body{max-width:780px;margin:0 auto;padding:72px 40px 100px}
+    .brief-body h2{
+      font-size:1.35rem;font-weight:800;color:var(--ink);
+      letter-spacing:-0.5px;margin:52px 0 16px;
+      padding-top:48px;border-top:1px solid var(--border)
+    }
+    .brief-body h2:first-child{border-top:none;padding-top:0;margin-top:0}
+    .brief-body p{
+      font-size:0.97rem;color:var(--ink-2);line-height:1.85;margin-bottom:18px
+    }
+    .brief-body ul{margin:16px 0 24px;padding-left:0;list-style:none}
+    .brief-body ul li{
+      font-size:0.93rem;color:var(--ink-2);line-height:1.7;
+      padding:8px 0 8px 20px;position:relative;
+      border-bottom:1px solid var(--border)
+    }
+    .brief-body ul li:last-child{border-bottom:none}
+    .brief-body ul li::before{
+      content:'→';position:absolute;left:0;
+      color:var(--gold);font-size:0.8rem;top:9px
+    }
+    .callout{
+      background:var(--cream);border-left:3px solid var(--gold);
+      padding:24px 28px;border-radius:0 12px 12px 0;
+      margin:32px 0
+    }
+    .callout p{margin:0;font-size:0.94rem;color:var(--ink);font-style:italic;line-height:1.75}
+    .timeline{margin:36px 0;display:flex;flex-direction:column;gap:0}
+    .tl-row{
+      display:grid;grid-template-columns:72px 1fr;
+      gap:20px;align-items:stretch
+    }
+    .tl-month{
+      display:flex;flex-direction:column;align-items:center;
+      gap:0
+    }
+    .tl-dot{
+      width:36px;height:36px;border-radius:50%;
+      background:var(--blue);color:var(--white);
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.7rem;font-weight:800;flex-shrink:0
+    }
+    .tl-line{flex:1;width:2px;background:var(--border);margin:0 auto}
+    .tl-row:last-child .tl-line{display:none}
+    .tl-content{
+      background:var(--white);border:1px solid var(--border);
+      border-radius:12px;padding:16px 20px;
+      margin-bottom:12px
+    }
+    .tl-content strong{
+      display:block;font-size:0.85rem;font-weight:700;
+      color:var(--ink);margin-bottom:4px
+    }
+    .tl-content span{font-size:0.8rem;color:var(--muted);line-height:1.5}
+    .tl-content em{
+      display:inline-block;margin-top:6px;
+      font-size:0.72rem;font-weight:700;
+      color:var(--gold);font-style:normal;
+      letter-spacing:0.5px
+    }
+    .stat-row{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:16px;margin:36px 0
+    }
+    .stat-box{
+      background:var(--cream);border-radius:14px;
+      padding:24px 20px;text-align:center;
+      border:1px solid var(--border)
+    }
+    .stat-box strong{
+      display:block;font-size:1.6rem;font-weight:800;
+      color:var(--blue);letter-spacing:-1px;margin-bottom:6px
+    }
+    .stat-box span{font-size:0.75rem;color:var(--muted);line-height:1.4;display:block}
+    .brief-footer{
+      max-width:780px;margin:0 auto;padding:36px 40px 60px;
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid var(--border)
+    }
+    .brief-footer a{font-size:0.85rem;font-weight:600;color:var(--blue);transition:color 0.2s}
+    .brief-footer a:hover{color:var(--gold)}
+    @media(max-width:768px){
+      .brief-hero{padding:120px 20px 60px}
+      .brief-body{padding:52px 20px 72px}
+      .brief-footer{padding:36px 20px 48px;flex-direction:column;gap:16px;text-align:center}
+      .stat-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7"  y="0"  width="5" height="5" fill="white"/>
+          <rect x="14" y="0"  width="5" height="5" fill="white"/>
+          <rect x="0"  y="7"  width="5" height="5" fill="white"/>
+          <rect x="7"  y="7"  width="5" height="5" fill="white"/>
+          <rect x="14" y="7"  width="5" height="5" fill="white"/>
+          <rect x="21" y="7"  width="5" height="5" fill="white"/>
+          <rect x="0"  y="14" width="5" height="5" fill="white"/>
+          <rect x="7"  y="14" width="5" height="5" fill="white"/>
+          <rect x="14" y="14" width="5" height="5" fill="white"/>
+          <rect x="21" y="14" width="5" height="5" fill="white"/>
+          <rect x="7"  y="21" width="5" height="5" fill="white"/>
+          <rect x="14" y="21" width="5" height="5" fill="white"/>
+          <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+          <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#options">Options</a></li>
+        <li><a href="index.html#rfq">RFQ</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="brief-hero">
+    <div class="brief-hero-inner">
+      <a href="index.html#research" class="brief-back">← Back to Research</a>
+      <div class="brief-tag">Brief · Strategy</div>
+      <h1>Deploy 5% a Month.<br/>Earn Yield on 60% a Year.</h1>
+      <p>A rolling covered call program doesn't require betting the whole treasury at once. By putting roughly 5% of holdings to work each month, you build toward 60% annual coverage — with the ability to pause or stop entirely at any point.</p>
+    </div>
+  </section>
+
+  <div class="brief-body">
+
+    <h2>The coverage problem — and a simple solution</h2>
+    <p>Most treasury managers approach options income as an all-or-nothing decision: either commit a large portion of holdings to a call overlay, or don't do it at all. That framing creates unnecessary risk concentration and makes the program feel harder to start than it needs to be.</p>
+    <p>The alternative is a rolling deployment model. Each month, a modest tranche — approximately 5% of total holdings — is used to write a fresh set of covered calls with a 30-day expiry. When those expire (or are rolled), the next tranche goes to work. The program builds gradually, generating yield on an ever-larger share of the portfolio without requiring a single large commitment.</p>
+    <p>Over 12 months, this approach means that roughly 60% of total holdings will have participated in the program at least once — earning premium income, contributing to treasury cash flow, and supporting the token's price structure through the options dealer hedging flow.</p>
+
+    <div class="callout">
+      <p>"You don't have to deploy everything at once. A rolling 5% monthly program reaches 60% annual coverage while keeping maximum exposure at any single point limited to one tranche."</p>
+    </div>
+
+    <h2>How the rolling program builds</h2>
+    <p>The mechanics are straightforward. Each month, covered calls are written on approximately 5% of holdings — struck at 130–150% of current spot, expiring in roughly 30 days. At expiry, one of two things happens: the option expires worthless (tokens retained, premium kept) or the option is exercised (tokens sold at the strike price, premium also kept). Either outcome is economically rational for a treasury with long-term distribution objectives.</p>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-month"><div class="tl-dot">M1</div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <strong>Month 1 — Programme launch</strong>
+          <span>5% of holdings enter a covered call position. First premium income received at trade inception.</span>
+          <em>5% of holdings earning yield</em>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-month"><div class="tl-dot">M3</div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <strong>Month 3 — Programme building</strong>
+          <span>Three monthly tranches have cycled through. Premium income is now a regular quarterly cash flow item.</span>
+          <em>15% of holdings have earned yield</em>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-month"><div class="tl-dot">M6</div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <strong>Month 6 — Half-year milestone</strong>
+          <span>Six cycles complete. The programme has a track record, a known cash flow profile, and demonstrated execution quality.</span>
+          <em>30% of holdings have earned yield</em>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-month"><div class="tl-dot">M12</div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <strong>Month 12 — Full annual cycle</strong>
+          <span>Twelve tranches have completed. The programme has generated premium income across a significant share of the treasury.</span>
+          <em>60% of holdings have earned yield</em>
+        </div>
+      </div>
+    </div>
+
+    <h2>The numbers on a $100M treasury</h2>
+    <p>To make this concrete: a foundation or protocol treasury holding $100M in tokens would deploy approximately $5M in covered calls each month. At typical crypto volatility levels — where 30-day call options struck 30–50% OTM generate 3–5% monthly premium — that tranche produces $150,000–$250,000 in upfront income per cycle.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <strong>$5M</strong>
+        <span>Deployed per month on a $100M treasury</span>
+      </div>
+      <div class="stat-box">
+        <strong>$1.8–3M</strong>
+        <span>Estimated annual premium income from 12 cycles</span>
+      </div>
+      <div class="stat-box">
+        <strong>30 days</strong>
+        <span>Maximum exposure window per tranche — then it resets</span>
+      </div>
+    </div>
+
+    <p>Across 12 monthly cycles, the programme generates $1.8M–$3M in premium income on a $100M treasury — entirely from holdings that would otherwise sit idle. The programme does not require leverage, does not introduce directional bets, and does not require predicting where the token price will go.</p>
+
+    <h2>Built-in flexibility: pausing and halting</h2>
+    <p>One of the structural advantages of a monthly rolling programme over longer-dated approaches is its natural flexibility. Because each tranche expires within 30 days, the programme can be paused at any time with minimal friction:</p>
+    <ul>
+      <li>Decision to pause is made before the next monthly roll — no forced unwind required</li>
+      <li>Existing positions expire or are rolled off within 30 days of the pause decision</li>
+      <li>The treasury retains full exposure to token upside during the wind-down window</li>
+      <li>Programme can restart at any time by simply initiating the next monthly tranche</li>
+    </ul>
+    <p>This flexibility is particularly valuable in crypto markets, where sentiment and volatility can shift rapidly. A programme that can be paused with a single decision and no position unwind is categorically less risky to govern than one requiring complex exit transactions. In practice, the most common reason to pause is not concern about the strategy — it's an upcoming token event (unlock, TGE, governance vote) where the treasury wants full optionality on its holdings for a defined window.</p>
+
+    <h2>What the programme is not</h2>
+    <p>It is worth being clear about the trade-off. A covered call programme caps upside above the strike price on the deployed tranche. If the token doubles in a month, positions struck at 130% of spot will be exercised — tokens sold at 130% of entry, premium retained. The treasury benefits from the 30% appreciation plus the premium, but does not participate in gains above the strike.</p>
+    <p>For a treasury with long-term distribution objectives and no near-term expectation of using the deployed tranche for other purposes, this is typically the right trade: certain income now, in exchange for foregone upside that was not planned for anyway. The programme is not appropriate for the portion of the treasury that the foundation considers strategically irreplaceable — which is exactly why the 5% monthly deployment discipline exists.</p>
+
+  </div>
+
+  <div class="brief-footer">
+    <a href="index.html#research">← All Research</a>
+    <a href="index.html#contact">Discuss your treasury →</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7"  y="0"  width="5" height="5" fill="white"/>
+            <rect x="14" y="0"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="7"  y="7"  width="5" height="5" fill="white"/>
+            <rect x="14" y="7"  width="5" height="5" fill="white"/>
+            <rect x="21" y="7"  width="5" height="5" fill="white"/>
+            <rect x="0"  y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="14" width="5" height="5" fill="white"/>
+            <rect x="14" y="14" width="5" height="5" fill="white"/>
+            <rect x="21" y="14" width="5" height="5" fill="white"/>
+            <rect x="7"  y="21" width="5" height="5" fill="white"/>
+            <rect x="14" y="21" width="5" height="5" fill="white"/>
+            <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
+            <text x="163" y="9" font-family="'Inter',sans-serif" font-size="7" font-weight="400" fill="white">&#8482;</text>
+          </svg>
+          <p>Regulated investment solutions for crypto foundations. CIMA registered, Cayman Islands.</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html#options">Options Desk</a>
+          <a href="index.html#rfq">RFQ Process</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#team">Team</a>
+          <a href="paper.html">White Paper</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>Mosaic 2025 · All Rights Reserved</p>
+        <p class="disc">This brief is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
