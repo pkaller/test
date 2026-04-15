@@ -337,49 +337,49 @@
   <script>
   // ── DATA ──────────────────────────────────────────────
   const TRADES = [
-    {date:'2026-04-13',token:'Token A',    type:'Call',strike:150,notional:1000000},
-    {date:'2026-04-11',token:'Token B',   type:'Call',strike:120,notional:3000000},
-    {date:'2026-04-06',token:'Token A',    type:'Call',strike:150,notional:1000000},
-    {date:'2026-03-17',token:'Token C', type:'Call',strike:120,notional:79900000},
-    {date:'2026-03-05',token:'Token D',  type:'Call',strike:120,notional:3500000},
+    {date:'2026-04-13',token:'Token A', type:'Call',strike:150,notional:1200000},
+    {date:'2026-04-11',token:'Token B', type:'Call',strike:120,notional:3000000},
+    {date:'2026-04-06',token:'Token A', type:'Call',strike:150,notional:1200000},
+    {date:'2026-03-17',token:'Token C', type:'Call',strike:120,notional:4500000},
+    {date:'2026-03-05',token:'Token D', type:'Call',strike:120,notional:3500000},
     {date:'2026-03-05',token:'Token E', type:'Call',strike:120,notional:5800000},
-    {date:'2026-02-13',token:'Token F',   type:'Call',strike:120,notional:2000000},
-    {date:'2026-01-29',token:'Token G',    type:'Put', strike:90, notional:1790000},
-    {date:'2026-01-12',token:'Token B',   type:'Call',strike:120,notional:3000000},
-    {date:'2026-01-06',token:'Token H',   type:'Call',strike:120,notional:150000},
-    {date:'2025-12-15',token:'Token I',   type:'Call',strike:120,notional:100000},
-    {date:'2025-12-12',token:'Token J',  type:'Call',strike:120,notional:650000000},
-    {date:'2025-12-12',token:'Token K',type:'Put',strike:95, notional:2403000},
-    {date:'2025-12-01',token:'Token B',   type:'Call',strike:120,notional:3000000},
-    {date:'2025-11-15',token:'Token L',  type:'Call',strike:120,notional:800000},
-    {date:'2025-11-10',token:'Token B',   type:'Call',strike:120,notional:3000000},
-    {date:'2025-10-27',token:'Token M',   type:'Call',strike:120,notional:50000},
-    {date:'2025-10-22',token:'Token N',    type:'Call',strike:120,notional:250000},
-    {date:'2025-09-08',token:'Token A',    type:'Put', strike:90, notional:678000},
+    {date:'2026-02-13',token:'Token F', type:'Call',strike:120,notional:2000000},
+    {date:'2026-01-29',token:'Token G', type:'Put', strike:90, notional:1790000},
+    {date:'2026-01-12',token:'Token B', type:'Call',strike:120,notional:3000000},
+    {date:'2026-01-06',token:'Token H', type:'Call',strike:120,notional:150000},
+    {date:'2025-12-15',token:'Token I', type:'Call',strike:120,notional:1100000},
+    {date:'2025-12-12',token:'Token J', type:'Call',strike:120,notional:7500000},
+    {date:'2025-12-12',token:'Token K', type:'Put', strike:95, notional:2400000},
+    {date:'2025-12-01',token:'Token B', type:'Call',strike:120,notional:3000000},
+    {date:'2025-11-15',token:'Token L', type:'Call',strike:120,notional:800000},
+    {date:'2025-11-10',token:'Token B', type:'Call',strike:120,notional:3000000},
+    {date:'2025-10-27',token:'Token M', type:'Call',strike:120,notional:500000},
+    {date:'2025-10-22',token:'Token N', type:'Call',strike:120,notional:250000},
+    {date:'2025-09-08',token:'Token A', type:'Put', strike:90, notional:678000},
   ];
 
   const RFQ_SAMPLES = [
-    {label:'ERA · 120% Call · 30 DTE',notional:'$3.0M',quotes:[
+    {label:'Token B · 120% Call · 30 DTE',notional:'$3.0M',quotes:[
       {mm:'MM-A',pct:3.21,best:true},{mm:'MM-B',pct:2.98,best:false},
       {mm:'MM-C',pct:2.76,best:false},{mm:'MM-D',pct:2.54,best:false},{mm:'MM-E',pct:2.31,best:false}
     ]},
-    {label:'TAO · 120% Call · 30 DTE',notional:'$2.0M',quotes:[
+    {label:'Token F · 120% Call · 30 DTE',notional:'$2.0M',quotes:[
       {mm:'MM-B',pct:15.6,best:true},{mm:'MM-A',pct:14.2,best:false},
       {mm:'MM-C',pct:12.9,best:false},{mm:'MM-D',pct:11.1,best:false},{mm:'MM-E',pct:9.8,best:false}
     ]},
-    {label:'PENGU · 120% Call · 30 DTE',notional:'$5.8M',quotes:[
+    {label:'Token E · 120% Call · 30 DTE',notional:'$5.8M',quotes:[
       {mm:'MM-C',pct:6.4,best:true},{mm:'MM-A',pct:5.9,best:false},
       {mm:'MM-B',pct:5.5,best:false},{mm:'MM-E',pct:5.0,best:false},{mm:'MM-D',pct:4.2,best:false}
     ]},
-    {label:'BTC · 120% Call · 30 DTE',notional:'$100K',quotes:[
+    {label:'Token I · 120% Call · 30 DTE',notional:'$1.1M',quotes:[
       {mm:'MM-A',pct:3.38,best:true},{mm:'MM-D',pct:3.19,best:false},
       {mm:'MM-B',pct:2.97,best:false},{mm:'MM-C',pct:2.71,best:false},{mm:'MM-E',pct:2.51,best:false}
     ]},
-    {label:'BIRB · 120% Call · 30 DTE',notional:'$3.5M',quotes:[
+    {label:'Token D · 120% Call · 30 DTE',notional:'$3.5M',quotes:[
       {mm:'MM-D',pct:14.5,best:true},{mm:'MM-C',pct:11.9,best:false},
       {mm:'MM-B',pct:10.7,best:false},{mm:'MM-A',pct:9.4,best:false}
     ]},
-    {label:'TNSR · 120% Call · 30 DTE',notional:'$800K',quotes:[
+    {label:'Token L · 120% Call · 30 DTE',notional:'$800K',quotes:[
       {mm:'MM-E',pct:11.3,best:true},{mm:'MM-C',pct:9.8,best:false},
       {mm:'MM-A',pct:8.9,best:false},{mm:'MM-D',pct:8.2,best:false},{mm:'MM-B',pct:6.7,best:false}
     ]},
