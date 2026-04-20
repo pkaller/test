@@ -562,7 +562,7 @@ footer::before{
   background-size:28px 28px;pointer-events:none
 }
 footer::after{
-  content:'AIC';position:absolute;right:-16px;bottom:-44px;
+  content:'MOSAIC';position:absolute;right:-16px;bottom:-44px;
   font-size:clamp(120px,18vw,240px);font-weight:900;
   color:rgba(255,255,255,0.03);letter-spacing:-6px;
   pointer-events:none;user-select:none;line-height:1
