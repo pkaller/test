@@ -103,6 +103,14 @@ h2.light{color:var(--white)}
   transition:background 0.2s,transform 0.2s
 }
 .btn-fill-sm:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.btn-outline-sm{
+  display:inline-block;
+  color:rgba(255,255,255,0.65);font-size:0.82rem;font-weight:500;
+  padding:11px 24px;border-radius:100px;
+  border:1px solid rgba(255,255,255,0.2);
+  transition:border-color 0.2s,color 0.2s
+}
+.btn-outline-sm:hover{border-color:var(--gold);color:var(--gold)}
 
 /* ── TAGS ───────────────────────────── */
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
