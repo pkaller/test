@@ -585,6 +585,98 @@ footer::after{
 .footer-bottom p{font-size:0.76rem;color:rgba(255,255,255,0.25)}
 .disc{font-size:0.68rem;color:rgba(255,255,255,0.15);max-width:800px;margin:8px auto 0;line-height:1.6}
 
+/* ── PROGRAMS ───────────────────────── */
+#programs h2{margin-bottom:12px}
+.prog-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:20px
+}
+.prog-card{
+  background:var(--white);border-radius:20px;
+  padding:36px;
+  border:1px solid rgba(30,79,163,0.08);
+  transition:box-shadow 0.35s var(--ease),transform 0.35s var(--ease)
+}
+.prog-card:hover{
+  box-shadow:0 16px 48px rgba(30,79,163,0.12);
+  transform:translateY(-4px)
+}
+.prog-featured{
+  grid-column:span 2;
+  background:linear-gradient(135deg,var(--blue-dark) 0%,var(--blue) 100%);
+  color:var(--white);
+  border:none;
+  box-shadow:0 4px 32px rgba(22,61,138,0.35)
+}
+.prog-featured:hover{
+  background:linear-gradient(135deg,#0f2d6e 0%,var(--blue-dark) 100%);
+  box-shadow:0 16px 56px rgba(22,61,138,0.45)
+}
+.prog-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.65rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:10px
+}
+.prog-badge::before{
+  content:'';display:inline-block;
+  width:6px;height:6px;border-radius:50%;
+  background:currentColor
+}
+.prog-badge-flagship{color:var(--gold)}
+.prog-badge-managed{color:var(--blue)}
+.prog-badge-active{color:#4ade80}
+.prog-badge-launching{color:#f59e0b}
+.prog-featured .prog-badge-flagship{color:var(--gold)}
+.prog-card h3{
+  font-size:1.1rem;font-weight:700;color:var(--ink);
+  margin-bottom:8px;letter-spacing:-0.3px
+}
+.prog-featured h3{color:var(--white);font-size:1.35rem}
+.prog-series{
+  font-size:0.8rem;color:var(--muted);
+  font-style:italic;margin-bottom:14px
+}
+.prog-featured .prog-series{color:rgba(255,255,255,0.45)}
+.prog-card>p{font-size:0.86rem;color:var(--muted);line-height:1.7}
+.prog-featured>p{color:rgba(255,255,255,0.65)}
+.prog-stats{
+  display:flex;gap:40px;
+  margin:20px 0 4px;
+  padding:18px 0 0;border-top:1px solid rgba(30,79,163,0.1)
+}
+.prog-featured .prog-stats{border-color:rgba(255,255,255,0.12)}
+.prog-stats-sm{margin-bottom:0}
+.prog-stat strong{display:block;font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.prog-featured .prog-stat strong{color:var(--white)}
+.prog-stat span{font-size:0.72rem;color:var(--muted);font-weight:500}
+.prog-featured .prog-stat span{color:rgba(255,255,255,0.4)}
+.prog-featured ul{
+  margin-top:16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:0
+}
+.prog-featured ul li{
+  font-size:0.82rem;color:rgba(255,255,255,0.6);
+  padding:7px 0 7px 18px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  position:relative
+}
+.prog-featured ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:0.75rem}
+
+/* ── SERVICES (3-col) ───────────────── */
+.services-grid-3{grid-template-columns:repeat(3,1fr)}
+.svc-featured-3{
+  grid-column:span 3;
+  grid-template-columns:auto 1fr 1fr
+}
+.svc-list{margin-top:12px}
+.svc-list li{
+  font-size:0.82rem;color:var(--muted);
+  padding:5px 0 5px 14px;position:relative;
+  border-top:1px solid var(--border)
+}
+.svc-list li:last-child{border-bottom:1px solid var(--border)}
+.svc-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:0.72rem;top:6px}
+
 /* ── RESPONSIVE ─────────────────────── */
 @media(max-width:1024px){
   .about-layout{grid-template-columns:1fr;gap:52px}
@@ -612,8 +704,12 @@ footer::after{
   }
   .nav-links.open a{font-size:1.2rem;color:var(--white)}
   .hamburger{display:flex}
-  .services-grid{grid-template-columns:1fr}
-  .svc-featured{grid-column:span 1;grid-template-columns:1fr}
+  .services-grid,.services-grid-3{grid-template-columns:1fr !important}
+  .svc-featured,.svc-featured-3{grid-column:span 1 !important;grid-template-columns:1fr !important}
+  .prog-grid{grid-template-columns:1fr}
+  .prog-featured{grid-column:span 1}
+  .prog-featured ul{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:1fr 1fr !important}
   .strat-grid{grid-template-columns:1fr}
   .options-metrics{grid-template-columns:1fr}
   .om{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
@@ -628,7 +724,7 @@ footer::after{
   #hero h1{letter-spacing:-1px}
   #hero::after{font-size:80px}
   footer::after{font-size:90px}
-  .hero-badge{font-size:0.68rem}
+  .hero-badge{font-size:0.65rem}
 }
 @media(max-width:480px){
   .hero-actions{flex-direction:column}
