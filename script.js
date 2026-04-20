@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = 'Sending…';
     btn.disabled = true;
     try {
-      const res = await fetch('https://formspree.io/f/xlgawnrg', {
+      const res = await fetch('https://formspree.io/f/xwvanbey', {
         method: 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
