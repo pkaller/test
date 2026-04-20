@@ -34,7 +34,7 @@ img{max-width:100%;display:block}
 
 /* ── LAYOUT ────────────────────────── */
 .container{max-width:var(--max);margin:0 auto;padding:0 40px}
-.section{padding:100px 0}
+.section{padding:100px 0;scroll-margin-top:80px}
 .s-white{background:var(--white)}
 .s-cream{background:var(--cream)}
 .s-blue{background:var(--blue)}

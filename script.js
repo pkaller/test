@@ -21,8 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' }); }
+      const id = a.getAttribute('href');
+      const t = document.querySelector(id);
+      if (t) {
+        e.preventDefault();
+        const top = t.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }
     });
   });
 
