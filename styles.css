@@ -453,7 +453,7 @@ h2.light{color:var(--white)}
 #team h2{margin-bottom:48px}
 .team-grid{
   display:grid;grid-template-columns:repeat(2,1fr);
-  gap:24px;max-width:900px
+  gap:24px
 }
 .team-card{
   display:flex;gap:28px;
