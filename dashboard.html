@@ -232,10 +232,10 @@
               <th>Date</th>
               <th>Token</th>
               <th>Type</th>
+              <th>Direction</th>
               <th>Strike</th>
-              <th>Tenor</th>
               <th>Notional</th>
-              <th>Execution</th>
+              <th>Yield</th>
             </tr>
           </thead>
           <tbody id="blotter-body"></tbody>
@@ -335,25 +335,25 @@
   <script>
   // ── DATA ──────────────────────────────────────────────
   const TRADES = [
-    {date:'2026-04-13',token:'Token A', type:'Call',strike:150,notional:1200000},
-    {date:'2026-04-11',token:'Token B', type:'Call',strike:120,notional:3000000},
-    {date:'2026-04-06',token:'Token A', type:'Call',strike:150,notional:1200000},
-    {date:'2026-03-17',token:'Token C', type:'Call',strike:120,notional:4500000},
-    {date:'2026-03-05',token:'Token D', type:'Call',strike:120,notional:3500000},
-    {date:'2026-03-05',token:'Token E', type:'Call',strike:120,notional:5800000},
-    {date:'2026-02-13',token:'Token F', type:'Call',strike:120,notional:2000000},
-    {date:'2026-01-29',token:'Token G', type:'Put', strike:90, notional:1790000},
-    {date:'2026-01-12',token:'Token B', type:'Call',strike:120,notional:3000000},
-    {date:'2026-01-06',token:'Token H', type:'Call',strike:120,notional:150000},
-    {date:'2025-12-15',token:'Token I', type:'Call',strike:120,notional:1100000},
-    {date:'2025-12-12',token:'Token J', type:'Call',strike:120,notional:7500000},
-    {date:'2025-12-12',token:'Token K', type:'Put', strike:95, notional:2400000},
-    {date:'2025-12-01',token:'Token B', type:'Call',strike:120,notional:3000000},
-    {date:'2025-11-15',token:'Token L', type:'Call',strike:120,notional:800000},
-    {date:'2025-11-10',token:'Token B', type:'Call',strike:120,notional:3000000},
-    {date:'2025-10-27',token:'Token M', type:'Call',strike:120,notional:500000},
-    {date:'2025-10-22',token:'Token N', type:'Call',strike:120,notional:250000},
-    {date:'2025-09-08',token:'Token A', type:'Put', strike:90, notional:678000},
+    {date:'2026-04-13',token:'Token A', type:'Call',dir:'Sell',strike:150,notional:1200000,yield_pct:1.4},
+    {date:'2026-04-11',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.3},
+    {date:'2026-04-06',token:'Token A', type:'Call',dir:'Sell',strike:150,notional:1200000,yield_pct:1.7},
+    {date:'2026-03-17',token:'Token C', type:'Call',dir:'Sell',strike:120,notional:4500000,yield_pct:3.6},
+    {date:'2026-03-05',token:'Token D', type:'Call',dir:'Sell',strike:120,notional:3500000,yield_pct:14.5},
+    {date:'2026-03-05',token:'Token E', type:'Call',dir:'Sell',strike:120,notional:5800000,yield_pct:6.4},
+    {date:'2026-02-13',token:'Token F', type:'Call',dir:'Sell',strike:120,notional:2000000,yield_pct:15.6},
+    {date:'2026-01-29',token:'Token G', type:'Put', dir:'Sell',strike:90, notional:1790000,yield_pct:1.9},
+    {date:'2026-01-12',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.0},
+    {date:'2026-01-06',token:'Token H', type:'Call',dir:'Sell',strike:120,notional:150000, yield_pct:2.1},
+    {date:'2025-12-15',token:'Token I', type:'Call',dir:'Sell',strike:120,notional:1100000,yield_pct:3.4},
+    {date:'2025-12-12',token:'Token J', type:'Call',dir:'Sell',strike:120,notional:7500000,yield_pct:6.6},
+    {date:'2025-12-12',token:'Token K', type:'Put', dir:'Sell',strike:95, notional:2400000,yield_pct:3.3},
+    {date:'2025-12-01',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:1.9},
+    {date:'2025-11-15',token:'Token L', type:'Call',dir:'Sell',strike:120,notional:800000, yield_pct:11.3},
+    {date:'2025-11-10',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.3},
+    {date:'2025-10-27',token:'Token M', type:'Call',dir:'Sell',strike:120,notional:500000, yield_pct:5.8},
+    {date:'2025-10-22',token:'Token N', type:'Call',dir:'Sell',strike:120,notional:250000, yield_pct:2.0},
+    {date:'2025-09-08',token:'Token A', type:'Put', dir:'Sell',strike:90, notional:678000, yield_pct:0.1},
   ];
 
   const RFQ_SAMPLES = [
@@ -418,10 +418,10 @@
         <td>${t.date}</td>
         <td><strong>${t.token}</strong></td>
         <td><span class="badge badge-${t.type.toLowerCase()}">${t.type}</span></td>
+        <td>${t.dir}</td>
         <td>${t.strike}% of spot</td>
-        <td>30 days</td>
         <td>${fmtM(t.notional)}</td>
-        <td style="color:var(--gold);font-weight:600">RFQ</td>
+        <td style="color:var(--gold);font-weight:600">${t.yield_pct.toFixed(1)}%</td>
       </tr>`).join('');
   }
   function filterBlotter(f,btn){
