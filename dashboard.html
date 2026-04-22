@@ -92,12 +92,32 @@
     .sim-box{background:var(--cream);border-radius:12px;padding:14px 16px;text-align:center;border:1px solid var(--border)}
     .sim-box strong{display:block;font-size:1.3rem;font-weight:800;color:var(--blue);letter-spacing:-0.5px}
     .sim-box span{font-size:0.7rem;color:var(--muted);line-height:1.4;display:block;margin-top:2px}
+    /* PROGRAMME ANALYTICS */
+    .track-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+    .track-stat{background:white;border-radius:16px;padding:28px 20px;border:1px solid var(--border);text-align:center}
+    .track-stat strong{display:block;font-size:2rem;font-weight:800;color:var(--blue);letter-spacing:-1.5px;margin-bottom:8px;line-height:1}
+    .track-stat span{font-size:0.75rem;color:var(--muted);line-height:1.4}
+    .yield-breakdown{background:white;border-radius:16px;padding:32px;border:1px solid var(--border)}
+    .yield-breakdown-hd{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+    .yield-tier{display:grid;grid-template-columns:200px 1fr 100px;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .yield-tier:last-child{border-bottom:none;padding-bottom:0}
+    .yield-tier:first-child{padding-top:0}
+    .yield-tier-lbl{font-size:0.82rem;font-weight:600;color:var(--ink);line-height:1.3}
+    .yield-tier-lbl small{display:block;font-size:0.72rem;font-weight:400;color:var(--muted);margin-top:3px}
+    .yield-tier-track{position:relative;height:24px;background:rgba(30,79,163,0.06);border-radius:5px;overflow:visible}
+    .yield-tier-range-fill{position:absolute;top:0;bottom:0;border-radius:5px;background:rgba(30,79,163,0.18);transition:width 0.6s cubic-bezier(0.22,1,0.36,1)}
+    .yield-tier-avg-line{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--blue);border-radius:1px}
+    .yield-tier-val{font-size:0.82rem;font-weight:700;color:var(--blue);text-align:right;line-height:1.3}
+    .yield-tier-val small{display:block;font-size:0.7rem;font-weight:400;color:var(--muted);margin-top:2px}
     @media(max-width:768px){
       .dash-hero{padding:120px 20px 52px}
       .dash-jump-inner{padding:0 20px}
       .tool-inner{padding:0 20px}
       .calc-grid,.sim-grid{grid-template-columns:1fr}
       .calc-output{order:-1}
+      .track-stat-grid{grid-template-columns:repeat(2,1fr)}
+      .yield-tier{grid-template-columns:1fr;gap:8px}
+      .yield-tier-track{height:20px}
     }
   </style>
 </head>
@@ -141,7 +161,7 @@
   <div class="dash-jump">
     <div class="dash-jump-inner">
       <a href="#calculator" class="active">01 · Yield Calculator</a>
-      <a href="#blotter">02 · Trade Blotter</a>
+      <a href="#blotter">02 · Programme Analytics</a>
       <a href="#rfq-analysis">03 · RFQ Analysis</a>
       <a href="#simulator">04 · Simulator</a>
     </div>
@@ -209,38 +229,40 @@
     </div>
   </section>
 
-  <!-- ── 02 TRADE BLOTTER ─────────────────────────────── -->
+  <!-- ── 02 PROGRAMME ANALYTICS ───────────────────────── -->
   <section id="blotter" class="tool-section s-cream">
     <div class="tool-inner">
       <div class="tool-header">
-        <span class="tool-num">02 · Trade Blotter</span>
-        <h2>Recent executions.</h2>
-        <p>Anonymised trade log showing recent covered call and put activity. Client names and exact sizes are not disclosed.</p>
+        <span class="tool-num">02 · Programme Analytics</span>
+        <h2>A growing execution track record.</h2>
+        <p>Key metrics across the covered call and put-selling programme since inception. All client and trade information is anonymised.</p>
       </div>
-      <div class="blotter-top">
-        <div class="filter-pills">
-          <button class="pill on" onclick="filterBlotter('all',this)">All</button>
-          <button class="pill" onclick="filterBlotter('Call',this)">Calls</button>
-          <button class="pill" onclick="filterBlotter('Put',this)">Puts</button>
+
+      <div class="track-stat-grid">
+        <div class="track-stat">
+          <strong>100+</strong>
+          <span>Trades executed since Sep 2025</span>
         </div>
-        <span class="blotter-disc">Data anonymised · indicative only</span>
+        <div class="track-stat">
+          <strong>15+</strong>
+          <span>Distinct tokens covered</span>
+        </div>
+        <div class="track-stat">
+          <strong>87%</strong>
+          <span>Options expired unexercised — full premium retained</span>
+        </div>
+        <div class="track-stat">
+          <strong>3–8</strong>
+          <span>Market makers competed per RFQ</span>
+        </div>
       </div>
-      <div class="tbl-wrap">
-        <table id="blotter-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Token</th>
-              <th>Type</th>
-              <th>Direction</th>
-              <th>Strike</th>
-              <th>Notional</th>
-              <th>Yield</th>
-            </tr>
-          </thead>
-          <tbody id="blotter-body"></tbody>
-        </table>
+
+      <div class="yield-breakdown">
+        <div class="yield-breakdown-hd">Achieved sell premium by strategy type · monthly, % of notional</div>
+        <div id="yield-tiers"></div>
       </div>
+
+      <p class="calc-disc" style="margin-top:20px">All yields are historical. Actual premiums vary with token volatility, tenor, strike selection and market conditions. Past results do not guarantee future returns.</p>
     </div>
   </section>
 
@@ -250,7 +272,7 @@
       <div class="tool-header">
         <span class="tool-num">03 · RFQ Analysis</span>
         <h2>Competition drives better prices.</h2>
-        <p>Representative sample showing competing market maker quotes on recent block trades. Best quote highlighted. Spread between best and worst shows the value of competitive quoting.</p>
+        <p>Representative sample of competing market maker quotes on sell-to-open block trades. We are selling options to collect premium — so <strong>higher is better</strong>. Best quote highlighted in gold. The spread between best and worst shows the yield left on the table without competitive quoting.</p>
       </div>
       <div class="rfq-list" id="rfq-list"></div>
     </div>
@@ -334,26 +356,11 @@
   <script src="script.js"></script>
   <script>
   // ── DATA ──────────────────────────────────────────────
-  const TRADES = [
-    {date:'2026-04-13',token:'Token A', type:'Call',dir:'Sell',strike:150,notional:1200000,yield_pct:1.4},
-    {date:'2026-04-11',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.3},
-    {date:'2026-04-06',token:'Token A', type:'Call',dir:'Sell',strike:150,notional:1200000,yield_pct:1.7},
-    {date:'2026-03-17',token:'Token C', type:'Call',dir:'Sell',strike:120,notional:4500000,yield_pct:3.6},
-    {date:'2026-03-05',token:'Token D', type:'Call',dir:'Sell',strike:120,notional:3500000,yield_pct:14.5},
-    {date:'2026-03-05',token:'Token E', type:'Call',dir:'Sell',strike:120,notional:5800000,yield_pct:6.4},
-    {date:'2026-02-13',token:'Token F', type:'Call',dir:'Sell',strike:120,notional:2000000,yield_pct:15.6},
-    {date:'2026-01-29',token:'Token G', type:'Put', dir:'Sell',strike:90, notional:1790000,yield_pct:1.9},
-    {date:'2026-01-12',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.0},
-    {date:'2026-01-06',token:'Token H', type:'Call',dir:'Sell',strike:120,notional:150000, yield_pct:2.1},
-    {date:'2025-12-15',token:'Token I', type:'Call',dir:'Sell',strike:120,notional:1100000,yield_pct:3.4},
-    {date:'2025-12-12',token:'Token J', type:'Call',dir:'Sell',strike:120,notional:7500000,yield_pct:6.6},
-    {date:'2025-12-12',token:'Token K', type:'Put', dir:'Sell',strike:95, notional:2400000,yield_pct:3.3},
-    {date:'2025-12-01',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:1.9},
-    {date:'2025-11-15',token:'Token L', type:'Call',dir:'Sell',strike:120,notional:800000, yield_pct:11.3},
-    {date:'2025-11-10',token:'Token B', type:'Call',dir:'Sell',strike:120,notional:3000000,yield_pct:2.3},
-    {date:'2025-10-27',token:'Token M', type:'Call',dir:'Sell',strike:120,notional:500000, yield_pct:5.8},
-    {date:'2025-10-22',token:'Token N', type:'Call',dir:'Sell',strike:120,notional:250000, yield_pct:2.0},
-    {date:'2025-09-08',token:'Token A', type:'Put', dir:'Sell',strike:90, notional:678000, yield_pct:0.1},
+  const YIELD_TIERS = [
+    {label:'90–95% put selling', sub:'Far-OTM downside income', min:0.1, max:3.3, avg:1.2},
+    {label:'120% calls · liquid tokens', sub:'Large-cap, high-liquidity tokens', min:1.5, max:4.0, avg:2.5},
+    {label:'120% calls · high-vol tokens', sub:'Mid/small-cap, elevated volatility', min:5.0, max:15.6, avg:8.2},
+    {label:'150%+ calls · conservative', sub:'Deep OTM, capital-preservation focus', min:0.8, max:2.5, avg:1.5},
   ];
 
   const RFQ_SAMPLES = [
@@ -410,26 +417,24 @@
   ['c-size','c-deploy','c-rate'].forEach(id=>document.getElementById(id).addEventListener('input',updateCalc));
   updateCalc();
 
-  // ── BLOTTER ───────────────────────────────────────────
-  function renderBlotter(filter){
-    const rows = TRADES.filter(t=>filter==='all'||t.type===filter);
-    document.getElementById('blotter-body').innerHTML = rows.map(t=>`
-      <tr>
-        <td>${t.date}</td>
-        <td><strong>${t.token}</strong></td>
-        <td><span class="badge badge-${t.type.toLowerCase()}">${t.type}</span></td>
-        <td>${t.dir}</td>
-        <td>${t.strike}% of spot</td>
-        <td>${fmtM(t.notional)}</td>
-        <td style="color:var(--gold);font-weight:600">${t.yield_pct.toFixed(1)}%</td>
-      </tr>`).join('');
+  // ── YIELD TIERS ───────────────────────────────────────
+  function renderYieldTiers(){
+    const maxScale = 16;
+    document.getElementById('yield-tiers').innerHTML = YIELD_TIERS.map(t=>{
+      const left  = (t.min/maxScale*100).toFixed(1);
+      const width = ((t.max-t.min)/maxScale*100).toFixed(1);
+      const avgPos = (t.avg/maxScale*100).toFixed(1);
+      return `<div class="yield-tier">
+        <div class="yield-tier-lbl">${t.label}<small>${t.sub}</small></div>
+        <div class="yield-tier-track">
+          <div class="yield-tier-range-fill" style="left:${left}%;width:${width}%"></div>
+          <div class="yield-tier-avg-line" style="left:${avgPos}%"></div>
+        </div>
+        <div class="yield-tier-val">${t.min.toFixed(1)}–${t.max.toFixed(1)}%<small>avg ${t.avg.toFixed(1)}%</small></div>
+      </div>`;
+    }).join('');
   }
-  function filterBlotter(f,btn){
-    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
-    btn.classList.add('on');
-    renderBlotter(f);
-  }
-  renderBlotter('all');
+  renderYieldTiers();
 
   // ── RFQ ANALYSIS ─────────────────────────────────────
   function renderRFQ(){
@@ -451,7 +456,7 @@
       return `<div class="rfq-item">
         <div class="rfq-item-head"><h4>${s.label}</h4><span>Notional ${s.notional}</span></div>
         <div class="rfq-bars">${bars}</div>
-        <div class="rfq-saving">Best quote ${saving}% above worst — saved by competitive RFQ</div>
+        <div class="rfq-saving">Best sell quote ${saving}% higher than worst — additional premium captured via competitive RFQ</div>
       </div>`;
     }).join('');
   }
