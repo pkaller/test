@@ -740,6 +740,30 @@ footer::after{
   .team-card{flex-direction:column;gap:20px}
 }
 
+/* ── LEGAL / COMPLIANCE ─────────────── */
+.fn-sup{color:var(--gold);font-size:0.7em;vertical-align:super;line-height:0}
+.footnote-bar{background:rgba(14,42,82,0.04);border-top:1px solid var(--border);padding:14px 0}
+.footnote-bar .container{font-size:0.75rem;color:var(--muted);line-height:1.6}
+.target-disc{font-size:0.75rem;color:rgba(255,255,255,0.45);font-style:italic;margin-top:16px;padding:10px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;line-height:1.5}
+.prog-gated{background:var(--white);border-radius:20px;border:1px solid var(--border);padding:52px 48px;text-align:center;max-width:680px;margin:0 auto}
+.prog-gated .gate-icon{font-size:2rem;margin-bottom:20px}
+.prog-gated h3{font-size:1.4rem;font-weight:800;color:var(--ink);letter-spacing:-0.5px;margin-bottom:16px}
+.prog-gated>p{font-size:0.95rem;color:var(--ink-2);line-height:1.75;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+.prog-gated .fine-print{font-size:0.72rem;color:var(--muted);margin-top:16px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+/* ── EXEC PILLARS (dashboard) ───────── */
+.exec-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.exec-pillar{background:white;border-radius:14px;padding:28px 24px;border:1px solid var(--border)}
+.exec-pillar strong{display:block;font-size:0.88rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.exec-pillar p{font-size:0.82rem;color:var(--muted);line-height:1.6}
+/* ── RFQ HOW (dashboard) ────────────── */
+.rfq-how-steps{display:grid;grid-template-columns:repeat(4,1fr);background:white;border-radius:16px;border:1px solid var(--border);overflow:hidden;margin-top:32px}
+.rfq-how-step{padding:28px 22px;border-right:1px solid var(--border)}
+.rfq-how-step:last-child{border-right:none}
+.rfq-how-step-n{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.rfq-how-step h4{font-size:0.88rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.rfq-how-step p{font-size:0.78rem;color:var(--muted);line-height:1.6}
+.rfq-how-outcome{background:var(--cream);border-radius:12px;padding:20px 24px;margin-top:20px;font-size:0.85rem;color:var(--ink-2);line-height:1.7;border:1px solid var(--border)}
+@media(max-width:768px){.exec-pillars{grid-template-columns:1fr}.rfq-how-steps{grid-template-columns:1fr}.rfq-how-step{border-right:none;border-bottom:1px solid var(--border)}.rfq-how-step:last-child{border-bottom:none}.prog-gated{padding:36px 24px}}
 /* ── ANIMATIONS ─────────────────────── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.65s var(--ease),transform 0.65s var(--ease)}
 .fade-up.visible{opacity:1;transform:translateY(0)}

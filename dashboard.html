@@ -161,8 +161,8 @@
   <div class="dash-jump">
     <div class="dash-jump-inner">
       <a href="#calculator" class="active">01 · Yield Calculator</a>
-      <a href="#blotter">02 · Programme Analytics</a>
-      <a href="#rfq-analysis">03 · RFQ Analysis</a>
+      <a href="#blotter">02 · Execution Documentation</a>
+      <a href="#rfq-analysis">03 · How RFQ Works</a>
       <a href="#simulator">04 · Simulator</a>
     </div>
   </div>
@@ -172,8 +172,8 @@
     <div class="tool-inner">
       <div class="tool-header">
         <span class="tool-num">01 · Yield Calculator</span>
-        <h2>What can your treasury earn?</h2>
-        <p>Adjust treasury size, deployment percentage, and monthly premium rate to see projected income. Figures are illustrative estimates based on typical crypto options market conditions.</p>
+        <h2>What might your treasury earn?</h2>
+        <p>Adjust treasury size, deployment percentage, and monthly premium rate to see illustrative projected income. All figures are hypothetical — actual premiums vary based on the factors listed below.</p>
       </div>
       <div class="calc-grid">
         <div class="calc-inputs">
@@ -225,56 +225,68 @@
           </div>
         </div>
       </div>
-      <p class="calc-disc">All figures are illustrative. Actual premiums depend on market conditions, token volatility, and strike selection. This tool does not constitute investment advice.</p>
+      <p class="calc-disc">All figures are purely illustrative and are not a prediction of future income. Actual premiums depend on a range of factors — both positively and negatively — including: token-specific implied volatility (which can be significantly higher or lower than historical levels); market liquidity and bid-ask spreads at time of execution; strike selection and tenor; overall market conditions, including periods of extreme volatility, low trading volume, or market disruption; the number of market makers willing to quote a given token; and token-specific events such as protocol changes, security incidents, or sudden liquidity crises. Premiums may be materially lower than the ranges shown, including zero in illiquid or disrupted markets. This tool does not constitute investment advice or a guarantee of any return.</p>
     </div>
   </section>
 
-  <!-- ── 02 PROGRAMME ANALYTICS ───────────────────────── -->
+  <!-- ── 02 EXECUTION DOCUMENTATION ───────────────────── -->
   <section id="blotter" class="tool-section s-cream">
     <div class="tool-inner">
       <div class="tool-header">
-        <span class="tool-num">02 · Programme Analytics</span>
-        <h2>A growing execution track record.</h2>
-        <p>Key metrics across the covered call and put-selling programme since inception. All client and trade information is anonymised.</p>
+        <span class="tool-num">02 · Execution Documentation</span>
+        <h2>Every trade, fully documented.</h2>
+        <p>Each execution generates a complete, contemporaneous audit record. This is a structural feature of RFQ — documentation is a by-product of the process, not a retrospective reconstruction.</p>
       </div>
-
-      <div class="track-stat-grid">
-        <div class="track-stat">
-          <strong>100+</strong>
-          <span>Trades executed since Sep 2025</span>
+      <div class="exec-pillars">
+        <div class="exec-pillar">
+          <strong>Full RFQ Audit Trail</strong>
+          <p>Every competing quote is time-stamped and retained — showing all dealers contacted, their responses, and the winning price. Available to clients on request.</p>
         </div>
-        <div class="track-stat">
-          <strong>15+</strong>
-          <span>Distinct tokens covered</span>
+        <div class="exec-pillar">
+          <strong>Same-Day Position Reports</strong>
+          <p>Strike, expiry, premium received, and portfolio impact delivered same day for every trade. Full post-trade transparency as standard.</p>
         </div>
-        <div class="track-stat">
-          <strong>87%</strong>
-          <span>Options expired unexercised — full premium retained</span>
-        </div>
-        <div class="track-stat">
-          <strong>3–8</strong>
-          <span>Market makers competed per RFQ</span>
+        <div class="exec-pillar">
+          <strong>Best Execution Evidence</strong>
+          <p>The complete quote record provides contemporaneous proof that the best available market price was obtained — a key requirement for fiduciary and governance obligations.</p>
         </div>
       </div>
-
-      <div class="yield-breakdown">
-        <div class="yield-breakdown-hd">Achieved sell premium by strategy type · monthly, % of notional</div>
-        <div id="yield-tiers"></div>
-      </div>
-
-      <p class="calc-disc" style="margin-top:20px">All yields are historical. Actual premiums vary with token volatility, tenor, strike selection and market conditions. Past results do not guarantee future returns.</p>
     </div>
   </section>
 
-  <!-- ── 03 RFQ ANALYSIS ──────────────────────────────── -->
+  <!-- ── 03 HOW RFQ WORKS ──────────────────────────────── -->
   <section id="rfq-analysis" class="tool-section s-white">
     <div class="tool-inner">
       <div class="tool-header">
-        <span class="tool-num">03 · RFQ Analysis</span>
-        <h2>Competition drives better prices.</h2>
-        <p>Representative sample of competing market maker quotes on sell-to-open block trades. We are selling options to collect premium — so <strong>higher is better</strong>. Best quote highlighted in gold. The spread between best and worst shows the yield left on the table without competitive quoting.</p>
+        <span class="tool-num">03 · How RFQ Works</span>
+        <h2>Structured dealer competition.</h2>
+        <p>Rather than placing an order into the public market — where your intent is visible and prices move against you — RFQ sends a private, simultaneous request to multiple dealers. They compete without knowing each other's quotes, driving prices toward fair value.</p>
       </div>
-      <div class="rfq-list" id="rfq-list"></div>
+      <div class="rfq-how-steps">
+        <div class="rfq-how-step">
+          <span class="rfq-how-step-n">Step 01</span>
+          <h4>Private Request</h4>
+          <p>A simultaneous RFQ is sent privately to all relevant market makers — specifying token, strike, expiry, size, and direction. No public order book signal.</p>
+        </div>
+        <div class="rfq-how-step">
+          <span class="rfq-how-step-n">Step 02</span>
+          <h4>Blind Competition</h4>
+          <p>Each dealer has a short response window to submit their best price. They know they are competing but cannot see rival quotes — creating genuine price competition.</p>
+        </div>
+        <div class="rfq-how-step">
+          <span class="rfq-how-step-n">Step 03</span>
+          <h4>Best Price Selected</h4>
+          <p>All responses are evaluated and the best price is selected. For sell-to-open trades, the highest premium is chosen. The full quote set is retained as an audit record.</p>
+        </div>
+        <div class="rfq-how-step">
+          <span class="rfq-how-step-n">Step 04</span>
+          <h4>Trade Confirmed</h4>
+          <p>Execution is confirmed and a same-day post-trade report is issued to the client — strike, expiry, premium received, and portfolio impact.</p>
+        </div>
+      </div>
+      <div class="rfq-how-outcome">
+        <strong>Why this matters:</strong> Open-market execution signals intent before the trade is done — allowing other participants to move prices against you. RFQ eliminates pre-trade signalling entirely, while forcing genuine competition among dealers. The audit trail generated is a by-product of the process, not a retrospective reconstruction.
+      </div>
     </div>
   </section>
 
@@ -356,39 +368,6 @@
   <script src="script.js"></script>
   <script>
   // ── DATA ──────────────────────────────────────────────
-  const YIELD_TIERS = [
-    {label:'90–95% put selling', sub:'Far-OTM downside income', min:0.1, max:3.3, avg:1.2},
-    {label:'120% calls · liquid tokens', sub:'Large-cap, high-liquidity tokens', min:1.5, max:4.0, avg:2.5},
-    {label:'120% calls · high-vol tokens', sub:'Mid/small-cap, elevated volatility', min:5.0, max:15.6, avg:8.2},
-    {label:'150%+ calls · conservative', sub:'Deep OTM, capital-preservation focus', min:0.8, max:2.5, avg:1.5},
-  ];
-
-  const RFQ_SAMPLES = [
-    {label:'Token B · 120% Call · 30 DTE',notional:'$3.0M',quotes:[
-      {mm:'MM-A',pct:3.21,best:true},{mm:'MM-B',pct:2.98,best:false},
-      {mm:'MM-C',pct:2.76,best:false},{mm:'MM-D',pct:2.54,best:false},{mm:'MM-E',pct:2.31,best:false}
-    ]},
-    {label:'Token F · 120% Call · 30 DTE',notional:'$2.0M',quotes:[
-      {mm:'MM-B',pct:15.6,best:true},{mm:'MM-A',pct:14.2,best:false},
-      {mm:'MM-C',pct:12.9,best:false},{mm:'MM-D',pct:11.1,best:false},{mm:'MM-E',pct:9.8,best:false}
-    ]},
-    {label:'Token E · 120% Call · 30 DTE',notional:'$5.8M',quotes:[
-      {mm:'MM-C',pct:6.4,best:true},{mm:'MM-A',pct:5.9,best:false},
-      {mm:'MM-B',pct:5.5,best:false},{mm:'MM-E',pct:5.0,best:false},{mm:'MM-D',pct:4.2,best:false}
-    ]},
-    {label:'Token I · 120% Call · 30 DTE',notional:'$1.1M',quotes:[
-      {mm:'MM-A',pct:3.38,best:true},{mm:'MM-D',pct:3.19,best:false},
-      {mm:'MM-B',pct:2.97,best:false},{mm:'MM-C',pct:2.71,best:false},{mm:'MM-E',pct:2.51,best:false}
-    ]},
-    {label:'Token D · 120% Call · 30 DTE',notional:'$3.5M',quotes:[
-      {mm:'MM-D',pct:14.5,best:true},{mm:'MM-C',pct:11.9,best:false},
-      {mm:'MM-B',pct:10.7,best:false},{mm:'MM-A',pct:9.4,best:false}
-    ]},
-    {label:'Token L · 120% Call · 30 DTE',notional:'$800K',quotes:[
-      {mm:'MM-E',pct:11.3,best:true},{mm:'MM-C',pct:9.8,best:false},
-      {mm:'MM-A',pct:8.9,best:false},{mm:'MM-D',pct:8.2,best:false},{mm:'MM-B',pct:6.7,best:false}
-    ]},
-  ];
 
   // ── HELPERS ───────────────────────────────────────────
   function fmtM(n){
@@ -417,50 +396,6 @@
   ['c-size','c-deploy','c-rate'].forEach(id=>document.getElementById(id).addEventListener('input',updateCalc));
   updateCalc();
 
-  // ── YIELD TIERS ───────────────────────────────────────
-  function renderYieldTiers(){
-    const maxScale = 16;
-    document.getElementById('yield-tiers').innerHTML = YIELD_TIERS.map(t=>{
-      const left  = (t.min/maxScale*100).toFixed(1);
-      const width = ((t.max-t.min)/maxScale*100).toFixed(1);
-      const avgPos = (t.avg/maxScale*100).toFixed(1);
-      return `<div class="yield-tier">
-        <div class="yield-tier-lbl">${t.label}<small>${t.sub}</small></div>
-        <div class="yield-tier-track">
-          <div class="yield-tier-range-fill" style="left:${left}%;width:${width}%"></div>
-          <div class="yield-tier-avg-line" style="left:${avgPos}%"></div>
-        </div>
-        <div class="yield-tier-val">${t.min.toFixed(1)}–${t.max.toFixed(1)}%<small>avg ${t.avg.toFixed(1)}%</small></div>
-      </div>`;
-    }).join('');
-  }
-  renderYieldTiers();
-
-  // ── RFQ ANALYSIS ─────────────────────────────────────
-  function renderRFQ(){
-    const list = document.getElementById('rfq-list');
-    list.innerHTML = RFQ_SAMPLES.map(s=>{
-      const max = Math.max(...s.quotes.map(q=>q.pct));
-      const best = s.quotes.find(q=>q.best);
-      const worst = s.quotes.reduce((a,b)=>a.pct<b.pct?a:b);
-      const saving = ((best.pct - worst.pct)/worst.pct*100).toFixed(0);
-      const bars = s.quotes.map(q=>`
-        <div class="rfq-bar-row">
-          <div class="rfq-mm">${q.mm}</div>
-          <div class="rfq-track">
-            <div class="rfq-fill${q.best?' best':''}" style="width:${(q.pct/max*100).toFixed(1)}%">
-              <span>${q.pct.toFixed(2)}%</span>
-            </div>
-          </div>
-        </div>`).join('');
-      return `<div class="rfq-item">
-        <div class="rfq-item-head"><h4>${s.label}</h4><span>Notional ${s.notional}</span></div>
-        <div class="rfq-bars">${bars}</div>
-        <div class="rfq-saving">Best sell quote ${saving}% higher than worst — additional premium captured via competitive RFQ</div>
-      </div>`;
-    }).join('');
-  }
-  renderRFQ();
 
   // ── SIMULATOR ─────────────────────────────────────────
   function updateSim(){
