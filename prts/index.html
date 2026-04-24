@@ -194,6 +194,13 @@ body::before{
 }
 .assets-cloud{display:flex;flex-wrap:wrap;gap:6px}
 .asset-chip{font-size:0.72rem;font-weight:500;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.65)}
+.asset-chip.stablecoin{background:rgba(76,175,124,0.15);color:#7dd4aa;border:1px solid rgba(76,175,124,0.25)}
+.asset-chip.nft{background:rgba(160,100,220,0.15);color:#c89ee0;border:1px solid rgba(160,100,220,0.25)}
+.asset-chip.equity{background:rgba(30,79,163,0.25);color:#8eb8f0;border:1px solid rgba(30,79,163,0.4)}
+.asset-chip.safe{background:rgba(220,130,50,0.15);color:#f0b46a;border:1px solid rgba(220,130,50,0.3)}
+.asset-chip.saft{background:rgba(200,165,50,0.15);color:#e8cc70;border:1px solid rgba(200,165,50,0.3)}
+.asset-chip.futures{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.35)}
+.asset-chip.defi{background:rgba(50,180,200,0.12);color:#7dd8e8;border:1px solid rgba(50,180,200,0.22)}
 .m-body{font-size:0.85rem;line-height:1.75;color:rgba(255,255,255,0.65)}
 .m-body a{color:var(--gold);text-decoration:none}
 .m-body a:hover{text-decoration:underline}
@@ -415,12 +422,166 @@ const C=[["2017-12-15",1.0],["2018-03-15",1.05],["2018-03-28",0.94],["2018-04-27
 
 // Helpers
 function fmtNav(v){return'$'+v.toFixed(2)}
+// Known assets sorted longest-first for greedy matching
+const KNOWN_ASSETS=(function(){
+  const list=[
+    // Equity holdings
+    'Heritage Distilling Holding Company INC','Cornhill Capital Limited',
+    'Argo Blockchain','Motto Technologies',
+    // SAFE / SAFT notes
+    'KERNAL LABS INC SAFE','Kernal Labs Inc SAFE',
+    'HEX GROWTH OPPORTUNITIES III','Stars SAFT Deal','Stars SAFT',
+    // NFT collections
+    'Mutant Ape Yacht Club','Otherdeed',
+    // Stablecoins & lending
+    'Compound USDC','syrupUSDC','Tether','USDC','USDT','DAI','USD','BUSD','TUSD','FRAX','LUSD','sUSD',
+    // DeFi / yield
+    'Wayfinder','Echelon Prime','Babylon',
+    'Pendle','Uniswap','Aave','Compound','Curve','dYdX','Synthetix','Balancer','Sushiswap','Yearn Finance',
+    'Maple Finance','Lido','Frax Finance','Convex Finance','Velodrome','Aerodrome',
+    'Morpho','EigenLayer','Ondo Finance','Ethena','Usual',
+    // Fund tokens
+    'Protos Token','Protos',
+    // Crypto majors
+    'Bitcoin','Ethereum','Solana','Binance Coin','Cardano','Ripple','Polkadot','Avalanche',
+    'Chainlink','Litecoin','Bitcoin Cash','Stellar','Monero','Tron','Cosmos','Algorand',
+    'Filecoin','Hedera','NEAR Protocol','VeChain','Tezos','EOS','Zcash','Dash','Iota',
+    'NEM','NEO','Ontology','Qtum','Waves','Decred','Lisk','Ark','Nano','DigiByte',
+    'Ravencoin','Horizen','Stratis','Factom','Siacoin','ICON','Zilliqa','Aion',
+    'Wanchain','Loopring','0x Protocol','Kyber Network','Bancor','OmiseGO','Status',
+    'Augur','Gnosis','Melon','Numeraire','Golem','iExec RLC','Storj',
+    'Civic','Bloom','Raiden Network','SALT','Basic Attention Token',
+    // Popular tokens (by common name)
+    'Shiba Inu','Dogecoin','BRETT','Midnight','DROPS','Wayfinder',
+    'Internet Computer','Immutable X','Arbitrum','Optimism','Polygon','Fantom',
+    'Aptos','Sui','Sei','Injective','Celestia','Mantle','Scroll','Base',
+    'Blur','LooksRare','X2Y2','Sudoswap',
+    'Axie Infinity','The Sandbox','Decentraland','Gala','Illuvium','Gods Unchained',
+    'Stepn','Audius','Livepeer','Theta','Chiliz','Enjin',
+    'Render','Akash','Flux','Arweave','Helium','IoTeX','Peaq',
+    'Pyth Network','Jito','Jupiter','Raydium','Orca','Marinade','Drift','Kamino',
+    'GMX','Gains Network','Hyperliquid','Vertex Protocol',
+    'Rocket Pool','Stader','Swell','Ankr',
+    'LayerZero','Wormhole','Axelar','Connext','Hop Protocol',
+    'Chainlink','API3','Band Protocol','UMA','Tellor',
+    'Maker','Frax','Liquity','Reflexer','Angle',
+    'PancakeSwap','TraderJoe','QuickSwap','SpookySwap',
+    'Osmosis','Kujira','Stargaze','Akash Network',
+    'Oasis Network','Secret','Aleph Zero','Mina Protocol',
+    'Beam','Grin','MimbleWimble','Firo','Pirate Chain',
+    'Kadena','Kaspa','Ergo','Nervos','Hathor',
+    'Celo','Harmony','Elrond','MultiversX','Cronos','KuCoin Token',
+    'Gate','Huobi Token','FTX Token','Binance USD',
+    'Wrapped Bitcoin','Wrapped Ethereum','WBTC','WETH','cbBTC','stETH','rETH','rswETH','swETH',
+    'Astar','Moonbeam','Acala','Bifrost','Parallel Finance',
+    'SUI','BNB','XRP','ADA','DOT','AVAX','LINK','LTC','BCH','XLM','XMR','TRX','ATOM','ALGO',
+    'FIL','HBAR','NEAR','VET','XTZ','ZEC','DASH','MIOTA','XEM','ONT','QTUM','WAVES',
+    'GNO','MLN','NMR','GNT','RLC','ZRX','KNC','BNT','OMG','SNT','REP','REQ','RDN',
+    'CVC','BLT','SALT','BAT',
+    'SHIB','DOGE','ICP','IMX','ARB','OP','MATIC','FTM','APT',
+    'SEI','INJ','TIA','MNT','SCRL','BLUR','LOOKS','X2Y2',
+    'AXS','SAND','MANA','GALA','ILV','GODS',
+    'GMT','AUDIO','LPT','THETA','CHZ','ENJ',
+    'RNDR','AKT','FLUX','AR','HNT','IOTX','PEAQ',
+    'PYTH','JTO','JUP','RAY','ORCA','MNDE','DRIFT','KMNO',
+    'GMX','GNS','HYPE','VRTX',
+    'RPL','SD','SWELL','ANKR',
+    'ZRO','W','AXL','CNXT','HOP',
+    'MKR','FXS','LQTY','RAI','ANGLE',
+    'CAKE','JOE','QUICK','BOO',
+    'OSMO','KUJI','STARS','AKT',
+    'ROSE','SCRT','AZERO','MINA',
+    'BEAM','GRIN','FIRO','PIRATE','ERG','CKB','HTR',
+    'CELO','ONE','EGLD','CRO','KCS',
+    'GT','HT','FTT',
+    'PRIME','BABY','NIGHT','PROMPT','SUI','PENDLE',
+    // Old-format "TICKER – Name" pairs
+    'BTC – Bitcoin','ETH – Ethereum','BCH – Bitcoin Cash','LTC – Litecoin',
+    'XRP – Ripple','XMR – Monero','ZEC – Zcash','DASH – Dash',
+    'MIOTA – Iota','XLM – Stellar','XEM – NEM','EOS – Eos',
+    'ADA – Cardano','TRX – TRON','NEO – Neo','QTUM – Qtum',
+    'OMG – OmiseGo','VEN – VeChain','ICX – Icon','ZIL – Zilliqa',
+    'ONT – Ontology','WAVES – Waves','NANO – Nano','XVG – Verge',
+    'SC – Siacoin','DGB – DigiByte','RVN – Ravencoin','KMD – Komodo',
+    'STRAT – Stratis','FCT – Factom','LISK – Lisk','ARK – Ark',
+    'AION – Aion','WAN – Wanchain','LRC – Loopring','ZRX – 0x Protocol',
+    'KNC – Kyber Network','BNT – Bancor','REP – Augur','GNO – Gnosis',
+    'MLN – Melon','NMR – Numeraire','GNT – Golem','RLC – iExec RLC',
+    'STORJ – Storj','CVC – Civic','SALT – Salt','BAT – Basic Attention Token',
+    'RDN – Raiden Network','REQ – Request','SNT – Status',
+    // CFD / Futures
+    'Bitcoin CFD','Ethereum CFD','Bitcoin Futures','Ethereum Futures',
+    'BTC CFD','ETH CFD','BTC Futures','ETH Futures',
+    // Misc
+    'Polkadot','Argo','Beam','Base','Drift','Ribbon','Merit Circle',
+    'Treasure','Treasure DAO','Gods','Gala Games','Big Time','Illuvium',
+    'Birdeye','Pyth','Jito','Jupiter','Raydium','Kamino','Marinade',
+    'Solend','Mango Markets','Serum','Star Atlas','Alien Worlds',
+    'Splinterlands','Vulcan Forged','My Neighbor Alice',
+    'Aavegotchi','Guild of Guardians','Elfin Kingdom',
+  ];
+  // Sort longest first so greedy matching works correctly
+  return list.sort((a,b)=>b.length-a.length);
+})();
+
+const ASSET_CATEGORIES={
+  stablecoin:new Set(['Heritage Distilling Holding Company INC']),// placeholder, overridden below
+};
+function classifyAsset(name){
+  const n=name.toLowerCase();
+  const equitySet=['heritage distilling holding company inc','cornhill capital limited','argo blockchain','motto technologies'];
+  const safeSet=['kernal labs inc safe','kernal labs inc. safe'];
+  const saftSet=['stars saft deal','stars saft','hex growth opportunities iii'];
+  const nftSet=['mutant ape yacht club','otherdeed'];
+  const stableSet=['usdc','usdt','tether','dai','usd','busd','tusd','frax','lusd','susd','compound usdc','syrupusdc'];
+  const defiSet=['pendle','uniswap','aave','compound','curve','dydx','synthetix','balancer','sushiswap',
+    'yearn finance','maple finance','lido','frax finance','convex finance','velodrome','aerodrome',
+    'morpho','eigenlayer','ondo finance','ethena','usual','gmx','gains network','hyperliquid',
+    'vertex protocol','rocket pool','stader','swell','ankr','layerzero','wormhole','axelar',
+    'raydium','orca','marinade','drift','kamino','jupiter','jito','pyth network',
+    'wayfinder','echelon prime'];
+  const futuresSet=['cfd','futures'];
+
+  if(equitySet.includes(n))return'equity';
+  if(safeSet.some(s=>n.includes(s)))return'safe';
+  if(saftSet.some(s=>n.includes(s)))return'saft';
+  if(nftSet.includes(n))return'nft';
+  if(stableSet.some(s=>n===s||n===s.replace(' ','')))return'stablecoin';
+  if(futuresSet.some(s=>n.includes(s)))return'futures';
+  if(defiSet.some(s=>n.includes(s)))return'defi';
+  return'crypto';
+}
+
 function splitAssets(arr){
   if(!arr||!arr.length)return[];
-  if(arr.length>1)return arr;
+  if(arr.length>1)return arr.filter(a=>a&&a.trim());
   const raw=arr[0];if(!raw)return[];
-  const parts=raw.split(/(?<=[a-z0-9])(?=[A-Z])/).map(s=>s.trim()).filter(s=>s.length>1);
-  return parts.length>1?parts:[raw];
+  // Try greedy dictionary match first
+  const found=[];
+  let s=raw;
+  while(s.length>0){
+    let matched=false;
+    for(const k of KNOWN_ASSETS){
+      if(s.startsWith(k)){
+        found.push(k);s=s.slice(k.length);matched=true;break;
+      }
+    }
+    if(!matched){
+      // Try "TICKER – Name" pattern at current position
+      const m=s.match(/^([A-Z0-9]{2,6}\s*[–-]\s*[A-Za-z][A-Za-z0-9\s]{0,30}?)(?=[A-Z]{2,}|$)/);
+      if(m){found.push(m[1].trim());s=s.slice(m[1].length);continue;}
+      // CamelCase split: consume up to next uppercase boundary
+      const cm=s.match(/^([A-Z][a-z0-9]+(?:\s+[A-Z][a-z0-9]*)*)/);
+      if(cm&&cm[1].length>1){found.push(cm[1].trim());s=s.slice(cm[1].length);continue;}
+      // All-caps token
+      const am=s.match(/^([A-Z]{2,6})/);
+      if(am){found.push(am[1]);s=s.slice(am[1].length);continue;}
+      // Skip one char (separator/garbage)
+      s=s.slice(1);
+    }
+  }
+  const result=found.map(f=>f.trim()).filter(f=>f.length>1);
+  return result.length>0?result:[raw];
 }
 function navColor(v){
   if(v>=1.3)return'#4caf7c';if(v>=1.0)return'#8bc47a';
@@ -631,7 +792,7 @@ function openModal(post){
   const assetsEl=document.getElementById('mAssets');
   if(assets.length){
     assetsSec.style.display='';
-    assetsEl.innerHTML=assets.map(a=>'<span class="asset-chip">'+a+'</span>').join('');
+    assetsEl.innerHTML=assets.map(a=>'<span class="asset-chip '+classifyAsset(a)+'">'+a+'</span>').join('');
   }else{assetsSec.style.display='none'}
 
   const noteSec=document.getElementById('mNoteSection');
