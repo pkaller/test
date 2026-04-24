@@ -10,38 +10,86 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0e2a52;color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:linear-gradient(145deg,#0a1c41 0%,#122e76 45%,#1a4a9e 75%,#1e4fa3 100%);
+  background-attachment:fixed;
+  color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;
+  position:relative;
+}
 :root{
   --blue:#1e4fa3;--blue-dark:#0e2a52;
   --gold:#c9a84c;--cream:#f4f0e8;--ink:#0e2a52;--muted:#7088b0;
   --border:rgba(255,255,255,0.1);--card-bg:rgba(255,255,255,0.04);
   --card-hover:rgba(255,255,255,0.07);--radius:16px;
+  --max:1160px;--ease:cubic-bezier(0.22,1,0.36,1);
 }
 
-/* Header */
-.site-header{
-  position:sticky;top:0;z-index:100;
-  background:rgba(14,42,82,0.96);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);padding:0 24px;
+/* Orbs — same as main site hero */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.orb-1{
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(45,102,192,0.55) 0%,transparent 70%);
+  top:-250px;right:-150px;
+  animation:orb-float 14s ease-in-out infinite;
 }
-.header-inner{
-  max-width:1140px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;height:64px;
+.orb-2{
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(201,168,76,0.18) 0%,transparent 70%);
+  bottom:-150px;left:-80px;
+  animation:orb-float 10s ease-in-out infinite reverse;animation-delay:-3s;
 }
-.header-logo{display:flex;align-items:center;text-decoration:none}
-.header-logo .logo-svg{width:auto;height:26px}
-.get-in-touch{
-  padding:9px 20px;border-radius:100px;
+.orb-3{
+  width:350px;height:350px;
+  background:radial-gradient(circle,rgba(22,61,138,0.6) 0%,transparent 70%);
+  top:40%;left:55%;
+  animation:orb-float 16s ease-in-out infinite;animation-delay:-7s;
+}
+@keyframes orb-float{
+  0%,100%{transform:translate(0,0)}
+  30%{transform:translate(24px,-18px)}
+  70%{transform:translate(-18px,24px)}
+}
+/* Dot grid overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+/* All content above orbs/overlay */
+#navbar,.hero,.chart-section,.filters,.grid-section,.site-footer{position:relative;z-index:1}
+.modal-overlay{z-index:500}
+
+/* Nav — matches main site exactly */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:20px 0;
+  transition:background 0.3s,padding 0.3s,backdrop-filter 0.3s;
+}
+#navbar.scrolled{
+  background:rgba(10,28,65,0.88);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;padding:0 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo-svg{height:28px;width:auto}
+.nav-cta{
+  padding:9px 22px;border-radius:100px;
   border:1px solid var(--gold);
   color:var(--gold);font-weight:600;font-size:0.82rem;
   background:transparent;text-decoration:none;
   transition:background 0.2s,color 0.2s;
   white-space:nowrap;
 }
-.get-in-touch:hover{background:var(--gold);color:#0e2a52}
+.nav-cta:hover{background:var(--gold);color:#0e2a52}
 
 /* Hero */
-.hero{padding:72px 24px 48px;max-width:1140px;margin:0 auto}
+.hero{padding:140px 40px 60px;max-width:var(--max);margin:0 auto}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
@@ -61,9 +109,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .chart-section{
   background:rgba(255,255,255,0.025);
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:36px 24px;
+  padding:36px 40px;
 }
-.chart-wrap{max-width:1140px;margin:0 auto}
+.chart-wrap{max-width:var(--max);margin:0 auto}
 .chart-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
 #navChart{width:100%;height:180px;display:block;cursor:crosshair}
 .chart-tooltip{
@@ -75,7 +123,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .chart-tooltip .ct-info{color:rgba(255,255,255,0.55);font-size:0.72rem}
 
 /* Filters */
-.filters{max-width:1140px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.filters{max-width:var(--max);margin:0 auto;padding:28px 40px 0;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .filter-label{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
 .pill{
   padding:6px 14px;border-radius:999px;font-size:0.76rem;font-weight:600;
@@ -88,7 +136,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .pill.active .count-badge{background:rgba(14,42,82,0.2);color:#0e2a52}
 
 /* Grid */
-.grid-section{max-width:1140px;margin:0 auto;padding:20px 24px 80px}
+.grid-section{max-width:var(--max);margin:0 auto;padding:20px 40px 80px}
 .grid-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .grid-header .showing{font-size:0.76rem;color:var(--muted)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
@@ -169,10 +217,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <a href="../" class="header-logo" aria-label="Mosaic Capital — back to main site">
+<!-- NAV — matches main site structure exactly -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../" class="logo" aria-label="Mosaic Capital — back to main site">
       <svg class="logo-svg" viewBox="0 0 178 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mosaic Capital">
         <rect x="7"  y="0"  width="5" height="5" fill="white"/>
         <rect x="14" y="0"  width="5" height="5" fill="white"/>
@@ -189,9 +241,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
       </svg>
     </a>
-    <a href="../#contact" class="get-in-touch">Get in touch</a>
+    <a href="../#contact" class="nav-cta">Get in touch</a>
   </div>
-</header>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -393,12 +445,11 @@ function noteToParas(str){
   const peak=P.reduce((a,b)=>a.v>=b.v?a:b);
   const trough=P.reduce((a,b)=>a.v<=b.v?a:b);
   document.getElementById('heroStats').innerHTML=`
-    <div class="hero-stat"><div class="label">Inception (Jan 2018)</div><div class="val">${fmtNav(first.v)}</div></div>
+    <div class="hero-stat"><div class="label">Inception (Dec 15, 2017)</div><div class="val">$1.00</div></div>
     <div class="hero-stat"><div class="label">Latest (Jan 2026)</div><div class="val">${fmtNav(last.v)}</div></div>
     <div class="hero-stat"><div class="label">All-Time Peak</div><div class="val up">${fmtNav(peak.v)}</div></div>
     <div class="hero-stat"><div class="label">All-Time Low</div><div class="val dn">${fmtNav(trough.v)}</div></div>
     <div class="hero-stat"><div class="label">Total Releases</div><div class="val">${P.length}</div></div>
-    <div class="hero-stat"><div class="label">Years Covered</div><div class="val">2018–2026</div></div>
   `;
 })();
 
@@ -599,6 +650,14 @@ overlay.addEventListener('click',(e)=>{if(e.target===overlay)closeModal()});
 document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeModal()});
 
 renderGrid();
+
+// Nav scroll behaviour — matches main site
+(function(){
+  const nav=document.getElementById('navbar');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
 </script>
 </body>
 </html>
