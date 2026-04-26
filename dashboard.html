@@ -109,6 +109,8 @@
     .yield-tier-avg-line{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--blue);border-radius:1px}
     .yield-tier-val{font-size:0.82rem;font-weight:700;color:var(--blue);text-align:right;line-height:1.3}
     .yield-tier-val small{display:block;font-size:0.7rem;font-weight:400;color:var(--muted);margin-top:2px}
+    .rfq-fill.ref{background:rgba(0,0,0,0.12)}
+    .rfq-mm.ref-lbl{color:var(--ink);font-weight:600}
     @media(max-width:768px){
       .dash-hero{padding:120px 20px 52px}
       .dash-jump-inner{padding:0 20px}
@@ -251,6 +253,39 @@
           <p>The complete quote record provides contemporaneous proof that the best available market price was obtained — a key requirement for fiduciary and governance obligations.</p>
         </div>
       </div>
+
+      <div class="yield-breakdown" style="margin-top:40px">
+        <div class="yield-breakdown-hd">Illustrative monthly premium ranges · covered calls · 30–45 DTE · 20–30% OTM</div>
+        <div class="yield-tier">
+          <div class="yield-tier-lbl">Bitcoin<small>BTC</small></div>
+          <div class="yield-tier-track">
+            <div class="yield-tier-range-fill" style="left:15%;width:25%"></div>
+          </div>
+          <div class="yield-tier-val">3–8%<small>per month</small></div>
+        </div>
+        <div class="yield-tier">
+          <div class="yield-tier-lbl">Ethereum<small>ETH</small></div>
+          <div class="yield-tier-track">
+            <div class="yield-tier-range-fill" style="left:20%;width:30%"></div>
+          </div>
+          <div class="yield-tier-val">4–10%<small>per month</small></div>
+        </div>
+        <div class="yield-tier">
+          <div class="yield-tier-lbl">Solana<small>SOL</small></div>
+          <div class="yield-tier-track">
+            <div class="yield-tier-range-fill" style="left:30%;width:60%"></div>
+          </div>
+          <div class="yield-tier-val">6–18%<small>per month</small></div>
+        </div>
+        <div class="yield-tier">
+          <div class="yield-tier-lbl">BNB Chain<small>BNB</small></div>
+          <div class="yield-tier-track">
+            <div class="yield-tier-range-fill" style="left:15%;width:20%"></div>
+          </div>
+          <div class="yield-tier-val">3–7%<small>per month</small></div>
+        </div>
+      </div>
+      <p class="calc-disc">Ranges shown are illustrative only, reflecting typical implied volatility levels for each token during normal market conditions. The bar position represents the premium range as a proportion of a 0–20% monthly scale. Actual premiums depend on conditions at time of execution and may be materially higher or lower, including zero in illiquid or disrupted markets. Does not constitute investment advice or a guarantee of any return.</p>
     </div>
   </section>
 
@@ -284,7 +319,56 @@
           <p>Execution is confirmed and a same-day post-trade report is issued to the client — strike, expiry, premium received, and portfolio impact.</p>
         </div>
       </div>
-      <div class="rfq-how-outcome">
+      <div class="rfq-list" style="margin-top:40px">
+        <div class="rfq-item">
+          <div class="rfq-item-head">
+            <h4>Illustrative example — BTC covered call · $78,000 strike · 30 DTE · 5 contracts</h4>
+            <span>Premium received per contract</span>
+          </div>
+          <div class="rfq-bars">
+            <div class="rfq-bar-row">
+              <div class="rfq-mm ref-lbl">Open market</div>
+              <div class="rfq-track">
+                <div class="rfq-fill ref" style="width:87.5%"><span>$2,800 · reference</span></div>
+              </div>
+            </div>
+            <div class="rfq-bar-row">
+              <div class="rfq-mm">Dealer A</div>
+              <div class="rfq-track">
+                <div class="rfq-fill" style="width:89.7%"><span>$2,870 · +2.5%</span></div>
+              </div>
+            </div>
+            <div class="rfq-bar-row">
+              <div class="rfq-mm">Dealer B</div>
+              <div class="rfq-track">
+                <div class="rfq-fill" style="width:92.5%"><span>$2,960 · +5.7%</span></div>
+              </div>
+            </div>
+            <div class="rfq-bar-row">
+              <div class="rfq-mm">Dealer C</div>
+              <div class="rfq-track">
+                <div class="rfq-fill" style="width:95.3%"><span>$3,050 · +8.9%</span></div>
+              </div>
+            </div>
+            <div class="rfq-bar-row">
+              <div class="rfq-mm">Dealer D</div>
+              <div class="rfq-track">
+                <div class="rfq-fill" style="width:97.5%"><span>$3,120 · +11.4%</span></div>
+              </div>
+            </div>
+            <div class="rfq-bar-row">
+              <div class="rfq-mm">Dealer E</div>
+              <div class="rfq-track">
+                <div class="rfq-fill best" style="width:100%"><span>$3,200 · +14.3% ★ best fill</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="rfq-saving">RFQ best fill: $3,200 vs $2,800 open market estimate — +$2,000 additional premium across 5 contracts (+14.3%)</div>
+        </div>
+      </div>
+      <p class="calc-disc">This is a purely illustrative hypothetical example designed to show how competitive dealer quoting works in practice. It does not represent actual past execution results or a prediction of future pricing. Actual dealer quotes and execution quality vary depending on market conditions, token liquidity, option tenor, and the number of participating market makers at any given time. Does not constitute investment advice or a guarantee of any return.</p>
+
+      <div class="rfq-how-outcome" style="margin-top:32px">
         <strong>Why this matters:</strong> Open-market execution signals intent before the trade is done — allowing other participants to move prices against you. RFQ eliminates pre-trade signalling entirely, while forcing genuine competition among dealers. The audit trail generated is a by-product of the process, not a retrospective reconstruction.
       </div>
     </div>
