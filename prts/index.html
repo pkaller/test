@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>PRTS Token — NAV History | Mosaic Capital</title>
 <meta name="description" content="Monthly NAV release archive for the PRTS Token from January 2018 to January 2026. Issued by Protos Asset Management (2018–2024) and Mosaic Capital (2024–present)."/>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+a{text-decoration:none;color:inherit}
 html{font-size:16px;scroll-behavior:smooth}
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -76,17 +78,18 @@ body::before{
   max-width:var(--max);margin:0 auto;padding:0 40px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{display:flex;align-items:center;text-decoration:none}
+.logo{display:flex;align-items:center}
 .logo-svg{height:28px;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:400;color:rgba(255,255,255,0.55);transition:color 0.2s}
+.nav-links a:hover{color:#fff}
 .nav-cta{
-  padding:9px 22px;border-radius:100px;
-  border:1px solid var(--gold);
-  color:var(--gold);font-weight:600;font-size:0.82rem;
-  background:transparent;text-decoration:none;
-  transition:background 0.2s,color 0.2s;
-  white-space:nowrap;
+  padding:9px 22px !important;border-radius:100px !important;
+  border:1px solid var(--gold) !important;
+  color:var(--gold) !important;font-weight:600 !important;
+  transition:background 0.2s,color 0.2s !important;
 }
-.nav-cta:hover{background:var(--gold);color:#0e2a52}
+.nav-cta:hover{background:var(--gold) !important;color:var(--ink) !important}
 
 /* Hero */
 .hero{padding:140px 40px 60px;max-width:var(--max);margin:0 auto}
@@ -248,7 +251,9 @@ body::before{
         <text x="36" y="20" font-family="'Inter',-apple-system,sans-serif" font-size="20" font-weight="800" fill="white" letter-spacing="0.5">MOSAIC</text>
       </svg>
     </a>
-    <a href="../#contact" class="nav-cta">Get in touch</a>
+    <ul class="nav-links">
+      <li><a href="../#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
   </div>
 </nav>
 
