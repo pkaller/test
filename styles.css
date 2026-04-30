@@ -157,13 +157,6 @@ h2.light{color:var(--white)}
   transition:background 0.2s,color 0.2s !important
 }
 .nav-cta:hover{background:var(--gold) !important;color:var(--ink) !important}
-.nav-dash{
-  padding:9px 22px !important;border-radius:100px !important;
-  border:1px solid rgba(255,255,255,0.25) !important;
-  color:rgba(255,255,255,0.75) !important;font-weight:600 !important;
-  transition:background 0.2s,color 0.2s,border-color 0.2s !important
-}
-.nav-dash:hover{background:rgba(255,255,255,0.12) !important;color:var(--white) !important;border-color:rgba(255,255,255,0.5) !important}
 @media(max-width:768px){.metrics-grid{grid-template-columns:1fr 1fr !important}}
 .hamburger{
   display:none;flex-direction:column;gap:5px;
