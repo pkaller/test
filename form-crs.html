@@ -12,21 +12,41 @@
   <style>
     .crs-hero{background:linear-gradient(145deg,#0a1c41 0%,#122e76 45%,#1a4a9e 75%,#1e4fa3 100%);padding:140px 40px 64px;position:relative;overflow:hidden}
     .crs-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:32px 32px}
-    .crs-hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
-    .crs-back{display:inline-flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:28px;transition:color 0.2s;text-decoration:none}
+    .crs-hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+    .crs-back{display:inline-flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:28px;transition:color 0.2s}
     .crs-back:hover{color:var(--gold)}
     .crs-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
     .crs-hero h1{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
-    .crs-hero p{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:560px}
-    .crs-body{max-width:900px;margin:0 auto;padding:64px 40px}
-    .crs-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:40px}
-    .crs-note{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:40px}
-    .crs-note p{font-size:0.85rem;color:var(--ink-2);line-height:1.7}
-    .crs-note strong{color:var(--ink)}
-    .pdf-embed{width:100%;height:80vh;min-height:600px;border:1px solid var(--border);border-radius:14px;background:var(--cream)}
-    .pdf-fallback{display:none;background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:48px;text-align:center}
-    .pdf-fallback p{font-size:0.95rem;color:var(--ink-2);margin-bottom:24px}
-    @media(max-width:768px){.crs-hero{padding:120px 20px 52px}.crs-body{padding:40px 20px}.pdf-embed{height:60vh}}
+    .crs-hero p{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:560px;margin-bottom:28px}
+    .crs-hero-meta{font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:16px}
+
+    .crs-body{max-width:800px;margin:0 auto;padding:64px 40px 80px}
+    .crs-intro{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-bottom:56px}
+    .crs-intro p{font-size:0.93rem;color:var(--ink-2);line-height:1.8}
+    .crs-intro a{color:var(--blue);font-weight:500}
+    .crs-intro a:hover{text-decoration:underline}
+
+    .crs-section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--border)}
+    .crs-section:last-of-type{border-bottom:none;margin-bottom:0}
+    .crs-section-q{font-size:1.15rem;font-weight:800;color:var(--ink);letter-spacing:-0.3px;margin-bottom:20px;line-height:1.3}
+    .crs-section p{font-size:0.93rem;color:var(--ink-2);line-height:1.85;margin-bottom:16px}
+    .crs-section p:last-child{margin-bottom:0}
+    .crs-section a{color:var(--blue);font-weight:500}
+    .crs-section a:hover{text-decoration:underline}
+
+    .crs-starters{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+    .crs-starter{display:flex;align-items:flex-start;gap:12px;background:rgba(30,79,163,0.05);border:1px solid rgba(30,79,163,0.12);border-radius:10px;padding:14px 18px}
+    .crs-starter-icon{font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);opacity:0.7;white-space:nowrap;margin-top:1px;flex-shrink:0}
+    .crs-starter p{font-size:0.83rem;color:var(--ink-2);line-height:1.55;margin:0;font-style:italic}
+
+    .crs-contact{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-top:52px}
+    .crs-contact p{font-size:0.9rem;color:var(--ink-2);line-height:1.8;margin-bottom:12px}
+    .crs-contact p:last-child{margin-bottom:0}
+    .crs-contact a{color:var(--blue);font-weight:500}
+    .crs-contact a:hover{text-decoration:underline}
+    .crs-contact-label{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+
+    @media(max-width:768px){.crs-hero{padding:120px 20px 52px}.crs-body{padding:40px 20px 60px}}
   </style>
 </head>
 <body>
@@ -56,6 +76,7 @@
         <li><a href="index.html#options">Options</a></li>
         <li><a href="index.html#rfq">RFQ</a></li>
         <li><a href="index.html#team">Team</a></li>
+        <li><a href="dashboard.html" class="nav-dash">Options Desk ↗</a></li>
         <li><a href="form-crs.html" class="nav-dash">Form CRS</a></li>
         <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
       </ul>
@@ -68,29 +89,103 @@
   <section class="crs-hero">
     <div class="crs-hero-inner">
       <a href="index.html" class="crs-back">← Back to main site</a>
-      <div class="crs-tag">Regulatory · SEC Required Disclosure</div>
-      <h1>Form CRS<br/>Relationship Summary</h1>
-      <p>Our Client Relationship Summary (Form ADV Part 3) as filed with and required by the US Securities and Exchange Commission.</p>
+      <div class="crs-tag">SEC Required Disclosure · ADV Part 3</div>
+      <h1>Client Relationship<br/>Summary</h1>
+      <p>Investment advisory services and fees differ from brokerage services and fees — it is important for you to understand the differences.</p>
+      <a href="Mosaic ADV 3 Relationship Summary v2025.09.22 FINAL.pdf" download class="btn-fill">Download PDF</a>
+      <div class="crs-hero-meta">Mosaic Capital Inc. · September 2025</div>
     </div>
   </section>
 
   <div class="crs-body">
-    <div class="crs-note">
-      <p><strong>What is Form CRS?</strong> The SEC requires all registered investment advisers to provide clients and prospective clients with a short, plain-language summary of the services offered, fees, conflicts of interest, and disciplinary history. This document is intended to help you understand what Mosaic Capital offers and how we work with clients.</p>
+
+    <div class="crs-intro">
+      <p>Mosaic Capital Inc. is an investment adviser registered with the Securities and Exchange Commission. <a href="https://www.investor.gov/CRS" target="_blank" rel="noopener">Investor.gov/CRS</a> is a website providing free and simple tools to research firms and financial professionals, and which provides educational materials about investment advisers, broker-dealers, and investing. We encourage you to ask us questions and have provided suggested conversation starters throughout this Relationship Summary.</p>
     </div>
-    <div class="crs-actions">
-      <a href="Mosaic ADV 3 Relationship Summary v2025.09.22 FINAL.pdf" download class="btn-fill">Download PDF</a>
-      <a href="Mosaic ADV 3 Relationship Summary v2025.09.22 FINAL.pdf" target="_blank" rel="noopener" class="btn-line">Open in new tab ↗</a>
-    </div>
-    <iframe
-      class="pdf-embed"
-      src="Mosaic ADV 3 Relationship Summary v2025.09.22 FINAL.pdf"
-      title="Mosaic Capital Form CRS — ADV Part 3 Relationship Summary">
-      <div class="pdf-fallback">
-        <p>Your browser does not support inline PDF viewing.</p>
-        <a href="Mosaic ADV 3 Relationship Summary v2025.09.22 FINAL.pdf" download class="btn-fill">Download Form CRS PDF</a>
+
+    <!-- SECTION 1 -->
+    <div class="crs-section">
+      <div class="crs-section-q">What investment services and advice can you provide me?</div>
+      <p>We are a discretionary investment adviser offering management services tailored to the need of the client. This relationship summary describes only the investment advisory services we provide to US-based individual ("retail") investors who have engaged us to advise on separately managed accounts.</p>
+      <p>We monitor client accounts on an ongoing basis, in light of your individual needs. Reviews may also occur as a result of material market, economic or political events, or by changes in your objectives. Monitoring is part of our standard services.</p>
+      <p>We implement our strategies on a discretionary basis, and we obtain discretionary authorization through our signed advisory agreement with you. Our minimum account size is $1 million, though we may choose to waive the minimum.</p>
+      <p>For more detailed information about our services, please request a copy of our Form ADV, Part 2A brochure. You can also find a copy by visiting <a href="https://www.adviserinfo.sec.gov" target="_blank" rel="noopener">adviserinfo.sec.gov</a>.</p>
+      <div class="crs-starters">
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>Given my financial situation, should I choose an investment advisory service? Why or why not?</p>
+        </div>
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>How will you choose investments to recommend to me?</p>
+        </div>
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>What is your relevant experience, including your licenses, education and other qualifications? What do these qualifications mean?</p>
+        </div>
       </div>
-    </iframe>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="crs-section">
+      <div class="crs-section-q">What fees will I pay?</div>
+      <p>We provide advice to separately managed accounts for an annual asset-based fee. Clients who meet the definition of "qualified client" may choose to engage us on a negotiated performance-fee basis, in addition to a negotiated asset-based fee. Our fee is based on the total assets we're managing for you. The fee is negotiable and ranges from 50 to 250 basis points (0.50%–2.50%) annually, though we may negotiate fees lower than 50 basis points. We bill our asset-based fee monthly in arrears, usually deducted automatically from your account with the qualified custodian you select. Performance fees, if earned, are billed annually in arrears.</p>
+      <p>When we charge asset-based fees, the more assets we manage, the higher the dollar amount of fees you pay. We therefore have a financial incentive to encourage you to increase the amount of assets we manage for you. We have a financial incentive to generate higher returns for performance fee-paying accounts, which may cause us to make different investment choices than we would otherwise, and to allocate potentially more profitable investments to performance fee-paying accounts.</p>
+      <p>In addition to our advisory fees, you will pay fees charged by third parties for other services provided to you, including transaction fees charged by your custodian or the exchange where a transaction takes place. Examples of these costs include commissions, custodial fees, and wire transfer fees.</p>
+      <p>You will pay fees and costs whether you make or lose money on your investments. Fees and costs will reduce any amount of money you make on your investments over time. Please make sure you understand what fees and costs you are paying. Our Form ADV, Part 2A (Items 5 and 12) contains more detailed information about fees and costs.</p>
+      <div class="crs-starters">
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>Help me understand how these fees and costs might affect my investments. If I give you $10,000 to invest, how much will go to fees and costs, and how much will be invested for me?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="crs-section">
+      <div class="crs-section-q">What are your legal obligations to me when acting as my investment adviser? How else does your firm make money and what conflicts of interest do you have?</div>
+      <p>When we act as your investment adviser, we have to act in your best interest and not put our interest ahead of yours. At the same time, the way we make money creates conflicts with your interests. You should understand and ask us about these conflicts because they can affect the investment advice we provide you.</p>
+      <p>Our primary conflict of interest is our receipt of asset-based fees and the fact that our total fees generally increase as the amount of assets we manage increases; this gives us an incentive to encourage you to place more assets with us. We also have a conflict of interest with performance-based accounts in that we have an incentive to take greater risks in the hope of greater profits and therefore a higher fee to us. We also have referral arrangements with other investment advisers and service providers. To the extent we receive additional compensation when we recommend a third party and you accept that recommendation, we have a conflict of interest in making the recommendation.</p>
+      <p>Our Form ADV, Part 2A contains detailed information about our conflicts of interest. See especially Items 5, 10 &amp; 12.</p>
+      <div class="crs-starters">
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>How might your conflicts of interest affect me, and how will you address them?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="crs-section">
+      <div class="crs-section-q">How do your financial professionals make money?</div>
+      <p>Neither the firm nor our associated persons are licensed in the US to provide any service other than investment advice. Accordingly, we make money only through the advisory fees we charge you. Some of our financial professionals receive salaries and bonuses and others receive distributions related solely to their ownership of the company.</p>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="crs-section">
+      <div class="crs-section-q">Do you or your financial professionals have legal or disciplinary history?</div>
+      <p>No. Visit <a href="https://www.investor.gov/CRS" target="_blank" rel="noopener">Investor.gov/CRS</a> for a free and simple search tool to research our firm and our financial professionals.</p>
+      <div class="crs-starters">
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>As a financial professional, do you have any disciplinary history? For what type of conduct?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="crs-contact">
+      <span class="crs-contact-label">Further Information</span>
+      <p>For more detailed information about our investment advisory services, or to request another copy of this Relationship Summary, please contact us at <a href="tel:+61468465309">+61 468 465 309</a> and speak to your advisory professional or our compliance support staff.</p>
+      <p>You may also visit the SEC's public disclosure website at <a href="https://www.adviserinfo.sec.gov" target="_blank" rel="noopener">adviserinfo.sec.gov</a>.</p>
+      <div class="crs-starters" style="margin-top:20px">
+        <div class="crs-starter">
+          <span class="crs-starter-icon">Ask us</span>
+          <p>Who is my primary contact person? Is he or she a representative of an investment adviser or a broker-dealer? Who can I talk to if I have concerns about how this person is treating me?</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <footer>
