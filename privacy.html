@@ -12,263 +12,63 @@
 
 <style>
   :root {
-    --bg: #0a0a0a;
-    --surface: #131313;
-    --surface-2: #1a1a1a;
-    --border: #2a2a2a;
-    --border-bright: #3a3a3a;
-    --text: #e8e8e3;
-    --text-dim: #8a8a85;
-    --text-faint: #5a5a55;
-    --accent: #c9a96e;
-    --accent-dim: #8a7548;
-
-    --serif: 'EB Garamond', 'Times New Roman', serif;
-    --sans: 'IBM Plex Sans', system-ui, sans-serif;
-    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --bg: #0a0a0a; --surface: #131313; --surface-2: #1a1a1a; --border: #2a2a2a; --border-bright: #3a3a3a;
+    --text: #e8e8e3; --text-dim: #8a8a85; --text-faint: #5a5a55; --accent: #c9a96e; --accent-dim: #8a7548;
+    --serif: 'EB Garamond', 'Times New Roman', serif; --sans: 'IBM Plex Sans', system-ui, sans-serif; --mono: 'IBM Plex Mono', 'Courier New', monospace;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-weight: 300;
-    line-height: 1.7;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   ::selection { background: var(--accent); color: var(--bg); }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(circle at 20% 0%, rgba(201, 169, 110, 0.04) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
+  body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle at 20% 0%, rgba(201, 169, 110, 0.04) 0%, transparent 50%); pointer-events: none; z-index: 1; }
   body > * { position: relative; z-index: 2; }
-
   .display { font-family: var(--serif); font-weight: 400; letter-spacing: -0.015em; line-height: 1.1; }
   .container { max-width: 880px; margin: 0 auto; padding: 0 40px; }
-
   a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); transition: opacity 0.2s; }
   a:hover { opacity: 0.7; }
-
-  nav.primary {
-    border-bottom: 1px solid var(--border);
-    padding: 22px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(10, 10, 10, 0.92);
-    backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
-  nav.primary .logo {
-    font-family: var(--serif);
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    font-size: 1.05em;
-    border: none;
-  }
+  nav.primary { border-bottom: 1px solid var(--border); padding: 22px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 50; }
+  nav.primary .logo { font-family: var(--serif); font-weight: 500; letter-spacing: 0.18em; font-size: 1.05em; border: none; }
   nav.primary ul { display: flex; gap: 36px; list-style: none; }
-  nav.primary ul li a {
-    color: var(--text-dim);
-    font-size: 0.82em;
-    letter-spacing: 0.04em;
-    border: none;
-  }
+  nav.primary ul li a { color: var(--text-dim); font-size: 0.82em; letter-spacing: 0.04em; border: none; }
   nav.primary ul li a:hover { color: var(--text); opacity: 1; }
-
-  .page-header {
-    padding: 100px 0 60px;
-    border-bottom: 1px solid var(--border);
-  }
-  .eyebrow {
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 0.72em;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+  .page-header { padding: 100px 0 60px; border-bottom: 1px solid var(--border); }
+  .eyebrow { color: var(--accent); font-family: var(--mono); font-size: 0.72em; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
   .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
-  .page-header h1 {
-    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
-    margin-bottom: 20px;
-  }
-  .page-header .last-updated {
-    color: var(--text-faint);
-    font-family: var(--mono);
-    font-size: 0.78em;
-    letter-spacing: 0.1em;
-  }
-
-  .content {
-    padding: 80px 0 100px;
-  }
-
-  .content h2 {
-    font-family: var(--serif);
-    font-size: 1.6em;
-    font-weight: 500;
-    color: var(--accent);
-    margin: 56px 0 16px;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
+  .page-header h1 { font-size: clamp(2.4rem, 4.5vw, 3.4rem); margin-bottom: 20px; }
+  .page-header .last-updated { color: var(--text-faint); font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.1em; }
+  .content { padding: 80px 0 100px; }
+  .content h2 { font-family: var(--serif); font-size: 1.6em; font-weight: 500; color: var(--accent); margin: 56px 0 16px; line-height: 1.3; letter-spacing: -0.01em; }
   .content h2:first-child { margin-top: 0; }
-
-  .content h3 {
-    font-family: var(--serif);
-    font-size: 1.2em;
-    font-weight: 500;
-    color: var(--text);
-    margin: 32px 0 12px;
-  }
-
-  .content p {
-    color: var(--text-dim);
-    margin-bottom: 16px;
-    font-size: 0.98em;
-  }
-
-  .content ul, .content ol {
-    color: var(--text-dim);
-    margin: 16px 0 16px 24px;
-    padding-left: 8px;
-  }
-  .content ul li, .content ol li {
-    margin-bottom: 8px;
-    line-height: 1.7;
-  }
+  .content h3 { font-family: var(--serif); font-size: 1.2em; font-weight: 500; color: var(--text); margin: 32px 0 12px; }
+  .content p { color: var(--text-dim); margin-bottom: 16px; font-size: 0.98em; }
+  .content ul, .content ol { color: var(--text-dim); margin: 16px 0 16px 24px; padding-left: 8px; }
+  .content ul li, .content ol li { margin-bottom: 8px; line-height: 1.7; }
   .content ul li::marker { color: var(--accent); }
   .content ol li::marker { color: var(--accent); font-family: var(--mono); font-size: 0.9em; }
-
   .content strong { color: var(--text); font-weight: 500; }
-
-  .toc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px 32px;
-    margin-bottom: 56px;
-  }
-  .toc h4 {
-    font-family: var(--mono);
-    font-size: 0.72em;
-    color: var(--accent);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    font-weight: 400;
-  }
-  .toc ol {
-    list-style: decimal;
-    margin: 0 0 0 22px;
-    padding: 0;
-    color: var(--text-dim);
-  }
+  .toc { background: var(--surface); border: 1px solid var(--border); padding: 28px 32px; margin-bottom: 56px; }
+  .toc h4 { font-family: var(--mono); font-size: 0.72em; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; }
+  .toc ol { list-style: decimal; margin: 0 0 0 22px; padding: 0; color: var(--text-dim); }
   .toc ol li { margin-bottom: 6px; font-size: 0.92em; }
   .toc ol li a { color: var(--text-dim); border: none; }
   .toc ol li a:hover { color: var(--accent); }
-
-  .callout {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 2px solid var(--accent-dim);
-    padding: 20px 24px;
-    margin: 24px 0;
-    font-size: 0.92em;
-    color: var(--text-dim);
-  }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--accent-dim); padding: 20px 24px; margin: 24px 0; font-size: 0.92em; color: var(--text-dim); }
   .callout strong { color: var(--text); }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0;
-    font-size: 0.92em;
-  }
-  table th, table td {
-    text-align: left;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-dim);
-    vertical-align: top;
-  }
-  table th {
-    font-family: var(--mono);
-    font-size: 0.78em;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 400;
-    background: var(--surface);
-  }
-
-  footer {
-    background: var(--surface);
-    padding: 60px 0 40px;
-    border-top: 1px solid var(--border);
-  }
-  footer .footer-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-  footer .logo {
-    font-family: var(--serif);
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    font-size: 1.05em;
-  }
-  footer .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  footer .footer-links li a {
-    color: var(--text-dim);
-    font-size: 0.85em;
-    border: none;
-  }
+  table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92em; }
+  table th, table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+  table th { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 400; background: var(--surface); }
+  footer { background: var(--surface); padding: 60px 0 40px; border-top: 1px solid var(--border); }
+  footer .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  footer .logo { font-family: var(--serif); font-weight: 500; letter-spacing: 0.18em; font-size: 1.05em; }
+  footer .footer-links { display: flex; gap: 24px; list-style: none; }
+  footer .footer-links li a { color: var(--text-dim); font-size: 0.85em; border: none; }
   footer .footer-links li a:hover { color: var(--accent); }
-  footer .copyright {
-    margin-top: 32px;
-    color: var(--text-faint);
-    font-family: var(--mono);
-    font-size: 0.78em;
-    letter-spacing: 0.05em;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    nav.primary { padding: 18px 24px; }
-    nav.primary ul { gap: 16px; font-size: 0.78em; }
-    nav.primary ul li:nth-child(n+3) { display: none; }
-    .container { padding: 0 24px; }
-    .page-header { padding: 60px 0 40px; }
-    .content { padding: 50px 0 80px; }
-    footer .footer-row { flex-direction: column; text-align: center; }
-  }
+  footer .copyright { margin-top: 32px; color: var(--text-faint); font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.05em; text-align: center; }
+  @media (max-width: 768px) { nav.primary { padding: 18px 24px; } nav.primary ul { gap: 16px; font-size: 0.78em; } nav.primary ul li:nth-child(n+3) { display: none; } .container { padding: 0 24px; } .page-header { padding: 60px 0 40px; } .content { padding: 50px 0 80px; } footer .footer-row { flex-direction: column; text-align: center; } }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="primary">
   <a href="index.html" class="logo">MOSAIC</a>
   <ul>
@@ -279,7 +79,6 @@
   </ul>
 </nav>
 
-<!-- HEADER -->
 <div class="container">
   <div class="page-header">
     <div class="eyebrow">Legal</div>
@@ -288,10 +87,8 @@
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
   <div class="content">
-
     <div class="toc">
       <h4>Contents</h4>
       <ol>
@@ -312,179 +109,51 @@
         <li><a href="#complaints">Complaints to a supervisory authority</a></li>
       </ol>
     </div>
-
-    <p>
-      Mosaic Capital Inc. (<strong>"Mosaic Capital,"</strong> <strong>"we,"</strong> <strong>"us,"</strong> or <strong>"our"</strong>) is committed to protecting the personal information of website visitors and prospective clients. This Privacy Notice explains how we collect, use, share, and protect personal information that we receive through this website (the <strong>"Site"</strong>), and the rights you have in respect of that information.
-    </p>
-
-    <div class="callout">
-      <strong>For clients of Mosaic Capital:</strong> If you are an existing or prospective client of Mosaic Capital's investment advisory services, separate privacy notices apply to the personal information we collect in the course of providing those services, including (where applicable) the U.S. Securities and Exchange Commission's Regulation S-P privacy notice for U.S. natural-person clients. Those notices are provided to clients directly and are also available upon request from the contact details at the end of this notice.
-    </div>
-
+    <p>Mosaic Capital Inc. (<strong>"Mosaic Capital,"</strong> <strong>"we,"</strong> <strong>"us,"</strong> or <strong>"our"</strong>) is committed to protecting the personal information of website visitors and prospective clients. This Privacy Notice explains how we collect, use, share, and protect personal information that we receive through this website (the <strong>"Site"</strong>), and the rights you have in respect of that information.</p>
+    <div class="callout"><strong>For clients of Mosaic Capital:</strong> If you are an existing or prospective client of Mosaic Capital's investment advisory services, separate privacy notices apply to the personal information we collect in the course of providing those services, including (where applicable) the U.S. Securities and Exchange Commission's Regulation S-P privacy notice for U.S. natural-person clients. Those notices are provided to clients directly and are also available upon request from the contact details at the end of this notice.</div>
     <h2 id="who-we-are">1. Who we are</h2>
-    <p>
-      Mosaic Capital Inc. is a company incorporated in the Cayman Islands. It is registered with the Cayman Islands Monetary Authority (<strong>"CIMA"</strong>) as a Registered Person under the Securities Investment Business Act (Revised) and with the U.S. Securities and Exchange Commission (<strong>"SEC"</strong>) as an Investment Adviser.
-    </p>
-    <p>
-      For the purposes of the Cayman Islands Data Protection Act (Revised) (<strong>"DPA"</strong>), the EU General Data Protection Regulation (Regulation (EU) 2016/679) (<strong>"EU GDPR"</strong>), and the UK General Data Protection Regulation (<strong>"UK GDPR"</strong>) (together, the <strong>"GDPR"</strong>), Mosaic Capital is the data controller in respect of personal information collected through the Site.
-    </p>
-
+    <p>Mosaic Capital Inc. is a company incorporated in the Cayman Islands. It is registered with the Cayman Islands Monetary Authority (<strong>"CIMA"</strong>) as a Registered Person under the Securities Investment Business Act (Revised) and with the U.S. Securities and Exchange Commission (<strong>"SEC"</strong>) as an Investment Adviser.</p>
+    <p>For the purposes of the Cayman Islands Data Protection Act (Revised) (<strong>"DPA"</strong>), the EU General Data Protection Regulation (Regulation (EU) 2016/679) (<strong>"EU GDPR"</strong>), and the UK General Data Protection Regulation (<strong>"UK GDPR"</strong>) (together, the <strong>"GDPR"</strong>), Mosaic Capital is the data controller in respect of personal information collected through the Site.</p>
     <h2 id="scope">2. Scope of this notice</h2>
-    <p>
-      This Privacy Notice covers personal information that we collect:
-    </p>
-    <ul>
-      <li>when you visit or interact with the Site;</li>
-      <li>when you submit the contact form on the Site or otherwise contact us by email, phone, or other means in connection with the Site;</li>
-      <li>when you correspond with us prior to entering into an investment management agreement, fund subscription, or other client relationship.</li>
-    </ul>
-    <p>
-      Once a client relationship is established, additional privacy notices and contractual provisions will govern our processing of personal information in connection with that relationship.
-    </p>
-
+    <p>This Privacy Notice covers personal information that we collect:</p>
+    <ul><li>when you visit or interact with the Site;</li><li>when you submit the contact form on the Site or otherwise contact us by email, phone, or other means in connection with the Site;</li><li>when you correspond with us prior to entering into an investment management agreement, fund subscription, or other client relationship.</li></ul>
+    <p>Once a client relationship is established, additional privacy notices and contractual provisions will govern our processing of personal information in connection with that relationship.</p>
     <h2 id="information-we-collect">3. Personal information we collect</h2>
-
     <h3>3.1 Information you provide directly</h3>
-    <p>
-      When you submit the contact form, request fund documentation, or otherwise correspond with us, we may collect:
-    </p>
-    <ul>
-      <li>identification and contact details — your name, business email address, telephone number, and the organization you represent;</li>
-      <li>the contents of your message, including any details about your investment interests, mandate, or eligibility you choose to share;</li>
-      <li>investor-eligibility attestations (for example, confirmations of Accredited Investor, Qualified Client, or Qualified Purchaser status);</li>
-      <li>any other personal information you voluntarily provide to us through the Site or in subsequent correspondence.</li>
-    </ul>
-
+    <p>When you submit the contact form, request fund documentation, or otherwise correspond with us, we may collect:</p>
+    <ul><li>identification and contact details — your name, business email address, telephone number, and the organization you represent;</li><li>the contents of your message, including any details about your investment interests, mandate, or eligibility you choose to share;</li><li>investor-eligibility attestations (for example, confirmations of Accredited Investor, Qualified Client, or Qualified Purchaser status);</li><li>any other personal information you voluntarily provide to us through the Site or in subsequent correspondence.</li></ul>
     <h3>3.2 Information we collect automatically</h3>
-    <p>
-      When you visit the Site, we and our service providers may automatically collect technical information including:
-    </p>
-    <ul>
-      <li>IP address, browser type and version, device type, operating system, and referring URL;</li>
-      <li>pages visited on the Site, time and date of access, and duration of visit;</li>
-      <li>information collected via cookies and similar technologies (see <a href="#cookies">Section 11</a> below).</li>
-    </ul>
-
+    <p>When you visit the Site, we and our service providers may automatically collect technical information including:</p>
+    <ul><li>IP address, browser type and version, device type, operating system, and referring URL;</li><li>pages visited on the Site, time and date of access, and duration of visit;</li><li>information collected via cookies and similar technologies (see <a href="#cookies">Section 11</a> below).</li></ul>
     <h2 id="how-we-use">4. How we use personal information</h2>
-    <p>
-      We use personal information collected through the Site for the following purposes:
-    </p>
-    <ul>
-      <li><strong>To respond to your enquiry.</strong> We use your contact details and the contents of your message to respond to questions, provide information about our services, and engage in preliminary discussions about a potential client relationship.</li>
-      <li><strong>To assess investor eligibility.</strong> We use the attestations and other information you provide to make a preliminary assessment of whether you may be eligible to receive further information about our services or fund offerings.</li>
-      <li><strong>To operate, secure, and improve the Site.</strong> We use technical and usage information to administer the Site, prevent fraud or abuse, diagnose technical issues, and improve the user experience.</li>
-      <li><strong>To comply with legal and regulatory obligations.</strong> We process personal information as necessary to comply with applicable laws and regulations, including record-keeping obligations under Cayman Islands law, the U.S. Investment Advisers Act of 1940, and other applicable rules.</li>
-      <li><strong>To establish, exercise, or defend legal claims.</strong> Where necessary, we may process personal information in connection with actual or anticipated legal proceedings.</li>
-    </ul>
-
+    <p>We use personal information collected through the Site for the following purposes:</p>
+    <ul><li><strong>To respond to your enquiry.</strong> We use your contact details and the contents of your message to respond to questions, provide information about our services, and engage in preliminary discussions about a potential client relationship.</li><li><strong>To assess investor eligibility.</strong> We use the attestations and other information you provide to make a preliminary assessment of whether you may be eligible to receive further information about our services or fund offerings.</li><li><strong>To operate, secure, and improve the Site.</strong> We use technical and usage information to administer the Site, prevent fraud or abuse, diagnose technical issues, and improve the user experience.</li><li><strong>To comply with legal and regulatory obligations.</strong> We process personal information as necessary to comply with applicable laws and regulations, including record-keeping obligations under Cayman Islands law, the U.S. Investment Advisers Act of 1940, and other applicable rules.</li><li><strong>To establish, exercise, or defend legal claims.</strong> Where necessary, we may process personal information in connection with actual or anticipated legal proceedings.</li></ul>
     <h2 id="lawful-basis">5. Lawful basis for processing (UK/EU)</h2>
-    <p>
-      If you are located in the United Kingdom or the European Economic Area, the GDPR requires us to identify a lawful basis for each processing activity. We rely on the following lawful bases:
-    </p>
-    <ul>
-      <li><strong>Legitimate interests</strong> (Article 6(1)(f)) — for responding to enquiries, operating and improving the Site, and engaging in pre-contractual communications with prospective clients. Our legitimate interests include providing information about our services and operating our business. We have assessed that these interests are not overridden by your rights and freedoms.</li>
-      <li><strong>Performance of a contract or pre-contractual steps</strong> (Article 6(1)(b)) — where you have asked us to take steps prior to entering into a client relationship.</li>
-      <li><strong>Compliance with legal obligations</strong> (Article 6(1)(c)) — for record-keeping and other obligations imposed by applicable law.</li>
-      <li><strong>Consent</strong> (Article 6(1)(a)) — where we ask for and obtain your consent for a specific processing activity (for example, certain analytics cookies).</li>
-    </ul>
-    <p>
-      Under the Cayman Islands DPA, we rely on equivalent lawful bases, including that the processing is necessary for the purposes of legitimate interests pursued by us, for the performance of a contract or pre-contractual steps, for compliance with a legal obligation, or where you have given consent.
-    </p>
-
+    <p>If you are located in the United Kingdom or the European Economic Area, the GDPR requires us to identify a lawful basis for each processing activity. We rely on the following lawful bases:</p>
+    <ul><li><strong>Legitimate interests</strong> (Article 6(1)(f)) — for responding to enquiries, operating and improving the Site, and engaging in pre-contractual communications with prospective clients.</li><li><strong>Performance of a contract or pre-contractual steps</strong> (Article 6(1)(b)) — where you have asked us to take steps prior to entering into a client relationship.</li><li><strong>Compliance with legal obligations</strong> (Article 6(1)(c)) — for record-keeping and other obligations imposed by applicable law.</li><li><strong>Consent</strong> (Article 6(1)(a)) — where we ask for and obtain your consent for a specific processing activity.</li></ul>
     <h2 id="sharing">6. How we share personal information</h2>
-    <p>
-      We do not sell personal information. We do not share personal information with third parties for those third parties' direct marketing purposes. We may share personal information with the following categories of recipient:
-    </p>
-    <ul>
-      <li><strong>Our service providers</strong> — including hosting, email, communications, document-management, customer-relationship-management, and IT-security providers — who process personal information on our behalf under appropriate contractual safeguards.</li>
-      <li><strong>Our professional advisers</strong> — including legal, audit, tax, and compliance advisers — where reasonably necessary in connection with their advice to us.</li>
-      <li><strong>Regulators and authorities</strong> — including CIMA, the SEC, the Cayman Islands Tax Information Authority, the Cayman Islands Ombudsman, and other competent regulators or law enforcement, where required by applicable law or in response to lawful requests.</li>
-      <li><strong>Other parties</strong> — where we are required or permitted to do so to comply with applicable law, court order, or legal process, or to protect the rights, property, or safety of Mosaic Capital, our clients, or others.</li>
-    </ul>
-
+    <p>We do not sell personal information. We may share personal information with: our service providers, our professional advisers, regulators and authorities, and other parties where required by law.</p>
     <h2 id="international-transfers">7. International transfers</h2>
-    <p>
-      Mosaic Capital is established in the Cayman Islands. Where personal information is transferred from the United Kingdom or the European Economic Area to the Cayman Islands or other jurisdictions outside the UK/EEA, we rely on appropriate safeguards under the GDPR — including, where applicable, standard contractual clauses approved by the UK Information Commissioner's Office or the European Commission, or other lawful transfer mechanisms.
-    </p>
-    <p>
-      Where personal information is transferred from the Cayman Islands to other jurisdictions, we comply with the international-transfer requirements of the Cayman Islands DPA, including ensuring that adequate safeguards are in place or that a relevant exception applies.
-    </p>
-
+    <p>Where personal information is transferred from the UK or EEA to the Cayman Islands or other jurisdictions, we rely on appropriate safeguards under the GDPR, including standard contractual clauses where applicable.</p>
     <h2 id="retention">8. Data retention</h2>
-    <p>
-      We retain personal information only for as long as is necessary for the purposes for which it was collected, including to comply with our legal, regulatory, tax, accounting, and reporting obligations.
-    </p>
-    <p>
-      Retention periods are determined by reference to the nature of the personal information, the purpose for which it is processed, applicable record-keeping requirements (for example, under the U.S. Investment Advisers Act, books-and-records rules generally require retention for at least five years), and the period during which legal claims may be brought.
-    </p>
-
+    <p>We retain personal information only for as long as necessary, including to comply with legal, regulatory, tax, accounting, and reporting obligations.</p>
     <h2 id="security">9. Security</h2>
-    <p>
-      We maintain administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, alteration, disclosure, or destruction. These include access controls, encryption in transit, secure data-storage facilities, and personnel training. While we take these measures seriously, no method of transmission over the internet or method of electronic storage is fully secure, and we cannot guarantee the absolute security of personal information.
-    </p>
-
+    <p>We maintain administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, alteration, disclosure, or destruction.</p>
     <h2 id="your-rights">10. Your rights</h2>
-    <p>
-      Subject to applicable law, you may have the following rights in respect of the personal information we hold about you:
-    </p>
-    <ul>
-      <li><strong>Right of access</strong> — to obtain confirmation of whether we process your personal information and a copy of that information.</li>
-      <li><strong>Right of rectification</strong> — to ask us to correct inaccurate or incomplete personal information.</li>
-      <li><strong>Right of erasure</strong> — to ask us to delete your personal information in certain circumstances.</li>
-      <li><strong>Right to restrict processing</strong> — to ask us to restrict our processing of your personal information in certain circumstances.</li>
-      <li><strong>Right to data portability</strong> — to receive your personal information in a structured, commonly used, and machine-readable format and to transmit it to another controller, in certain circumstances.</li>
-      <li><strong>Right to object</strong> — to object to our processing of your personal information where we rely on legitimate interests as our lawful basis.</li>
-      <li><strong>Right to withdraw consent</strong> — where we rely on consent, you may withdraw it at any time. Withdrawal does not affect the lawfulness of processing prior to withdrawal.</li>
-      <li><strong>Right not to be subject to automated decision-making</strong> — including profiling, that produces legal or similarly significant effects (we do not currently engage in such automated decision-making).</li>
-    </ul>
-    <p>
-      To exercise any of these rights, please contact us using the details in <a href="#contact">Section 14</a> below. We may need to verify your identity before responding to your request. Some rights are subject to exceptions and limitations under applicable law.
-    </p>
-
+    <p>Subject to applicable law, you may have rights including: right of access, rectification, erasure, restriction, data portability, objection, withdrawal of consent, and not to be subject to automated decision-making.</p>
     <h2 id="cookies">11. Cookies and analytics</h2>
-    <p>
-      The Site uses cookies and similar technologies that are strictly necessary for the operation of the Site. We may also use limited analytics cookies to understand how visitors use the Site and to improve its performance. You can configure your browser to refuse or delete cookies; doing so may affect the functionality of the Site.
-    </p>
-
+    <p>The Site uses cookies strictly necessary for operation and may use limited analytics cookies. You can configure your browser to refuse or delete cookies.</p>
     <h2 id="children">12. Children</h2>
-    <p>
-      The Site is directed at qualifying institutional investors and natural persons satisfying applicable eligibility tests. It is not directed at children, and we do not knowingly collect personal information from children under the age of 18. If you believe that a child has provided personal information to us, please contact us so that we can delete it.
-    </p>
-
+    <p>The Site is not directed at children, and we do not knowingly collect personal information from children under the age of 18.</p>
     <h2 id="changes">13. Changes to this notice</h2>
-    <p>
-      We may update this Privacy Notice from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will post the updated notice on the Site and revise the "Last updated" date at the top. Where the changes are material, we will take reasonable steps to bring them to your attention.
-    </p>
-
+    <p>We may update this Privacy Notice from time to time. We will post the updated notice on the Site and revise the "Last updated" date at the top.</p>
     <h2 id="contact">14. How to contact us</h2>
-    <p>
-      If you have any questions about this Privacy Notice, or if you wish to exercise any of your rights, please contact:
-    </p>
-    <table>
-      <tr>
-        <th>Data Protection Contact</th>
-        <td>
-          Mosaic Capital Inc.<br>
-          Email: <a href="mailto:info@msc.xyz">info@msc.xyz</a><br>
-          Cayman Islands
-        </td>
-      </tr>
-    </table>
-
+    <table><tr><th>Data Protection Contact</th><td>Mosaic Capital Inc.<br>Email: <a href="mailto:info@msc.xyz">info@msc.xyz</a><br>Cayman Islands</td></tr></table>
     <h2 id="complaints">15. Complaints to a supervisory authority</h2>
-    <p>
-      We hope to resolve any privacy concerns directly. If you remain dissatisfied, you may have the right to lodge a complaint with a supervisory authority. Depending on your location, the relevant authorities include:
-    </p>
-    <ul>
-      <li><strong>Cayman Islands:</strong> the Office of the Ombudsman of the Cayman Islands.</li>
-      <li><strong>United Kingdom:</strong> the Information Commissioner's Office (ICO).</li>
-      <li><strong>European Economic Area:</strong> your national data protection authority.</li>
-    </ul>
-
+    <ul><li><strong>Cayman Islands:</strong> the Office of the Ombudsman of the Cayman Islands.</li><li><strong>United Kingdom:</strong> the Information Commissioner's Office (ICO).</li><li><strong>European Economic Area:</strong> your national data protection authority.</li></ul>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-row">
@@ -496,7 +165,7 @@
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
-    <div class="copyright">Mosaic Capital Inc. &copy; 2025&ndash;2026 &middot; All Rights Reserved &middot; CRD 336051 &middot; SEC# 801-134652</div>
+    <div class="copyright">Mosaic Capital Inc. © 2025–2026 · All Rights Reserved · CRD 336051 · SEC# 801-134652</div>
   </div>
 </footer>
 
