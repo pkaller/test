@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*.bin$
+
+Sitemap: https://www.msc.xyz/sitemap.xml

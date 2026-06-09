@@ -2,6 +2,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Team photo fallback (CSP-friendly replacement for inline onerror)
+  document.querySelectorAll('img.team-photo').forEach(img => {
+    const showFallback = () => {
+      img.style.display = 'none';
+      const fb = img.nextElementSibling;
+      if (fb && fb.classList.contains('team-avatar-fallback')) fb.style.display = 'flex';
+    };
+    if (img.complete && img.naturalWidth === 0) showFallback();
+    else img.addEventListener('error', showFallback);
+  });
+
   // Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
