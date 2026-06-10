@@ -5,10 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mosaic Capital — msc.xyz</title>
   <meta name="description" content="Mosaic Capital provides institutional investment advisory and asset management for crypto foundations and qualifying institutions — within regulated structures." />
+  <link rel="canonical" href="https://www.msc.xyz/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mosaic Capital" />
+  <meta property="og:title" content="Mosaic Capital — Institutional Digital Asset Management" />
+  <meta property="og:description" content="Institutional-grade investment advisory and asset management for crypto foundations and qualifying institutions." />
+  <meta property="og:url" content="https://www.msc.xyz/" />
+  <meta property="og:image" content="https://www.msc.xyz/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mosaic Capital — Institutional Digital Asset Management" />
+  <meta name="twitter:description" content="Institutional-grade investment advisory and asset management for crypto foundations and qualifying institutions." />
+  <meta name="twitter:image" content="https://www.msc.xyz/og-image.png" />
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Mosaic Capital Inc.",
+    "url": "https://www.msc.xyz/",
+    "logo": "https://www.msc.xyz/favicon.svg",
+    "email": "info@msc.xyz",
+    "description": "Institutional digital asset management, advisory, lending, and spot trading for crypto foundations and qualifying institutions.",
+    "address": { "@type": "PostalAddress", "addressCountry": "KY", "addressLocality": "Cayman Islands" },
+    "sameAs": ["https://adviserinfo.sec.gov/firm/summary/336051"]
+  }
+  </script>
 </head>
 <body>
 
@@ -36,7 +67,7 @@
         <li><a href="#programs">Programs</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#team">Team</a></li>
-        <li><a href="form-crs.pdf" target="_blank" rel="noopener">Form CRS</a></li>
+        <li><a href="form-crs.pdf" target="_blank" rel="noopener noreferrer">Form CRS</a></li>
         <li><a href="#contact" class="nav-cta">Get in touch</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -75,7 +106,8 @@
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center" class="metrics-grid">
         <div>
           <div style="font-size:2rem;font-weight:800;color:var(--blue);letter-spacing:-1px">$500M+</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;font-weight:500">Total AUM</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;font-weight:500">Total AUA<span class="fn-sup" style="color:var(--gold)">‡</span></div>
+          <div style="font-size:0.68rem;color:var(--muted);margin-top:2px;font-weight:400">‡ Total Firm AUA (incl. non-US)</div>
         </div>
         <div>
           <div style="font-size:2rem;font-weight:800;color:var(--blue);letter-spacing:-1px">CIMA</div>
@@ -213,52 +245,52 @@
       <div class="team-grid">
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="pk.jpg" alt="Philipp Kallerhoff" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="pk.jpg" alt="Philipp Kallerhoff" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">PK</div>
           </div>
           <div class="team-body">
             <h4>Philipp Kallerhoff</h4>
-            <span class="team-role">Managing Director</span>
+            <span class="team-role">Executive Director</span>
             <p>PhD Computational Neuroscience. 20+ years in asset management. Former Director at Vontobel Asset Management, co-founder and MD of Protos Asset Management.</p>
             <div class="tags">
               <span>Quantitative</span><span>Machine Learning</span><span>Asset Management</span>
             </div>
-            <a href="https://www.linkedin.com/in/philipp-kallerhoff-50a96b12/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/philipp-kallerhoff-50a96b12/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="pb.jpg" alt="Phil Blows" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="pb.jpg" alt="Phil Blows" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">PB</div>
           </div>
           <div class="team-body">
             <h4>Phil Blows</h4>
-            <span class="team-role">Chief Investment Officer</span>
+            <span class="team-role">Chief Executive Officer</span>
             <p>20+ years across markets, fintech, and DeFi. Head of Trading at Moneycorp, institutional markets at Continental Capital, CEO of AQRU plc. Author of <em>The Money Triangle</em>.</p>
             <div class="tags">
               <span>Capital Markets</span><span>DeFi</span><span>FX</span>
             </div>
-            <a href="https://www.linkedin.com/in/philipblows/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/philipblows/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="sr.jpg" alt="Sepehr Radjpoust" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="sr.jpg" alt="Sepehr Radjpoust" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">SR</div>
           </div>
           <div class="team-body">
             <h4>Sepehr Radjpoust, J.D.</h4>
-            <span class="team-role">Chief Legal Officer</span>
+            <span class="team-role">General Counsel, Chief Compliance Officer &amp; Executive Director</span>
             <p>Attorney and Managing Director at Liquid Block SEZC in the Cayman Islands. Principal at Balmoral Law with over a decade of practice in corporate law and governance. Barrister &amp; Solicitor in both Ontario and British Columbia. Former Senior Manager at TSX Private Markets and lecturer in economics at York University. Specialises in Web3 legal advisory, capital markets, and regulatory structuring.</p>
             <div class="tags">
               <span>Corporate Law</span><span>Web3</span><span>Cayman Islands</span>
             </div>
-            <a href="https://www.linkedin.com/in/sradj/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/sradj/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="lq.jpg" alt="Louis Quaintance" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="lq.jpg" alt="Louis Quaintance" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">LQ</div>
           </div>
           <div class="team-body">
@@ -268,37 +300,37 @@
             <div class="tags">
               <span>Node.js / React</span><span>Cloud Architecture</span><span>Agile / Scrum</span>
             </div>
-            <a href="https://www.linkedin.com/in/louis-quaintance-4a7746139/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/louis-quaintance-4a7746139/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="mh.jpg" alt="Mike Haughton" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="mh.jpg" alt="Mike Haughton" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">MH</div>
           </div>
           <div class="team-body">
             <h4>Mike Haughton</h4>
-            <span class="team-role">Operations</span>
+            <span class="team-role">Head of Operations</span>
             <p>Builder of payments, capital markets, and asset-management infrastructure for fintechs. Extensive experience across the financial value chain spanning banks, wealth managers, brokers, and technology companies. Previously at Rain and Dakota, building next-generation stablecoin payments and banking infrastructure.</p>
             <div class="tags">
               <span>Payments</span><span>Capital Markets</span><span>Fintech</span>
             </div>
-            <a href="https://www.linkedin.com/in/mike-haughton-6ba395156/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/mike-haughton-6ba395156/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="ap.jpg" alt="Abby Perfect" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="ap.jpg" alt="Abby Perfect" class="team-photo" loading="lazy" decoding="async" />
             <div class="team-avatar-fallback" style="display:none">AP</div>
           </div>
           <div class="team-body">
             <h4>Abby Perfect</h4>
-            <span class="team-role">Business Development &amp; Operations Coordinator</span>
+            <span class="team-role">Business Development &amp; Operations</span>
             <p>Operations and legal professional based in the Cayman Islands. Former Executive Legal Secretary at Walkers, one of the leading offshore law firms, with prior experience as Personal Assistant at JLL and legal secretary roles in London. Brings deep expertise in institutional operations, legal administration, and client services in a regulated financial environment.</p>
             <div class="tags">
               <span>Operations</span><span>Legal</span><span>Cayman Islands</span>
             </div>
-            <a href="https://www.linkedin.com/in/abby-perfect-720670a9/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/abby-perfect-720670a9/" class="team-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
       </div>
@@ -368,9 +400,9 @@
           <a href="#programs">Investment Programs</a>
           <a href="#services">Services</a>
           <a href="#team">Team</a>
-          <a href="form-crs.pdf" target="_blank" rel="noopener">Form CRS</a>
-          <a href="form-adv-2a.pdf" target="_blank" rel="noopener">Form ADV Part 2A</a>
-          <a href="https://adviserinfo.sec.gov/firm/summary/336051" target="_blank" rel="noopener">SEC IAPD Database &#8599;</a>
+          <a href="form-crs.pdf" target="_blank" rel="noopener noreferrer">Form CRS</a>
+          <a href="form-adv-2a.pdf" target="_blank" rel="noopener noreferrer">Form ADV Part 2A</a>
+          <a href="https://adviserinfo.sec.gov/firm/summary/336051" target="_blank" rel="noopener noreferrer">SEC IAPD Database &#8599;</a>
           <a href="privacy.html">Privacy Notice</a>
           <a href="terms.html">Terms of Use</a>
           <a href="#contact">Contact</a>
