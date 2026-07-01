@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": false,
-  "trailingSlash": false,
+  "trailingSlash": true,
   "redirects": [
     { "source": "/form-crs.html", "destination": "/form-crs.pdf", "permanent": true },
     { "source": "/form-crs", "destination": "/form-crs.pdf", "permanent": true },
